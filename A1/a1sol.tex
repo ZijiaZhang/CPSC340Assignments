@@ -162,9 +162,12 @@ And here are some slides giving visual representations of the ideas as well as s
 
 \begin{enumerate}
 \item You are offered the opportunity to play the following game: your opponent rolls 2 regular 6-sided dice. If the difference between the two rolls is at least 3, you win \$15. Otherwise, you get nothing. What is a fair price for a ticket to play this game once? In other words, what is the expected value of playing the game?
+\ans{\$5}
 \item Consider two events $A$ and $B$ such that $\Pr(A, B)=0$ (they are mutually exclusive). If $\Pr(A) = 0.4$ and $\Pr(A \cup B) = 0.95$, what is $\Pr(B)$? Note: $p(A, B)$ means
 ``probability of $A$ and $B$'' while $p(A \cup B)$ means ``probability of $A$ or $B$''. It may be helpful to draw a Venn diagram.
+\ans{0.55}
 \item Instead of assuming that $A$ and $B$ are mutually exclusive ($\Pr(A,B) = 0)$, what is the answer to the previous question if we assume that $A$ and $B$ are independent?
+\ans{0.71}
 \end{enumerate}
 
 \subsection{Bayes Rule and Conditional Probability}
@@ -175,10 +178,15 @@ Suppose a drug test produces a positive result with probability $0.95$ for drug 
 
 \begin{enumerate}
 \item What is the probability that a random person would test positive, $P(T=1)$?
+\ans{\begin{align*}P(T=1) &= P(T=1|D=1)P(D=1) + P(T=1|D=0)P(D=0)\\ &= 0.95*0.0001 + 0.01*0.9999 \\ &= 0.000095 + 0.009999 \\ &= 0.010094 \end{align*}}
 \item In the above, do most of these positive tests come from true positives or from false positives? 
+\ans{from false positives}
 \item What is the probability that a random person who tests positive is a user, $P(D=1|T=1)$?
+\ans{$P(D=1|T=1) = \frac{0.95\times P(D=1)}{P(T=1)} = 0.0094115316$}
 \item Suppose you have given this test to a random person and it came back positive, are they likely to be a drug user?
+\ans{no}
 \item What is one factor you could change to make this a more useful test?
+\ans{Change P(D=1).}
 \end{enumerate}
 
 
@@ -195,8 +203,11 @@ For these questions you may find it helpful to review these notes on calculus:\\
 
 \begin{enumerate}
 \item Find the derivative of the function $f(x) = 3x^2 -2x + 5$.
+\ans{$f'(x) = 6x - 2$}
 \item Find the derivative of the function $f(x) = x(1-x)$.
+\ans{$f'(x) = -2x + 1$}
 \item Let $p(x) = \frac{1}{1+\exp(-x)}$ for $x \in \R$. Compute the derivative of the function $f(x) = x-\log(p(x))$ and simplify it by using the function $p(x)$.
+\ans{$f'(x) = 1 - \frac{1}{p(x)} p'(x) = 1-\frac{e^{-x}}{1+\exp(-x)} = p(x)$}
 \end{enumerate}
 Note that in this course we will use $\log(x)$ to mean the ``natural'' logarithm of $x$, so that $\log(\exp(1)) = 1$. Also, obseve that $p(x) = 1-p(-x)$ for the final part.
 
@@ -206,12 +217,23 @@ Note that in this course we will use $\log(x)$ to mean the ``natural'' logarithm
 \begin{enumerate}
 % \item $f_1(x) = \sin(x)$
 \item $f(x) = x_1^2 + \exp(x_2)$ where $x \in \R^2$.
+\ans{$\nabla f(x) = <2x_1,\exp(x_2)>$}
 \item $f(x) = \exp(x_1 + x_2x_3)$ where $x \in \mathbb{R}^3$.
+\ans{$\nabla f(x) = <\exp(x_1+x_2x_3),x_3\exp(x_1+x_2x_3),x_2\exp(x_1+x_2x_3)>$}
 \item $f(x) = a^Tx$ where $x \in \R^2$ and $a \in \R^2$.
+\ans{$f(x) = a_1x_1+a_2x_2$\\$\nabla f(x) = <a_1,a_2> $}
 \item $f(x) = x^\top A x$ where $A=\left[ \begin{array}{cc}
 2 & -1 \\
  -1 & 1 \end{array} \right]$ and $x \in \mathbb{R}^2$.
+\ans{$f(x) = [2x_1 - x_2, -x_1+x_2] \left[ \begin{array}{c}
+    x_1\\x_2
+ \end{array} \right] = 2x_1^2-x_2x_1+-x_1x_2+x_2^2 = 2x_1^2 - 2x_1x_2+x_2^2$\\
+ $\nabla f(x) = <2x_1-2x_2,2x_2-2x_1>$
+ } 
  \item $f(x) = \frac{1}{2}\norm{x}^2$ where $x \in \R^d$.
+ \ans{$f(x) = \frac{1}{2}(x_1^2+x_2^2+....)$\\
+ $\nabla f(x) = <x_1,x_2,x_3...> = x$
+ }
 \end{enumerate}
 
 Hint: it is helpful to write out the linear algebra expressions in terms of summations.
@@ -230,6 +252,8 @@ the gradient, and then translate this gradient back into code. We've given you \
 
 Note: do not worry about the distinction between row vectors and column vectors here.
 For example, if the correct answer is a vector of length 5, we'll accept vectors of size $5 \times 1$ or $1 \times 5$. In future assignments we will be more careful to always use column vectors.
+\\
+\includegraphics[width = 5cm]{DirivativeOfCode.png}
 
 \section{Algorithms and Data Structures Review}
 
@@ -241,7 +265,9 @@ For these questions you may find it helpful to review these notes on big-O notat
 \blu{Answer the following questions} You do not need to show your work.
 \begin{enumerate}
 \item What is the maximum number of \emph{leaves} you could have in a binary tree of depth $l$?
+\ans{$2^{i}$}
 \item What is the maximum number of \emph{internal nodes} (excluding leaves) you could have in a binary tree of depth $l$?
+\ans{$2^{i}-1$}
 \end{enumerate}
 Note: we'll use the standard convention that the leaves are not included in the depth, so a tree with depth $1$ has 3 nodes with 2 leaves.
 
@@ -251,18 +277,29 @@ Note: we'll use the standard convention that the leaves are not included in the 
 \blu{Answer the following questions using big-$O$ notation} You do not need to show your work.
 \begin{enumerate}
 \item What is the cost of running the mergesort algorithm to sort  a list of $n$ numbers?
+\ans{$O(n\log n)$}
 \item What is the cost of finding the third-largest element of an unsorted list of $n$ numbers?
+\ans{$O(n)$}
 \item What is the cost of finding the smallest element greater than 0 in a \emph{sorted} list with $n$ numbers?
+\ans{$O(log n)$}
 \item What is the cost of finding the value associated with a key in a hash table with $n$ numbers? \\(Assume the values and keys are both scalars.)
+\ans{$O(n)$}
 \item What is the cost of computing the matrix-vector product $Ax$ when $A$ is $n \times d$ and $x$ is $d \times 1$?
+\ans{$O(nd)$}
 \item What is the cost of computing the quadratic form $x^TAx$ when $A$ is $d \times d$ and $x$ is $d \times 1$?
+\ans{$O(nd)$}
 \item How does the answer to the previous question change if $A$ has only $z$ non-zeroes? (You can assume $z \geq d$)
+\ans{$O(zd)$}
 \end{enumerate}
 
 \subsection{Running times of code}
 
 Included in \texttt{a1.zip} is file named \texttt{bigO.jl}, which defines several functions
 that take an integer argument $n$. For each function, \blu{state the running time as a function of $n$, using big-O notation}.
+\ans{func1: $O(n)$}
+\ans{func2: $O(1)$}
+\ans{func3: $O(n)$}
+\ans{func4: $O(n^2)$}
 
 
 \section{Summary Statistics and Data Visualization}
