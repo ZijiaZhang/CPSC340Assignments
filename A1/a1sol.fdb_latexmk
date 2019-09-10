@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1568012920 "/Users/zijiazhang/repos/CPSC340Assignments/A1/a1sol.tex" "/Users/zijiazhang/repos/CPSC340Assignments/A1/a1sol.pdf" "a1sol" 1568012921
+["pdflatex"] 1568068257 "/Users/zijiazhang/repos/CPSC340Assignments/A1/a1sol.tex" "/Users/zijiazhang/repos/CPSC340Assignments/A1/a1sol.pdf" "a1sol" 1568068258
   "/Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/data/miktex/data/le/pdftex/pdflatex.fmt" 1568006500 757798 6c15022ddaa20ba46677276b6e0aafc3 ""
   "/Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/data/pdftex/config/pdftex.map" 1568006579 25648 05532b267bee6ddc7a89371aadda7555 ""
   "/Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1568006566 1004 54797486969f23fa377b128694d548df ""
@@ -86,14 +86,14 @@
   "/Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/tex/latex/tools/verbatim.sty" 1568006547 7262 cf84171354dfa1855684c0946ff000f1 ""
   "/Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/tex/latex/units/nicefrac.sty" 1568006569 4163 98f285ced1c61c25144faeaf509fbad0 ""
   "/Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/tex/latex/url/url.sty" 1568006536 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
-  "/Users/zijiazhang/repos/CPSC340Assignments/A1/a1sol.aux" 1568012921 2599 20c52f268c8c2f8e06e57238a00aeaaf ""
-  "/Users/zijiazhang/repos/CPSC340Assignments/A1/a1sol.tex" 1568012920 20898 76e2d51ef870343e4be34ea049bceeb7 ""
+  "/Users/zijiazhang/repos/CPSC340Assignments/A1/a1sol.aux" 1568068257 2601 79f36be98e2ade147b7f34a6a441e469 ""
+  "/Users/zijiazhang/repos/CPSC340Assignments/A1/a1sol.tex" 1568068256 21470 aa5e8c6690604645329afe5e6a066e9f ""
   "DirivativeOfCode.png" 1568011983 123842 b513a8e9941bc6a8a8b82a3882345257 ""
-  "a1sol.aux" 1568012921 2599 20c52f268c8c2f8e06e57238a00aeaaf "pdflatex"
-  "a1sol.tex" 1568012920 20898 76e2d51ef870343e4be34ea049bceeb7 ""
+  "a1sol.aux" 1568068257 2601 79f36be98e2ade147b7f34a6a441e469 "pdflatex"
+  "a1sol.tex" 1568068256 21470 aa5e8c6690604645329afe5e6a066e9f ""
   (generated)
-  "/Users/zijiazhang/repos/CPSC340Assignments/A1/a1sol.log"
   "a1sol.pdf"
-  "a1sol.aux"
   "/Users/zijiazhang/repos/CPSC340Assignments/A1/a1sol.pdf"
+  "/Users/zijiazhang/repos/CPSC340Assignments/A1/a1sol.log"
+  "a1sol.aux"
   "a1sol.log"

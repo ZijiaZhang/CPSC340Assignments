@@ -315,6 +315,10 @@ This creates an two-dimensional array of type ``Any''  populated with all the in
 \subsection{Summary Statistics}
 
 \blu{Report the following statistics}: the minimum, maximum, mean, median, and mode of all values across the dataset. In light of thea above, \blu{is the mode a reliable estimate of the most ``common" value? Describe another way we could give a meaningful ``mode" measurement for this (continuous) data.}
+\ans{Min value = 0.352\\Max value = 4.862\\ Mean = 4.862\\
+Median = 1.1589999999999998 \\ Mode = 0.77\\
+A more meaningful Mode can be obtained by setting intervals and count the most common intervals that values lands.
+}
 
 Hint: Since the first row of the CSV file is just the names of the columns, we can create a matrix $X$ containing the data stored as real numbers using:
 \begin{verbatim}
@@ -346,7 +350,14 @@ The figure contains the following plots, in a shuffled order:
 \item A plot containing the weeks on the $x$-axis and the percentages for each region on the $y$-axis.
 }
 \blu{Match the plots (labeled A-F) with the descriptions above (labeled 1-6), with an extremely brief (a few words is fine) explanation for each decision.}
-
+\ans{
+    B-2 : Only boxplot.\\
+    3-F : The correlation of the two values is higher than E.\\
+    5-E : The correlation of the two values is lower than F.\\
+    6-A : The name of the Axis matches the Disctiption.\\
+    4-D : In the margin, it shows the names of each column. \\
+    1-C : Only one class, which repersents all values in X.\\
+}
 Hint: you can generate similar plots by adding the PyPlot package. To add this package use:
 \begin{verbatim}
 using Pkg # Loads the package manager
@@ -361,7 +372,7 @@ To generate similar-looking plots you can use the functions `plot', `boxplot', `
 
 Consider the figure below, which plots a set of two-dimensional training examples and the decision surface produced by a ``neural network'' classifier (a model we'll see later in the course).
 \blu{How many training examples has the neural network mis-classified?} (This figure is best viewed in colour.)
-
+\ans{17}
 
 \section{Decision Trees}
 
