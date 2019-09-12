@@ -390,7 +390,7 @@ Pkg.add("PyCall")
 
 In class we discussed splitting rules based on inequalities rather than equalities. \blu{Is there a type of feature where it makes sense to use 
 an equality-based splitting rule?}
-
+\ans{Yes, if the feature that is discrete (not continuous) like city or country, we might use Equality rules.}
 
 
 
@@ -400,13 +400,17 @@ The file \emph{decisionstump.jl} contains a function  that finds the best decisi
 
 Hint: you may want to start by copy/pasting the contents of of the ``decisionStumpEquality'' function and then make modifications from there. Note that you should remove the calls to the ``round'' function for the inequality case.  Make sure that you maintain the same input/output format in your function, since otherwise subsequent questions will not work (it should produce a plot that divides the US into a northern blue and a southern red area).
 If you are new to Julia, you may also want to look at\emph{majorityPredictor.jl} to get an idea of the syntax in  a simpler case.
-
+\ans{\\ 
+\includegraphics{DecStump.PNG}
+}
 \subsection{Constructing Decision Trees}
 
 Once your \emph{decisionStump} function is finished, the script \emph{example\_decisionTree} will be able to fit a decision tree of depth 2 to the same dataset (which results in a lower training error). Look at how the decision tree is stored and how the (recursive) \emph{predict} function works. \blu{Using the same splits as the fitted depth-2 decision tree, write out what an alternate version of the predict function would be for classifying one training example as a simple program using if/else statements (as in the first slide of L3 that has the title ``Decision Trees'').}
 
 Hint: you can use use the ``@show'' macro to print the values of various expressions during the execution of a .jl file.
-
+\ans{\\
+    \includegraphics{DecTreeEquivalent.PNG}
+}
 \subsection{Cost of Fitting Decision Trees}
 
 In class, we discussed how in general the decision stump minimizing the classification error can be found in $O(nd\log n)$ time. Using the greedy recursive splitting procedure, \blu{what is the total cost of fitting a decision tree of depth $m$ in terms of $n$, $d$, and $m$?} 
