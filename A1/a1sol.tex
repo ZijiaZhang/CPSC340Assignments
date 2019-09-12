@@ -410,6 +410,26 @@ Hint: you can use use the ``@show'' macro to print the values of various express
 \subsection{Cost of Fitting Decision Trees}
 
 In class, we discussed how in general the decision stump minimizing the classification error can be found in $O(nd\log n)$ time. Using the greedy recursive splitting procedure, \blu{what is the total cost of fitting a decision tree of depth $m$ in terms of $n$, $d$, and $m$?} 
+\ans{\\
+    1. Assume $T(n) = T(n-k)+T(k) + n \log n$ for some constant k. \\
+\begin{align*}
+T(n) &= T(n-k) +T(k) + d n \log n \\ &=T(n-k) + c + d n \log n \\ &= T(n-2k) + 2c + d (n-k) \log (n-k) + d n\log n
+\\ &= ... \\&= d m n \log n + m*c \in O(dmn \log n)
+\end{align*}    
+    \\ 
+    2. $T(n) = T(\frac{n}{k}) + T(\frac{(k-1)n}{k}) + n \log n$ for some constant k.
+    \begin{align*}
+        T(n) &= T(\frac{n}{k}) + T(\frac{(k-1)n}{k}) + d n \log n \\
+        &= T(\frac{n}{k^2}) + 2 T(\frac{(k-1)n}{k^2}) + T(\frac{(k-1)^2n}{k^2}) + \frac{dn}{k} \log (\frac{n}{k}) + \frac{d(k-1)n}{k} \log (\frac{(k-1)n}{k}) + d n logn\\
+        & \leq T(\frac{n}{k^2}) + 2 T(\frac{(k-1)n}{k^2}) + T(\frac{(k-1)^2n}{k^2}) + dn \log(\frac{(k-1)n}{k}) + d n logn \\ 
+        & \leq \dots \\ 
+        &= dn (\log n + \log (\frac{(k-1)n}{k})+ ... + \log(\frac{(k-1)^mn}{k^m})) \\
+        &= dn (m \times \log n + \log(\frac{k-1}{k} \times \frac{(k-1)^2}{k^2} \times \dots \times\frac{(k-1)^m}{k^m})) \\ 
+        &= dnm\log n + dn (\log(\frac{k-1}{k} \times \frac{(k-1)^2}{k^2} \times \dots \times\frac{(k-1)^m}{k^m})) \\ 
+        &\in O(dnm\log n)
+    \end{align*}
+    Therefore, the runtime will be in $O(dmn\log n)$
+}
 
 Hint: even thought there could be $(2^m-1)$ decision stumps, keep in mind not every stump will need to go through every example. Note also that we stop growing the decision tree if a node has no examples, so we may not even need to do anything for many of the $(2^m-1)$ decision stumps.
 

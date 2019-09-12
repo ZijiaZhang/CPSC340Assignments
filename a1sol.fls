@@ -1,7 +1,7 @@
-PWD c:\Users\15116\source\repos\CPSC340Assignments\A1
+PWD c:\Users\15116\source\repos\CPSC340Assignments
 INPUT C:\Users\15116\AppData\Local\MiKTeX\2.9\miktex\data\le\pdftex\pdflatex.fmt
-INPUT c:\Users\15116\source\repos\CPSC340Assignments\A1\a1sol.tex
-OUTPUT c:\Users\15116\source\repos\CPSC340Assignments\A1\a1sol.log
+INPUT c:\Users\15116\source\repos\CPSC340Assignments\a1sol.tex
+OUTPUT c:\Users\15116\source\repos\CPSC340Assignments\a1sol.log
 INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\article.cls
 INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\article.cls
 INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\size10.clo
@@ -68,9 +68,9 @@ INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstmis
 INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstmisc.sty
 INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\listings.cfg
 INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\listings.cfg
-INPUT c:\Users\15116\source\repos\CPSC340Assignments\A1\a1sol.aux
-INPUT c:\Users\15116\source\repos\CPSC340Assignments\A1\a1sol.aux
-OUTPUT c:\Users\15116\source\repos\CPSC340Assignments\A1\a1sol.aux
+INPUT c:\Users\15116\source\repos\CPSC340Assignments\a1sol.aux
+INPUT c:\Users\15116\source\repos\CPSC340Assignments\a1sol.aux
+OUTPUT c:\Users\15116\source\repos\CPSC340Assignments\a1sol.aux
 INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\mkii\supp-pdf.mkii
 INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\mkii\supp-pdf.mkii
 INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty
@@ -123,15 +123,10 @@ INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmtt8
 INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmr12.tfm
 INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmbx12.tfm
 INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmbx12.tfm
-OUTPUT c:\Users\15116\source\repos\CPSC340Assignments\A1\a1sol.pdf
+OUTPUT c:\Users\15116\source\repos\CPSC340Assignments\a1sol.pdf
 INPUT C:\Users\15116\AppData\Local\MiKTeX\2.9\pdftex\config\pdftex.map
-INPUT c:\Users\15116\source\repos\CPSC340Assignments\A1\DirivativeOfCode.png
-INPUT c:\Users\15116\source\repos\CPSC340Assignments\A1\DirivativeOfCode.png
-INPUT c:\Users\15116\source\repos\CPSC340Assignments\A1\DirivativeOfCode.png
-INPUT c:\Users\15116\source\repos\CPSC340Assignments\A1\DirivativeOfCode.png
-INPUT c:\Users\15116\source\repos\CPSC340Assignments\A1\DirivativeOfCode.png
 INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmtt8.tfm
-INPUT c:\Users\15116\source\repos\CPSC340Assignments\A1\a1sol.aux
+INPUT c:\Users\15116\source\repos\CPSC340Assignments\a1sol.aux
 INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmbx10.pfb
 INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmbx10.pfb
 INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmbx12.pfb
@@ -140,8 +135,6 @@ INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfon
 INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmex10.pfb
 INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi10.pfb
 INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi10.pfb
-INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi5.pfb
-INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi5.pfb
 INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi7.pfb
 INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi7.pfb
 INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr10.pfb
@@ -156,8 +149,6 @@ INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfon
 INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr8.pfb
 INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmsy10.pfb
 INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmsy10.pfb
-INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmsy5.pfb
-INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmsy5.pfb
 INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmsy7.pfb
 INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmsy7.pfb
 INPUT C:\Users\15116\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmti10.pfb
