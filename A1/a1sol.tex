@@ -139,7 +139,7 @@ Assume that $\{x,y,z\}$ are $n \times 1$ column vectors and $\{A,B,C\}$ are $n \
 \item $x^Ty = \sum_{i=1}^n x_iy_i$. \ans{true}
 \item $x^Tx = \norm{x}^2$. \ans{true}
 \item $x^Tx = xx^T$.  \ans{false}
-\item $(x-y)^T(y-x) = \norm{x}^2 - 2x^\top y + \norm{y}^2$. \ans{true}
+\item $(x-y)^T(y-x) = \norm{x}^2 - 2x^\top y + \norm{y}^2$. \ans{false}
 \item $AB=BA$. \ans{false}
 \item $A(B + C) = AB + AC$. \ans{true}
 \item $(AB)^T = A^TB^T$. \ans{true}
@@ -167,7 +167,7 @@ And here are some slides giving visual representations of the ideas as well as s
 ``probability of $A$ and $B$'' while $p(A \cup B)$ means ``probability of $A$ or $B$''. It may be helpful to draw a Venn diagram.
 \ans{0.55}
 \item Instead of assuming that $A$ and $B$ are mutually exclusive ($\Pr(A,B) = 0)$, what is the answer to the previous question if we assume that $A$ and $B$ are independent?
-\ans{0.71}
+\ans{0.917}
 \end{enumerate}
 
 \subsection{Bayes Rule and Conditional Probability}
@@ -186,7 +186,7 @@ Suppose a drug test produces a positive result with probability $0.95$ for drug 
 \item Suppose you have given this test to a random person and it came back positive, are they likely to be a drug user?
 \ans{no}
 \item What is one factor you could change to make this a more useful test?
-\ans{Change P(D=1).}
+\ans{Increase $P(T=0|D=0)$.}
 \end{enumerate}
 
 
@@ -228,7 +228,7 @@ Note that in this course we will use $\log(x)$ to mean the ``natural'' logarithm
 \ans{$f(x) = [2x_1 - x_2, -x_1+x_2] \left[ \begin{array}{c}
     x_1\\x_2
  \end{array} \right] = 2x_1^2-x_2x_1+-x_1x_2+x_2^2 = 2x_1^2 - 2x_1x_2+x_2^2$\\
- $\nabla f(x) = <2x_1-2x_2,2x_2-2x_1>$
+ $\nabla f(x) = <4x_1-2x_2,2x_2-2x_1>$
  } 
  \item $f(x) = \frac{1}{2}\norm{x}^2$ where $x \in \R^d$.
  \ans{$f(x) = \frac{1}{2}(x_1^2+x_2^2+....)$\\
@@ -265,9 +265,9 @@ For these questions you may find it helpful to review these notes on big-O notat
 \blu{Answer the following questions} You do not need to show your work.
 \begin{enumerate}
 \item What is the maximum number of \emph{leaves} you could have in a binary tree of depth $l$?
-\ans{$2^{i}$}
+\ans{$2^{l}$}
 \item What is the maximum number of \emph{internal nodes} (excluding leaves) you could have in a binary tree of depth $l$?
-\ans{$2^{i}-1$}
+\ans{$2^{l}-1$}
 \end{enumerate}
 Note: we'll use the standard convention that the leaves are not included in the depth, so a tree with depth $1$ has 3 nodes with 2 leaves.
 
@@ -281,15 +281,15 @@ Note: we'll use the standard convention that the leaves are not included in the 
 \item What is the cost of finding the third-largest element of an unsorted list of $n$ numbers?
 \ans{$O(n)$}
 \item What is the cost of finding the smallest element greater than 0 in a \emph{sorted} list with $n$ numbers?
-\ans{$O(log n)$}
+\ans{$O(\log n)$}
 \item What is the cost of finding the value associated with a key in a hash table with $n$ numbers? \\(Assume the values and keys are both scalars.)
-\ans{$O(n)$}
+\ans{$O(1)$}
 \item What is the cost of computing the matrix-vector product $Ax$ when $A$ is $n \times d$ and $x$ is $d \times 1$?
 \ans{$O(nd)$}
 \item What is the cost of computing the quadratic form $x^TAx$ when $A$ is $d \times d$ and $x$ is $d \times 1$?
-\ans{$O(nd)$}
+\ans{$O(d^2)$}
 \item How does the answer to the previous question change if $A$ has only $z$ non-zeroes? (You can assume $z \geq d$)
-\ans{$O(zd)$}
+\ans{$O(z)$}
 \end{enumerate}
 
 \subsection{Running times of code}
@@ -315,7 +315,7 @@ This creates an two-dimensional array of type ``Any''  populated with all the in
 \subsection{Summary Statistics}
 
 \blu{Report the following statistics}: the minimum, maximum, mean, median, and mode of all values across the dataset. In light of thea above, \blu{is the mode a reliable estimate of the most ``common" value? Describe another way we could give a meaningful ``mode" measurement for this (continuous) data.}
-\ans{Min value = 0.352\\Max value = 4.862\\ Mean = 4.862\\
+\ans{Min value = 0.352\\Max value = 4.862\\ Mean = 1.3246249999999984\\
 Median = 1.1589999999999998 \\ Mode = 0.77\\
 A more meaningful Mode can be obtained by setting intervals and count the most common intervals that values lands.
 }
