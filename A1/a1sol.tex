@@ -253,7 +253,9 @@ the gradient, and then translate this gradient back into code. We've given you \
 Note: do not worry about the distinction between row vectors and column vectors here.
 For example, if the correct answer is a vector of length 5, we'll accept vectors of size $5 \times 1$ or $1 \times 5$. In future assignments we will be more careful to always use column vectors.
 \\
-\includegraphics[width = 5cm]{DirivativeOfCode.png}
+\ans{\\
+\includegraphics[width = 5cm]{DirivativeOfCode2.png}
+}
 
 \section{Algorithms and Data Structures Review}
 
@@ -315,7 +317,7 @@ This creates an two-dimensional array of type ``Any''  populated with all the in
 \subsection{Summary Statistics}
 
 \blu{Report the following statistics}: the minimum, maximum, mean, median, and mode of all values across the dataset. In light of thea above, \blu{is the mode a reliable estimate of the most ``common" value? Describe another way we could give a meaningful ``mode" measurement for this (continuous) data.}
-\ans{Min value = 0.352\\Max value = 4.862\\ Mean = 4.862\\
+\ans{ \\ Min value = 0.352\\Max value = 4.862\\ Mean = 4.862\\
 Median = 1.1589999999999998 \\ Mode = 0.77\\
 A more meaningful Mode can be obtained by setting intervals and count the most common intervals that values lands.
 }
@@ -350,12 +352,12 @@ The figure contains the following plots, in a shuffled order:
 \item A plot containing the weeks on the $x$-axis and the percentages for each region on the $y$-axis.
 }
 \blu{Match the plots (labeled A-F) with the descriptions above (labeled 1-6), with an extremely brief (a few words is fine) explanation for each decision.}
-\ans{
-    B-2 : Only boxplot.\\
-    3-F : The correlation of the two values is higher than E.\\
+\ans{\\
+    B-2 : Only boxplot is B.\\
+    3-F : The correlation of the two values is higher than E as they fit closer to a line.\\
     5-E : The correlation of the two values is lower than F.\\
     6-A : The name of the Axis matches the Disctiption.\\
-    4-D : In the margin, it shows the names of each column. \\
+    4-D : In the margin, it shows the names of each column, thus is is showing the distribution of each column. \\
     1-C : Only one class, which repersents all values in X.\\
 }
 Hint: you can generate similar plots by adding the PyPlot package. To add this package use:

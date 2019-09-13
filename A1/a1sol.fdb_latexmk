@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1568256087 "c:/Users/15116/source/repos/CPSC340Assignments/A1/a1sol.tex" "c:/Users/15116/source/repos/CPSC340Assignments/A1/a1sol.pdf" "a1sol" 1568256088
+["pdflatex"] 1568256322 "c:/Users/15116/source/repos/CPSC340Assignments/A1/a1sol.tex" "c:/Users/15116/source/repos/CPSC340Assignments/A1/a1sol.pdf" "a1sol" 1568256330
   "C:/Users/15116/AppData/Local/MiKTeX/2.9/miktex/data/le/pdftex/pdflatex.fmt" 1567978262 4245127 0625639136325b65f5b349c4775ef79f ""
   "C:/Users/15116/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map" 1567978298 80453 73224248f0a73acd005b5611945eaaa6 ""
   "C:/Users/15116/AppData/Local/Programs/MiKTeX 2.9/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233955448 1004 54797486969f23fa377b128694d548df ""
@@ -88,14 +88,14 @@
   "C:/Users/15116/AppData/Local/Programs/MiKTeX 2.9/tex/latex/url/url.sty" 1388494052 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "DecStump.PNG" 1568255928 46412 6a52bd67ddb4c989f9173d72b46c45dd ""
   "DecTreeEquivalent.PNG" 1568255805 18575 530830069f05787278b211ec79cabffc ""
-  "DirivativeOfCode.png" 1568091352 123842 ac39a5e61b244a81f9ec976ffd29fc4e ""
-  "a1sol.aux" 1568256088 2625 4d289b5f239465613ce7a05fc022350b "pdflatex"
-  "a1sol.tex" 1568256087 23324 1a8f9af0f9f79846bb3a0c28188ddaaf ""
-  "c:/Users/15116/source/repos/CPSC340Assignments/A1/a1sol.aux" 1568256088 2625 4d289b5f239465613ce7a05fc022350b ""
-  "c:/Users/15116/source/repos/CPSC340Assignments/A1/a1sol.tex" 1568256087 23324 1a8f9af0f9f79846bb3a0c28188ddaaf ""
+  "DirivativeOfCode2.png" 1568256163 40526 f803456aeb5551254598ab4ca2c2b858 ""
+  "a1sol.aux" 1568256323 2625 4d289b5f239465613ce7a05fc022350b "pdflatex"
+  "a1sol.tex" 1568256329 23429 6f5d4b4c7f201e49474d7891699ffeb1 ""
+  "c:/Users/15116/source/repos/CPSC340Assignments/A1/a1sol.aux" 1568256323 2625 4d289b5f239465613ce7a05fc022350b ""
+  "c:/Users/15116/source/repos/CPSC340Assignments/A1/a1sol.tex" 1568256329 23429 6f5d4b4c7f201e49474d7891699ffeb1 ""
   (generated)
-  "a1sol.pdf"
-  "c:/Users/15116/source/repos/CPSC340Assignments/A1/a1sol.pdf"
-  "c:/Users/15116/source/repos/CPSC340Assignments/A1/a1sol.log"
   "a1sol.log"
   "a1sol.aux"
+  "c:/Users/15116/source/repos/CPSC340Assignments/A1/a1sol.log"
+  "a1sol.pdf"
+  "c:/Users/15116/source/repos/CPSC340Assignments/A1/a1sol.pdf"
