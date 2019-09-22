@@ -4,15 +4,15 @@ function knn_predict(Xhat,X,y,k)
   (n,d) = size(X)
   (t,d) = size(Xhat)
   k = min(n,k) # To save you some debuggin
-    dist = zeros(t,n)
-    dist = transpose(distancesSquared(X , Xhat))
-    minimumDistance = zeros(t,k)
+    dist = zeros(n,t)
+    dist = distancesSquared(X , Xhat)
+    minimumDistance = zeros(k,t)
     for i in 1:t
-        minimumDistance[i,:] = y[sortperm(dist[i,:])[1:k]]
+        minimumDistance[:,i] = y[sortperm(dist[:,i])[1:k]]
     end
     minY = zeros(t)
     for i in 1:t
-        minY[i] = mode(minimumDistance[i,:]);
+        minY[i] = mode(minimumDistance[:,i]);
     end
   return minY
 end
@@ -35,7 +35,7 @@ function cknn(X,y,k)
 			push!(ycond,y[i])
     		end
 	end
-
+    @show size(ycond)
 	predict(Xhat) = knn_predict(Xhat,Xcond,ycond,k)
 	return GenericModel(predict)
 end

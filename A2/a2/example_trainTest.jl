@@ -6,15 +6,29 @@ X = load("citiesSmall.jld","X")
 y = load("citiesSmall.jld","y")
 n = size(X,1)
 
-ValX = X[1:floor(Int,n/2),:]
-ValY = y[1:floor(Int,n/2),:]
 
-ValSize = size(TrainX,1)
 
-TrainX = X[floor(Int,n/2)+1:end,:]
-TrainY = y[floor(Int,n/2)+1:end,:]
+# TrainX = X[floor(Int,n/2)+1:end,:]
+# TrainY = y[floor(Int,n/2)+1:end,:]
 
-TrainSIze = size(ValX,1)
+# TrainSize = size(TrainX,1)
+
+# ValX = X[1:floor(Int,n/2),:]
+# ValY = y[1:floor(Int,n/2),:]
+
+# ValSize = size(ValX,1)
+
+
+TrainX = X[1:floor(Int,n/2),:]
+TrainY = y[1:floor(Int,n/2),:]
+
+TrainSize = size(TrainX,1)
+
+ValX = X[floor(Int,n/2)+1:end,:]
+ValY = y[floor(Int,n/2)+1:end,:]
+
+ValSize = size(ValX,1)
+
 
 # Train a depth-2 decision tree
 maxdepth = 15
@@ -38,7 +52,7 @@ for depth in 1:15
     #Evaluate Validation error
     yhat = model.predict(ValX)
     valError = sum(yhat .!= ValY)/ValSize
-    @printf("Validation error with depth-%d decision tree: %.3f\n",depth,trainError)
+    @printf("Validation error with depth-%d decision tree: %.3f\n",depth,valError)
     resultVal[depth] = valError
     
     # Evaluate the test error

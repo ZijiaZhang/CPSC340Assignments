@@ -230,12 +230,12 @@ The file \emph{citiesBig1.mat} contains a version of this dataset with more than
 You are provided with an implementation of this \emph{condensed nearest neighbours} algorithm in \emph{knn.jl}. 
 \blu{
 \enum{
-\item The point of this algorithm is to be faster than KNN. Try running the condensed nearest neighbours (called ``cknn'' in the code) on the \emph{citiesBig1} dataset and report how long it takes to make a prediction. What about if you try to use KNN for this dataset?
-\item Report the training and testing errors for condensed NN, as well as the number of training examples in the subset, on the \emph{citiesBig1} dataset with $k=1$.
-\item Why is the training error with $k=1$ now greater than $0$?
-\item If we entered the coordinates of Vancouver into the predict function, would it be predicted to be in a blue state or a red state?
-\item If you have $s$ examples in the subset, what is the cost of running the predict function on $t$ test examples in terms of $n$, $d$, $t$, and $s$?
-\item Try out your function on the dataset \emph{citiesBig2}. Why are the  test error \emph{and} training error so high (even for $k=1$) for this method on this dataset?
+\item The point of this algorithm is to be faster than KNN. Try running the condensed nearest neighbours (called ``cknn'' in the code) on the \emph{citiesBig1} dataset and report how long it takes to make a prediction. What about if you try to use KNN for this dataset? \ans{It will take about 16 seconds for KNN and about 0.62 seconds for CKNN}
+\item Report the training and testing errors for condensed NN, as well as the number of training examples in the subset, on the \emph{citiesBig1} dataset with $k=1$. \ans{Training Error: 0.008, Test Error: 0.018 and the \# of the Training Example is 457}
+\item Why is the training error with $k=1$ now greater than $0$? \ans{Because we are only checking once for each example in the dataset, if a new data point is added, it might also affect the previous point to be misclassified.}
+\item If we entered the coordinates of Vancouver into the predict function, would it be predicted to be in a blue state or a red state? \ans{Blue}
+\item If you have $s$ examples in the subset, what is the cost of running the predict function on $t$ test examples in terms of $n$, $d$, $t$, and $s$? \ans{O(sdt)}
+\item Try out your function on the dataset \emph{citiesBig2}. Why are the  test error \emph{and} training error so high (even for $k=1$) for this method on this dataset? \ans{Because the more of the point is influenced by the points added later on, A possible solusion is to do the main loop more times, the training error decreased to 0.007 after 2 more iterations. }
 }
 }
 
