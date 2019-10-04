@@ -60,7 +60,6 @@ while changes != 0
 	end
 
 	#@printf("Running k-means, changes = %d\n",changes)
-    #@printf("Running k-means, changes = %f\n",kMeansError(X,y,W))
 end
 
 function predict(Xhat)
@@ -91,4 +90,3 @@ function kMeansError(X,y,W)
 end
 
 kMeansError2(X,y,W) = sum((X - W[y,:]).^2)
-

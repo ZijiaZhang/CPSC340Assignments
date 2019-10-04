@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050) (preloaded format=pdflatex 2019.9.8)  25 SEP 2019 17:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050) (preloaded format=pdflatex 2019.9.8)  4 OCT 2019 00:53
 entering extended mode
-**/Users/zijiazhang/repos/CPSC340Assignments/A2/a2sol.tex
-(/Users/zijiazhang/repos/CPSC340Assignments/A2/a2sol.tex
+**/Users/zijiazhang/repos/CPSC340Assignments/A3/a3sol.tex
+(/Users/zijiazhang/repos/CPSC340Assignments/A3/a3sol.tex
 LaTeX2e <2018-12-01>
 ("/Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/article.cls"
 Document Class: article 2018/09/03 v1.4i Standard LaTeX document class
@@ -212,8 +212,8 @@ Package: relsize 2013/03/29 ver 4.1
 \algocf@algobox=\box38
 )
 Package color Info: Redefining color red on input line 23.
- (/Users/zijiazhang/repos/CPSC340Assignments/A2/a2sol.aux)
-\openout1 = `a2sol.aux'.
+ (/Users/zijiazhang/repos/CPSC340Assignments/A3/a3sol.aux)
+\openout1 = `a3sol.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 43.
 LaTeX Font Info:    ... okay on input line 43.
@@ -270,112 +270,46 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 48.
  ("/Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<Q1TrainVSTest2.png, id=1, 525.4029pt x 298.4751pt>
-File: Q1TrainVSTest2.png Graphic file (type png)
-<use Q1TrainVSTest2.png>
-Package pdftex.def Info: Q1TrainVSTest2.png  used on input line 76.
-(pdftex.def)             Requested size: 284.52756pt x 161.64325pt.
+<q1Class.png, id=1, 565.11125pt x 414.54875pt>
+File: q1Class.png Graphic file (type png)
+<use q1Class.png>
+Package pdftex.def Info: q1Class.png  used on input line 70.
+(pdftex.def)             Requested size: 284.52756pt x 208.7224pt.
  [1
 
-{/Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/data/pdftex/config/pdftex.map} </Users/zijiazhang/repos/CPSC340Assignments/A2/Q1TrainVSTest2.png>]
-<Q1WithValidationError.png, id=16, 742.775pt x 414.54875pt>
-File: Q1WithValidationError.png Graphic file (type png)
-<use Q1WithValidationError.png>
-Package pdftex.def Info: Q1WithValidationError.png  used on input line 89.
-(pdftex.def)             Requested size: 284.52756pt x 158.80157pt.
-<Q1WithValidationErrorReversed.png, id=17, 742.775pt x 414.54875pt>
-File: Q1WithValidationErrorReversed.png Graphic file (type png)
-<use Q1WithValidationErrorReversed.png>
-Package pdftex.def Info: Q1WithValidationErrorReversed.png  used on input line 89.
-(pdftex.def)             Requested size: 284.52756pt x 158.80157pt.
- [2 </Users/zijiazhang/repos/CPSC340Assignments/A2/Q1WithValidationError.png> </Users/zijiazhang/repos/CPSC340Assignments/A2/Q1WithValidationErrorReversed.png>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 117.
+{/Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/data/pdftex/config/pdftex.map} </Users/zijiazhang/repos/CPSC340Assignments/A3/q1Class.png>]
+<q13Code.png, id=19, 317.185pt x 786.94pt>
+File: q13Code.png Graphic file (type png)
+<use q13Code.png>
+Package pdftex.def Info: q13Code.png  used on input line 70.
+(pdftex.def)             Requested size: 284.52756pt x 705.97pt.
+File: q1Class.png Graphic file (type png)
+<use q1Class.png>
+Package pdftex.def Info: q1Class.png  used on input line 70.
+(pdftex.def)             Requested size: 284.52756pt x 208.7224pt.
+ [2]
+Overfull \vbox (85.54pt too high) has occurred while \output is active []
+
+ [3 </Users/zijiazhang/repos/CPSC340Assignments/A3/q13Code.png>] [4] [5] [6] [7]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 261.
  ("/Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 117.
- [3]
-Underfull \hbox (badness 10000) in paragraph at lines 149--149
-
- []
-
-
-Overfull \hbox (32.76993pt too wide) detected at line 149
-[]
- []
-
-[4]
-<Q2Code2.png, id=34, 477.785pt x 342.27875pt>
-File: Q2Code2.png Graphic file (type png)
-<use Q2Code2.png>
-Package pdftex.def Info: Q2Code2.png  used on input line 175.
-(pdftex.def)             Requested size: 284.52756pt x 203.82811pt.
- [5 </Users/zijiazhang/repos/CPSC340Assignments/A2/Q2Code2.png>]
-<Q3Predict.png, id=39, 471.7625pt x 282.05376pt>
-File: Q3Predict.png Graphic file (type png)
-<use Q3Predict.png>
-Package pdftex.def Info: Q3Predict.png  used on input line 211.
-(pdftex.def)             Requested size: 284.52756pt x 170.11153pt.
-<Q3KnnPredictionGraph.png, id=40, 392.4261pt x 301.3659pt>
-File: Q3KnnPredictionGraph.png Graphic file (type png)
-<use Q3KnnPredictionGraph.png>
-Package pdftex.def Info: Q3KnnPredictionGraph.png  used on input line 211.
-(pdftex.def)             Requested size: 284.52756pt x 218.51456pt.
- [6 </Users/zijiazhang/repos/CPSC340Assignments/A2/Q3Predict.png>] [7 </Users/zijiazhang/repos/CPSC340Assignments/A2/Q3KnnPredictionGraph.png>]
-LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 268.
-LaTeX Font Info:    No file OMScmtt.fd. on input line 268.
-
-
-LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
-(Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbraceleft' on input line 268.
-
-<Q4RandomForest.png, id=50, 481.8pt x 357.335pt>
-File: Q4RandomForest.png Graphic file (type png)
-<use Q4RandomForest.png>
-Package pdftex.def Info: Q4RandomForest.png  used on input line 268.
-(pdftex.def)             Requested size: 284.52756pt x 211.02756pt.
-[8]
-<Q511KmeansError.png, id=58, 368.37625pt x 204.765pt>
-File: Q511KmeansError.png Graphic file (type png)
-<use Q511KmeansError.png>
-Package pdftex.def Info: Q511KmeansError.png  used on input line 290.
-(pdftex.def)             Requested size: 284.52756pt x 158.15694pt.
- [9 </Users/zijiazhang/repos/CPSC340Assignments/A2/Q4RandomForest.png>]
-<Kmeans.png, id=64, 400.3758pt x 298.4751pt>
-File: Kmeans.png Graphic file (type png)
-<use Kmeans.png>
-Package pdftex.def Info: Kmeans.png  used on input line 290.
-(pdftex.def)             Requested size: 284.52756pt x 212.12375pt.
- [10 </Users/zijiazhang/repos/CPSC340Assignments/A2/Q511KmeansError.png> </Users/zijiazhang/repos/CPSC340Assignments/A2/Kmeans.png>]
-<KvsError.png, id=71, 431.4519pt x 312.2064pt>
-File: KvsError.png Graphic file (type png)
-<use KvsError.png>
-Package pdftex.def Info: KvsError.png  used on input line 301.
-(pdftex.def)             Requested size: 284.52756pt x 205.89488pt.
- [11 </Users/zijiazhang/repos/CPSC340Assignments/A2/KvsError.png>]
-File: Q3KnnPredictionGraph.png Graphic file (type png)
-<use Q3KnnPredictionGraph.png>
-Package pdftex.def Info: Q3KnnPredictionGraph.png  used on input line 324.
-(pdftex.def)             Requested size: 284.52756pt x 218.51456pt.
- [12] [13] (/Users/zijiazhang/repos/CPSC340Assignments/A2/a2sol.aux)
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
- ) 
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 261.
+ [8] [9] [10] (/Users/zijiazhang/repos/CPSC340Assignments/A3/a3sol.aux) ) 
 Here is how much of TeX's memory you used:
- 5270 strings out of 494857
- 78447 string characters out of 3176245
- 152167 words of memory out of 3000000
- 8830 multiletter control sequences out of 15000+200000
- 12017 words of font info for 47 fonts, out of 3000000 for 9000
+ 5225 strings out of 494857
+ 77425 string characters out of 3176245
+ 152166 words of memory out of 3000000
+ 8794 multiletter control sequences out of 15000+200000
+ 12369 words of font info for 48 fonts, out of 3000000 for 9000
  0 hyphenation exceptions out of 8191
- 37i,14n,32p,858b,361s stack positions out of 5000i,500n,10000p,200000b,50000s
-</Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx10.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx12.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi12.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi5.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi8.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr12.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr17.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr6.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr7.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr8.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy7.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy8.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmti10.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on /Users/zijiazhang/repos/CPSC340Assignments/A2/a2sol.pdf (13 pages, 580400 bytes).
+ 37i,12n,32p,858b,224s stack positions out of 5000i,500n,10000p,200000b,50000s
+</Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx10.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx12.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi12.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi5.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr17.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr6.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr7.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr8.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy7.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmti10.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmti8.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmtt10.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on /Users/zijiazhang/repos/CPSC340Assignments/A3/a3sol.pdf (10 pages, 368233 bytes).
 PDF statistics:
- 142 PDF objects out of 1000 (max. 8388607)
+ 112 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 51 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

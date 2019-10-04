@@ -43,10 +43,10 @@
 \begin{document}
 
 \title{CPSC 340 Assignment 2 (due Friday September 27 at 11:55pm)}
-\author{}
+\author{f4r1b}
 \date{}
 \maketitle
-\vspace{-4em}
+%\vspace{-4em}
 
 The assignment instructions are the same as Assignment 1, except you have the option to work in a group of 2. If you work in a group, please only hand in \emph{one} assignment. It is recommended that you work in groups as the assignment is quite long, but please only submit one assignment for the group and make sure that everyone's name/ID is on the front page.
 
@@ -59,7 +59,7 @@ The assignment instructions are the same as Assignment 1, except you have the op
 Running \texttt{example\_train.jl} fits decision trees of different depths using two different implementations:
 the ``decisionStump'' function from Assignment 1, and using a variant using a more sophisticated splitting criterion called the information gain. \blu{Describe what you observe. Can you explain the results?}
 \ans{The result shows the accuracy based decision tree have an lower bound on the training error of 0.11, but the information gain based decision tree can successfully classify all the sample in the training set (training error = 0).\\
-However, if the depth of the tree is shallow (depth <= 4 here), the training error of the information gain based tree have a higher training error.}
+However, if the depth of the tree is shallow ($depth \leq 4$ here), the training error of the information gain based tree have a higher training error.}
 
 
 
@@ -255,13 +255,15 @@ If you run \emph{example\_randomTree.jl}, it will fit both models to the dataset
 
 \blu{
 \enum{
-\item If you set the \emph{depth} parameter to \emph{Inf}, why do the training functions terminate?
-\item Why does the random tree model, using infoGain and a depth of \emph{Inf}, have a training error greater 0?
+\item If you set the \emph{depth} parameter to \emph{Inf}, why do the training functions terminate? \ans{Because the stump no longer splits the data.}
+\item Why does the random tree model, using infoGain and a depth of \emph{Inf}, have a training error greater 0? \ans{Because it will split untill all the training data to fit perfectly, otherwise it will just keep spliting as the depth is Inf}
 \item Create a function \texttt{randomForest} that takes in hyperparameters \texttt{depth} and \texttt{nTrees} (number of trees), and 
 fits \texttt{nTrees} random trees each with maximum depth \texttt{depth}. For prediction, have all trees predict and then take the mode. Hand in your function. Hint: you can define an array for holding 10 \emph{GenericModel} types using:\\
 \texttt{subModels = Array\{GenericModel\}(undef,10)}.
-\item Using 50 trees, and a depth of $\infty$, report the training and testing error. Compare this to what we got with a single \texttt{DecisionTree} and with a single \texttt{RandomTree}. Are the results what you expected? Discuss. 
+\ans{\\ \includegraphics[width = 10cm]{Q4RandomForest.png}}
+\item Using 50 trees, and a depth of $\infty$, report the training and testing error. Compare this to what we got with a single \texttt{DecisionTree} and with a single \texttt{RandomTree}. Are the results what you expected? Discuss.  \ans{The result of randomForest hava a lower test error, and the training error of 0. The result is expected compared to other 2 methods, as randomForest should have a more accurate prediction.}
 \item Why does a random forest typically have a training error of 0, even though random trees typically have a training error greater than 0?
+\ans{Because random forest choose among many random trees, it is less likely that the majority of the tree have a incorrect prediction on a training data.}
 }
 }
 
@@ -278,11 +280,13 @@ If you run the demo several times, it will find different clusterings. To select
 f(w_1,w_2,\dots,w_k,y_1,y_2,\dots,y_n) = \sum_{i=1}^n \norm{x_i - w_{y_i}}_2^2 = \sum_{i=1}^n \sum_{j=1}^d (x_{ij} - w_{y_ij})^2.
 \]
  where $y_i$ is the index of the closest mean to $x_i$. This is a natural criterion because the steps of k-means alternately optimize this objective function in terms of the $w_c$ and the $y_i$ values.
- 
+  
  \blu{\enum{
  \item Write a new function called \emph{kMeansError} that takes in a dataset $X$, a set of cluster assignments $y$, and a set of cluster means $W$, and computes this objective function. Hand in your code.
- \item Instead of printing the number of labels that change on each iteration, what trend do you observe if you print the value of \emph{kMeansError} after each iteration of the k-means algorithm?
+ \ans{ \includegraphics[width = 10cm]{Q511KmeansError.png} \\ This code is given in the starter file.}
+ \item Instead of printing the number of labels that change on each iteration, what trend do you observe if you print the value of \emph{kMeansError} after each iteration of the k-means algorithm? \ans{It decreases as the iteration goes.}
  \item Using the \emph{clustering2Dplot} file, output the clustering obtained by running k-means 50 times (with $k=4$) and taking the one with the lowest error. Note that the k-means training function will run much faster if you set \texttt{doPlot = false} or just remove this argument.
+ \ans{\includegraphics[width = 10cm]{Kmeans.png}}
  }}
  
  \subsection{Selecting $k$ in k-means}
@@ -290,10 +294,10 @@ f(w_1,w_2,\dots,w_k,y_1,y_2,\dots,y_n) = \sum_{i=1}^n \norm{x_i - w_{y_i}}_2^2 =
  We now turn to the task of choosing the number of clusters $k$.
   
  \blu{\enum{
- \item Explain why the \emph{kMeansError} function should not be used to choose $k$.
- \item Explain why even evaluating the \emph{kMeansError} function on test data still wouldn't be a suitable approach to choosing $k$.
- \item Hand in a plot of the minimum error found across 50 random initializations, as you vary $k$ from $1$ to $10$.
- \item The \emph{elbow method} for choosing $k$ consists of looking at the above plot and visually trying to choose the $k$ that makes the sharpest ``elbow" (the biggest change in slope). What values of $k$ might be reasonable according to this method? Note: there is not a single correct answer here; it is somewhat open to interpretation and there is a range of reasonable answers.
+ \item Explain why the \emph{kMeansError} function should not be used to choose $k$. \ans{Because if $K = n$ the error will always be 0 as each point is classified to a seperate class. Which is obviously wrong.}
+ \item Explain why even evaluating the \emph{kMeansError} function on test data still wouldn't be a suitable approach to choosing $k$. \ans{Because if we pick k based on test data, the model we have will be biased. Which may result in a poor performance on new data.}
+ \item Hand in a plot of the minimum error found across 50 random initializations, as you vary $k$ from $1$ to $10$. \ans{\includegraphics[width=10cm]{KvsError.png}}
+ \item The \emph{elbow method} for choosing $k$ consists of looking at the above plot and visually trying to choose the $k$ that makes the sharpest ``elbow" (the biggest change in slope). What values of $k$ might be reasonable according to this method? Note: there is not a single correct answer here; it is somewhat open to interpretation and there is a range of reasonable answers. \ans{K might be 3 if the image is scaled in y-axis as it is above, otherwise, it might be 7 if it is not scaled.}
  }}
  
 
@@ -305,18 +309,18 @@ f(w_1,w_2,\dots,w_k,y_1,y_2,\dots,y_n) = \sum_{i=1}^n \norm{x_i - w_{y_i}}_2^2 =
 
 \enum{
  \item What is a feature transformation that you might do to address a ``coupon collecting'' problem in your data? \ans{Discretization}
-\item What is one reason we would want to look at scatterplots of the data before doing supervised learning? \ans{Because summary statistics may trick us.}
- \item When we fit decision stumps, why do we only consider $>$ (for example) and not consider $<$ or $\geq$? \ans{Because they will give the same result.}
+\item What is one reason we would want to look at scatterplots of the data before doing supervised learning? \ans{Because summary statistics may trick us, and using scatterplots may give us a view of distribution of the spread of the data.}
+ \item When we fit decision stumps, why do we only consider $>$ (for example) and not consider $<$ or $\geq$? \ans{Because they will give the same result. For example a data with [1,2,3,4] the stump of $x > 2$ is the same as $x \geq 3$. It is also the same as reverted $x < 3$. For example, if $x>2$ we predict $0$ otherwise, we predict $1$, it is the same as if $x<3$ we prefict $1$ otherwise, we predict $0$.}
 \item What is a reason that the data may not be IID in the email spam filtering example from lecture? \ans{There might be the similar email from the same sender that will result in similarity and duplication which is not IID.}
-\item What is the difference between a validation set and a test set? \ans{We will never look into the test set during our training. But we might use the validation set to determine our hyper-parameter. We are appropriate test error using validataion error and we are using test error to approximate the error in real life.}
+\item What is the difference between a validation set and a test set? \ans{We will never look into the test set during our training. But we might use the validation set to determine our hyper-parameter. We are appropriate test error using validataion error and we are using test error to approximate the error in real life (when get new data).}
 \item Why can't we (typically) use the training error to select a hyper-parameter? \ans{Because this will interduce a bias that we are picking the best test error. Which means we might overfit the test data. }
 \item What is an advantage and a disadvantage of using a large $k$ value in $k$-fold cross-validation. \ans{It will be more accurate with a higher k score. But it will also be more expensive}
 \item Why is  naive Bayes called ``naive''? \ans{Because the naive bayes assumes each feature are independent, which means we are assuming $P(f_1,f_2,f_3 ... \cond y_i) = P(f_1\cond y_i)*P(f_2\cond y_i)*P(f_3\cond y_i)...$}
-\item What is the effect of $k$ in KNN on the two parts (training error and approximation error) of the fundamental trade-off. Hint: think about the extreme values. \ans{If K is small, the training error will be samll, but the approximation error might be big. And with a higher K, the training error will be small but the approximation error will be big.} \ans{Add similar translations to the training data as additional training data.}
-\item For any parametric model, how does increasing number of training examples $n$ affect the two parts of the fundamental trade-off. \ans{For paramatric model, increasing the training examples will decrease the training error and also the approximation error.}
-\item Suppose we want to classify whether segments of raw audio represent words or not. What is an easy way to make our classifier invariant to small translations of the raw audio?
-\item Both supervised learning and clustering models take in an input $x_i$ and produce a label $y_i$. What is the key difference?
-\item In $k$-means clustering the clusters are guaranteed to be convex regions. Are the areas that are given the same label by KNN also convex?
+\item What is the effect of $k$ in KNN on the two parts (training error and approximation error) of the fundamental trade-off. Hint: think about the extreme values. \ans{If K is small, the training error will be samll, but the approximation error might be big. And with a higher K, the training error will be small but the approximation error will be big.} 
+\item For any parametric model, how does increasing number of training examples $n$ affect the two parts of the fundamental trade-off. \ans{For paramatric model, increasing the training examples will increase the training error and decrease the approximation error.}
+\item Suppose we want to classify whether segments of raw audio represent words or not. What is an easy way to make our classifier invariant to small translations of the raw audio?  \ans{Add similar translations to the training data as additional training data.}
+\item Both supervised learning and clustering models take in an input $x_i$ and produce a label $y_i$. What is the key difference? \ans{In supervised learning, y is the result value for x, which might not be a cluster, it might even be continuous. But in classification problem, the y is always a claster.}
+\item In $k$-means clustering the clusters are guaranteed to be convex regions. Are the areas that are given the same label by KNN also convex? \ans {No, for example the red region is not convex: \\ \includegraphics[width=10cm]{Q3KnnPredictionGraph.png}}
 }
 
 

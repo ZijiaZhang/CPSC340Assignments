@@ -10,7 +10,7 @@ mutable struct PartitionModel
 	W # Prototype points
 end
 
-function kMeans(X,k;doPlot=false)
+function kMedians(X,k;doPlot=false)
 # K-means clustering
 
 (n,d) = size(X)
@@ -48,9 +48,13 @@ while changes != 0
 		sleep(.1)
 	end
 
-	# Find mean of each cluster
+	# Find median of each cluster
 	for c in 1:k
-		W[c,:] = mean(X[y.==c,:],dims=1)
+        temp = X[y.==c,:]
+        if size(temp) == 0
+                W[c,:] = 0
+        end
+		W[c,:] = median(X[y.==c,:],dims=1)
 	end
 
 	# Optionally visualize the algorithm steps
@@ -60,7 +64,6 @@ while changes != 0
 	end
 
 	#@printf("Running k-means, changes = %d\n",changes)
-    #@printf("Running k-means, changes = %f\n",kMeansError(X,y,W))
 end
 
 function predict(Xhat)
@@ -84,11 +87,10 @@ function kMeansError(X,y,W)
 	f = 0
 	for i in 1:n
 		for j = 1:d
-			f += (X[i,j] - W[y[i],j])^2
+			f += (X[i,j] - W[y[i],j])
 		end
 	end
 	return f
 end
 
 kMeansError2(X,y,W) = sum((X - W[y,:]).^2)
-

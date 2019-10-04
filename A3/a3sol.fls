@@ -1,7 +1,7 @@
-PWD /Users/zijiazhang/repos/CPSC340Assignments/A2
+PWD /Users/zijiazhang/repos/CPSC340Assignments/A3
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/data/miktex/data/le/pdftex/pdflatex.fmt
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/a2sol.tex
-OUTPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/a2sol.log
+INPUT /Users/zijiazhang/repos/CPSC340Assignments/A3/a3sol.tex
+OUTPUT /Users/zijiazhang/repos/CPSC340Assignments/A3/a3sol.log
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/article.cls
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/article.cls
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/size10.clo
@@ -76,9 +76,9 @@ INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/tex/la
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/tex/latex/tools/xspace.sty
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/tex/latex/relsize/relsize.sty
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/tex/latex/relsize/relsize.sty
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/a2sol.aux
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/a2sol.aux
-OUTPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/a2sol.aux
+INPUT /Users/zijiazhang/repos/CPSC340Assignments/A3/a3sol.aux
+INPUT /Users/zijiazhang/repos/CPSC340Assignments/A3/a3sol.aux
+OUTPUT /Users/zijiazhang/repos/CPSC340Assignments/A3/a3sol.aux
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/tex/context/base/mkii/supp-pdf.mkii
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/tex/context/base/mkii/supp-pdf.mkii
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/tex/latex/oberdiek/epstopdf-base.sty
@@ -114,11 +114,10 @@ INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/tex/la
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
-INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmti10.tfm
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmr12.tfm
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmbx12.tfm
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmbx12.tfm
-INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmtt10.tfm
+INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmti10.tfm
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msam10.tfm
@@ -127,64 +126,26 @@ INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q1TrainVSTest2.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q1TrainVSTest2.png
-OUTPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/a2sol.pdf
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q1TrainVSTest2.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q1TrainVSTest2.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q1TrainVSTest2.png
+INPUT /Users/zijiazhang/repos/CPSC340Assignments/A3/q1Class.png
+INPUT /Users/zijiazhang/repos/CPSC340Assignments/A3/q1Class.png
+OUTPUT /Users/zijiazhang/repos/CPSC340Assignments/A3/a3sol.pdf
+INPUT /Users/zijiazhang/repos/CPSC340Assignments/A3/q1Class.png
+INPUT /Users/zijiazhang/repos/CPSC340Assignments/A3/q1Class.png
+INPUT /Users/zijiazhang/repos/CPSC340Assignments/A3/q1Class.png
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/data/pdftex/config/pdftex.map
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q1WithValidationError.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q1WithValidationError.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q1WithValidationError.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q1WithValidationError.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q1WithValidationError.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q1WithValidationErrorReversed.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q1WithValidationErrorReversed.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q1WithValidationErrorReversed.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q1WithValidationErrorReversed.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q1WithValidationErrorReversed.png
+INPUT /Users/zijiazhang/repos/CPSC340Assignments/A3/q13Code.png
+INPUT /Users/zijiazhang/repos/CPSC340Assignments/A3/q13Code.png
+INPUT /Users/zijiazhang/repos/CPSC340Assignments/A3/q13Code.png
+INPUT /Users/zijiazhang/repos/CPSC340Assignments/A3/q13Code.png
+INPUT /Users/zijiazhang/repos/CPSC340Assignments/A3/q13Code.png
+INPUT /Users/zijiazhang/repos/CPSC340Assignments/A3/q1Class.png
+INPUT /Users/zijiazhang/repos/CPSC340Assignments/A3/q1Class.png
+INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/omscmr.fd
+INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/omscmr.fd
+INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmti8.tfm
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmbx10.tfm
-INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/omscmr.fd
-INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/omscmr.fd
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q2Code2.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q2Code2.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q2Code2.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q2Code2.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q2Code2.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q3Predict.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q3Predict.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q3Predict.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q3Predict.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q3Predict.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q3KnnPredictionGraph.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q3KnnPredictionGraph.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q3KnnPredictionGraph.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q3KnnPredictionGraph.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q3KnnPredictionGraph.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q4RandomForest.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q4RandomForest.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q4RandomForest.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q4RandomForest.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q4RandomForest.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q511KmeansError.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q511KmeansError.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q511KmeansError.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q511KmeansError.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q511KmeansError.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Kmeans.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Kmeans.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Kmeans.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Kmeans.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Kmeans.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/KvsError.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/KvsError.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/KvsError.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/KvsError.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/KvsError.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q3KnnPredictionGraph.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/Q3KnnPredictionGraph.png
-INPUT /Users/zijiazhang/repos/CPSC340Assignments/A2/a2sol.aux
+INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmtt10.tfm
+INPUT /Users/zijiazhang/repos/CPSC340Assignments/A3/a3sol.aux
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx12.pfb
@@ -199,12 +160,8 @@ INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi5.pfb
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi7.pfb
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi7.pfb
-INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi8.pfb
-INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi8.pfb
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr10.pfb
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr10.pfb
-INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr12.pfb
-INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr12.pfb
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr17.pfb
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr17.pfb
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr6.pfb
@@ -217,9 +174,11 @@ INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy7.pfb
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy7.pfb
-INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy8.pfb
-INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy8.pfb
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmti10.pfb
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmti10.pfb
+INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmti8.pfb
+INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmti8.pfb
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmtt10.pfb
 INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmtt10.pfb
+INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/symbols/msbm10.pfb
+INPUT /Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/symbols/msbm10.pfb
