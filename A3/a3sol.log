@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050) (preloaded format=pdflatex 2019.9.8)  4 OCT 2019 00:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050) (preloaded format=pdflatex 2019.9.8)  5 OCT 2019 17:18
 entering extended mode
 **/Users/zijiazhang/repos/CPSC340Assignments/A3/a3sol.tex
 (/Users/zijiazhang/repos/CPSC340Assignments/A3/a3sol.tex
@@ -297,19 +297,19 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 261.
- [8] [9] [10] (/Users/zijiazhang/repos/CPSC340Assignments/A3/a3sol.aux) ) 
+ [8] [9] [10] [11] (/Users/zijiazhang/repos/CPSC340Assignments/A3/a3sol.aux) ) 
 Here is how much of TeX's memory you used:
  5225 strings out of 494857
  77425 string characters out of 3176245
- 152166 words of memory out of 3000000
+ 153166 words of memory out of 3000000
  8794 multiletter control sequences out of 15000+200000
  12369 words of font info for 48 fonts, out of 3000000 for 9000
  0 hyphenation exceptions out of 8191
  37i,12n,32p,858b,224s stack positions out of 5000i,500n,10000p,200000b,50000s
 </Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx10.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx12.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi12.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi5.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr17.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr6.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr7.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr8.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy7.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmti10.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmti8.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmtt10.pfb></Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on /Users/zijiazhang/repos/CPSC340Assignments/A3/a3sol.pdf (10 pages, 368233 bytes).
+Output written on /Users/zijiazhang/repos/CPSC340Assignments/A3/a3sol.pdf (11 pages, 370538 bytes).
 PDF statistics:
- 112 PDF objects out of 1000 (max. 8388607)
+ 115 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

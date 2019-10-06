@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1570175583 "/Users/zijiazhang/repos/CPSC340Assignments/A3/a3sol.tex" "/Users/zijiazhang/repos/CPSC340Assignments/A3/a3sol.pdf" "a3sol" 1570175584
+["pdflatex"] 1570321129 "/Users/zijiazhang/repos/CPSC340Assignments/A3/a3sol.tex" "/Users/zijiazhang/repos/CPSC340Assignments/A3/a3sol.pdf" "a3sol" 1570321130
   "/Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/data/miktex/data/le/pdftex/pdflatex.fmt" 1568006500 757798 6c15022ddaa20ba46677276b6e0aafc3 ""
   "/Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/data/pdftex/config/pdftex.map" 1568792081 25648 05532b267bee6ddc7a89371aadda7555 ""
   "/Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1568006566 1004 54797486969f23fa377b128694d548df ""
@@ -90,15 +90,15 @@
   "/Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/tex/latex/tools/xspace.sty" 1568006547 4542 5251001fb2c96205905dbac86c51c5ab ""
   "/Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/tex/latex/units/nicefrac.sty" 1568006569 4163 98f285ced1c61c25144faeaf509fbad0 ""
   "/Users/zijiazhang/Library/Application Support/MiKTeX/texmfs/install/tex/latex/url/url.sty" 1568006536 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
-  "/Users/zijiazhang/repos/CPSC340Assignments/A3/a3sol.aux" 1570175583 1971 cde412d32a8c29a9941c66489e85e7d8 ""
-  "/Users/zijiazhang/repos/CPSC340Assignments/A3/a3sol.tex" 1570175582 24483 01a5b4f9c35110beddc4609b12593240 ""
-  "a3sol.aux" 1570175583 1971 cde412d32a8c29a9941c66489e85e7d8 "pdflatex"
-  "a3sol.tex" 1570175582 24483 01a5b4f9c35110beddc4609b12593240 ""
+  "/Users/zijiazhang/repos/CPSC340Assignments/A3/a3sol.aux" 1570321130 1971 cde412d32a8c29a9941c66489e85e7d8 ""
+  "/Users/zijiazhang/repos/CPSC340Assignments/A3/a3sol.tex" 1570321129 25108 52dfd6a5d998df0ccaaed1a187561c2d ""
+  "a3sol.aux" 1570321130 1971 cde412d32a8c29a9941c66489e85e7d8 "pdflatex"
+  "a3sol.tex" 1570321129 25108 52dfd6a5d998df0ccaaed1a187561c2d ""
   "q13Code.png" 1570174698 191299 928643cf63d039ba7ca939ae97f54de7 ""
   "q1Class.png" 1570172775 16642 0c8b98b3769526ed98dee3b78f629ca2 ""
   (generated)
-  "/Users/zijiazhang/repos/CPSC340Assignments/A3/a3sol.log"
-  "a3sol.aux"
   "a3sol.pdf"
-  "a3sol.log"
   "/Users/zijiazhang/repos/CPSC340Assignments/A3/a3sol.pdf"
+  "/Users/zijiazhang/repos/CPSC340Assignments/A3/a3sol.log"
+  "a3sol.log"
+  "a3sol.aux"

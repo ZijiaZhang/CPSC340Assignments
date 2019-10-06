@@ -99,9 +99,9 @@ minPts = 2}
 Using our standard supervised learning notation ($X$, $y$, $w$)
 express the following functions in terms of vectors, matrices, and norms (there should be no summations or maximums).
 \blu{\enum{
-\item $\sum_{i=1}^n  |w^Tx_i - y_i| + \lambda \sum_{j=1}^{d} |w_j|$.
-\item $\sum_{i=1}^n v_i (w^Tx_i - y_i)^2 + \sum_{j=1}^{d} \lambda_j w_j^2$.
-\item $\left(\max_{i \in \{1,2,\dots,n\}} |w^Tx_i - y_i|\right)^2 +  \half\sum_{j=1}^{d} \lambda_j|w_j|$.
+\item $\sum_{i=1}^n  |w^Tx_i - y_i| + \lambda \sum_{j=1}^{d} |w_j|$. \ans{$w^TX - y + \lambda \|w\|_1$}
+\item $\sum_{i=1}^n v_i (w^Tx_i - y_i)^2 + \sum_{j=1}^{d} \lambda_j w_j^2$. \ans{$ (w^TX-y)V \cdot (w^TX-y) + (\Lambda w) \cdot w$}
+\item $\left(\max_{i \in \{1,2,\dots,n\}} |w^Tx_i - y_i|\right)^2 +  \half\sum_{j=1}^{d} \lambda_j|w_j|$.  \ans{$(\|w^Tx-y\| _{\infty})^2 + \frac{1}{2} \|\Lambda w\|_1$}
 }}
 You can use $V$ to denote a diagonal matrix that has the (non-negative) ``weights'' $v_i$ along the diagonal. The value $\lambda$ (the ``regularization parameter'') is a non-negative scalar. You can $\Lambda$ as a diagonal matrix that has the (non-negative) $\lambda_j$ values along the diagonal.
 
@@ -111,8 +111,8 @@ You can use $V$ to denote a diagonal matrix that has the (non-negative) ``weight
 Write finding a minimizer $w$ of the functions below as a system of linear equations (using vector/matrix notation and simplifying as much as possible). Note that all the functions below are convex  so finding a $w$ with $\nabla f(w) = 0$ is sufficient to minimize the functions (but show your work in getting to this point).
 
 \blu{\enum{
-\item $f(w) = \frac{1}{2}\norm{w-u}^2$ (projection of $v$ onto real space).
-\item $f(w)= \frac{1}{2}\sum_{i=1}^n v_i (w^Tx_i - y_i)^2 + \lambda w^Tu$ (weighted and tilted least squares).
+\item $f(w) = \frac{1}{2}\norm{w-u}^2$ (projection of $v$ onto real space). \ans{ $f(w) = \frac{1}{2}\sum^d_{i=0}(w_i-u_i)^2 \\ \nabla f(w) = ((w_1-u_i), (w_2-u_i), \dots )^T$ \\ Therefore Optimized $w = u$}
+\item $f(w)= \frac{1}{2}\sum_{i=1}^n v_i (w^Tx_i - y_i)^2 + \lambda w^Tu$ (weighted and tilted least squares). \ans{$ f(w) = \frac{1}{2}\sum_{i=1}^n v_i( (\sum_{j=i}^d x_i^d * w_d)-y_i )^2 + \lambda \sum_{j=1}^d {w_d}u_d \\ f(w) = \frac{1}{2}\sum_{i=1}^n v_i( \hat{y_i}-y_i )^2 + \lambda \sum_{j=1}^d {w_d}u_d = \frac{1}{2}\sum_{i=1}^n v_i (\hat{y_i}^2 + 2\hat{y_i}{y_i} + y_i^2) + \lambda \sum_{j=1}^d {w_d}u_d \\ \\\nabla f(w) = (\frac{1}{2}v_1$}
 \item $f(w) = \frac{1}{2}\norm{Xw - y}^2 + \frac{\lambda}{2}\norm{w-w^0}^2$ (least squares shrunk towards non-zero $w^0$).
 }}
 Above we assume that $u$ and $w^0$ are $d$ by $1$ vectors, that $v$ is a $n$ by $1$ vector. You can use $V$ as a diagonal matrix containing the $v_i$ values along the diagonal.
