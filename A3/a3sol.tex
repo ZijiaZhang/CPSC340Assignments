@@ -112,7 +112,14 @@ Write finding a minimizer $w$ of the functions below as a system of linear equat
 
 \blu{\enum{
 \item $f(w) = \frac{1}{2}\norm{w-u}^2$ (projection of $v$ onto real space). \ans{ $f(w) = \frac{1}{2}\sum^d_{i=0}(w_i-u_i)^2 \\ \nabla f(w) = ((w_1-u_i), (w_2-u_i), \dots )^T$ \\ Therefore Optimized $w = u$}
-\item $f(w)= \frac{1}{2}\sum_{i=1}^n v_i (w^Tx_i - y_i)^2 + \lambda w^Tu$ (weighted and tilted least squares). \ans{$ f(w) = \frac{1}{2}\sum_{i=1}^n v_i( (\sum_{j=i}^d x_i^d * w_d)-y_i )^2 + \lambda \sum_{j=1}^d {w_d}u_d \\ f(w) = \frac{1}{2}\sum_{i=1}^n v_i( \hat{y_i}-y_i )^2 + \lambda \sum_{j=1}^d {w_d}u_d = \frac{1}{2}\sum_{i=1}^n v_i (\hat{y_i}^2 + 2\hat{y_i}{y_i} + y_i^2) + \lambda \sum_{j=1}^d {w_d}u_d \\ \\\nabla f(w) = (\frac{1}{2}v_1$}
+\item $f(w)= \frac{1}{2}\sum_{i=1}^n v_i (w^Tx_i - y_i)^2 + \lambda w^Tu$ (weighted and tilted least squares). \ans{$ f(w) = \frac{1}{2}\sum_{i=1}^n v_i( (\sum_{j=i}^d x_i^d * w_d)-y_i )^2 + \lambda \sum_{j=1}^d {w_d}u_d 
+\\ f(w) = \frac{1}{2}\sum_{i=1}^n v_i( \hat{y_i}-y_i )^2 + \lambda \sum_{j=1}^d {w_d}u_d = \frac{1}{2}\sum_{i=1}^n v_i (\hat{y_i}^2 - 2\hat{y_i}{y_i} + y_i^2) + \lambda \sum_{j=1}^d {w_d}u_d 
+\\ f(w) = \frac{1}{2}\sum_{i=1}^n v_i ((\sum_{j=1}^d w_jx_i^j)^2 - 2(\sum_{j=1}^d w_jx_i^j){y_i} + y_i^2) + \lambda \sum_{j=1}^d {w_d}u_d 
+\\ f(w) = \frac{1}{2} (w^TX^TVXw) - W^TX^TVy + \frac{1}{2} y^TVy + \lambda w^t u
+\\ f'(w) = \frac{1}{2} w^TX^TVX + \frac{1}{2} w^T (X^TVX)^T - y^TVX + 0 + \lambda u^T
+\\ f'(w) = w^TX^TVX - y^TVX + \lambda u^T$
+Therefore, the $ w = (X^TVX)^2 \setminus ((X^TVX)(X^TVy- \lambda u)) $
+}
 \item $f(w) = \frac{1}{2}\norm{Xw - y}^2 + \frac{\lambda}{2}\norm{w-w^0}^2$ (least squares shrunk towards non-zero $w^0$).
 }}
 Above we assume that $u$ and $w^0$ are $d$ by $1$ vectors, that $v$ is a $n$ by $1$ vector. You can use $V$ as a diagonal matrix containing the $v_i$ values along the diagonal.
@@ -129,12 +136,25 @@ Recall that convex loss functions are typically easier to minimize than non-conv
 \blu{Show that the following functions are convex}:
 
 \enum{
-\item $f(w) = \alpha w^2 - \beta w + \gamma$ with $w \in \R, \alpha \geq 0, \beta \in \R, \gamma \in \R$ (1D quadratic).
-\item $f(w) = w\log(w) $ with $w > 0$ (``neg-entropy'')
-\item $f(w) = \norm{Xw-y}^2 + \lambda\norm{w}_1$ with $w \in \R^d, \lambda \geq 0$ (L1-regularized least squares).
-\item $f(w) = \sum_{i=1}^n \log(1+\exp(-y_iw^Tx_i)) $ with $w \in \R^d$ (logistic regression).
-\item $f(w) = \sum_{i=1}^n[\max\{0,|w^Tx_i - y_i|\} - \epsilon] + \frac{\lambda}{2}\norm{w}_2^2$  with $w \in \R^d, \epsilon \geq 0, \lambda \geq 0$ (support vector regression).
+\item $f(w) = \alpha w^2 - \beta w + \gamma$ with $w \in \R, \alpha \geq 0, \beta \in \R, \gamma \in \R$ (1D quadratic). \ans{$f''(x) = 2\alpha$ Because $\alpha \geq 0$ so $f''(x) \geq 0$ Therefore it is convex. }
+\item $f(w) = w\log(w) $ with $w > 0$ (``neg-entropy'') \ans{$f'(w) = \log(w) + w * 1/w$ \\$f''(w) = 1/w$ Because $w\geq 0$, then $f''(w) \geq 0$ So it is convex.}
+\item $f(w) = \norm{Xw-y}^2 + \lambda\norm{w}_1$ with $w \in \R^d, \lambda \geq 0$ (L1-regularized least squares). \ans{Because sum of convex functions are convex, and Norms and Square Norms are convex functions. Therefore, f(w) is convex.}
+\item $f(w) = \sum_{i=1}^n \log(1+\exp(-y_iw^Tx_i)) $ with $w \in \R^d$ (logistic regression). \ans{
+    $g(z) = log(1+\exp(z))\\
+    g''(z) = \frac{\exp(z)^2}{(1+\exp(z))^2} \geq 0$
+    Therefore for any z, it is an convex function.
+    \\So f(x) is convex.
 }
+\item $f(w) = \sum_{i=1}^n[\max\{0,|w^Tx_i - y_i|\} - \epsilon] + \frac{\lambda}{2}\norm{w}_2^2$  with $w \in \R^d, \epsilon \geq 0, \lambda \geq 0$ (support vector regression).
+\ans{ 
+Because $|w^Tx_i - y_i|\geq 0$ \\
+So $f(w) = \sum_{i=1}^n[|w^Tx_i - y_i| - \epsilon] + \frac{\lambda}{2}\norm{w}_2^2$\\
+We know that $\frac{\lambda}{2}\norm{w}_2^2$ is convex, so we just need to show the previos part is convex.\\
+$g(w) = \sum_{i=1}^n[|w^Tx_i - y_i| - \epsilon]$
+We also know that $|w^Tx - y|$ is convex for any x and y as the second derivative is always 0.
+So g(x) is convex as it is the sum of convex functions. 
+So f(x) is convex.
+}}
 
 General hint: for the first two you can check that the second derivative is non-negative since they are one-dimensional. For the last 3 you'll have to use some of the results regarding how combining convex functions can yield convex functions which can be found in the lecture slides.
 
@@ -170,7 +190,8 @@ y_i = w^Tx_i.
 \blu{Write a new function, \emph{leastSquaresBias}, that has the same input/model/predict format as the \emph{leastSquares} function, but that adds a \emph{bias} variable $w_0$. Hand in your new function, the updated plot, and the updated training/test error.}
 
 Hint: recall that adding a bias $w_0$ is equivalent to adding a column of ones to the matrix $X$. Don't forget that you need to do the same transformation in the \emph{predict} function.
-
+\ans{\includegraphics[width=10cm]{Q31.PNG}\\
+\includegraphics[width=10cm]{Q31Code.PNG}}
 
 \subsection{Linear Regression with Polynomial Basis}
 
@@ -187,7 +208,10 @@ Z =
 \]
 and fit a least squares model based on it.
 \blu{Hand in the new function, and report the training and test error for $p = 0$ through $p= 10$. Explain the effect of $p$ on the training error and on the test error.}
-
+\ans{
+    \\ \includegraphics[width=10cm]{Q32.PNG}
+    \\ \includegraphics[width = 10cm]{Q32Code.PNG}
+}
 Note: for this question we'll assume $d=1$ (we'll discuss polynomial bases with more input features later in the course).
 
 Hints: To keep the code simple and reduce the chance of having errors, you may want to write a new function \emph{polyBasis} that you can use for transforming both the training and testing data. 
@@ -199,7 +223,7 @@ Hints: To keep the code simple and reduce the chance of having errors, you may w
 Polynomials are a flexible class of functions, but there is structure in this data that is not well-modelled by polynomials. Try to find a nonlinear basis that gives the best performance on this dataset in terms of test error. \blu{Report the basis that you use and the training/test score that you achieve}.
 
 Hint: the data seems to have periodic behaviour, and it's possible to obtain training and test errors below 60.
-
+\ans{The minimum is 5, and the Test Error is 239.5448550643697}
 \section{Robust Regression and Gradient Descent}
 
 The script \emph{example\_outliers} loads a one-dimensional regression dataset that has a non-trivial number of `outlier' data points. These points do not fit the general trend of the rest of the data, and pull the least squares model away from the main downward trend that most data points exhibit:
