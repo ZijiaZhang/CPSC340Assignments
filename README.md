@@ -1,1 +1,4 @@
-# CPSC340Assignments
+# CPSC340 Reviews
+
+## Basics
+$\lambda$
