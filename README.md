@@ -18,22 +18,24 @@
     + [Limitations](#limitations)
   * [Visualization](#visualization)
     + [Basic Plots](#basic-plots)
-  * [Supervised Learning](#supervised-learning)
-    + [Naive Method: Predict Mode](#naive-method-predict-mode)
-    + [Decision Trees](#decision-trees)
-      - [Decision Stump](#decision-stump)
-      - [Measure of goodness: Accuracy score](#measure-of-goodness-accuracy-score)
-      - [Greedy recursive splitting](#greedy-recursive-splitting)
-    + [IID Assumptions.](#iid-assumptions)
-    + [Training vs Test Error](#training-vs-test-error)
-    + [Validation Error](#validation-error)
-    + [Optomization bias](#optomization-bias)
-    + [Cross Validation](#cross-validation)
-    + [Probabilistic Classifiers](#probabilistic-classifiers)
-      - [naive Bayes](#naive-bayes)
-
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
-
+- [Supervised Learning](#supervised-learning)
+  * [Naive Method: Predict Mode](#naive-method-predict-mode)
+  * [Decision Trees](#decision-trees)
+    + [Decision Stump](#decision-stump)
+    + [Measure of goodness: Accuracy score](#measure-of-goodness-accuracy-score)
+    + [Greedy recursive splitting](#greedy-recursive-splitting)
+  * [IID Assumptions.](#iid-assumptions)
+  * [Training vs Test Error](#training-vs-test-error)
+  * [Validation Error](#validation-error)
+  * [Optomization bias](#optomization-bias)
+  * [Cross Validation](#cross-validation)
+  * [Probabilistic Classifiers](#probabilistic-classifiers)
+    + [naive Bayes](#naive-bayes)
+  * [KNN](#knn)
+    + [K on fundamental trade-off](#k-on-fundamental-trade-off)
+    + [Charasteristics](#charasteristics)
+    + [Problems](#problems)
+  * [Parametric vs. Non-Parametric Models](#parametric-vs-non-parametric-models)
 
 
 ## Basics
@@ -109,16 +111,16 @@ Summary statistic can be misleading. Dataset that are very different can have sa
 May be able to see trends in features.
 - Scatterplot
 
-### Supervised Learning
+## Supervised Learning
 Take features of examples and corresponding labels as inputs.
 And Find a model that can accurately predict the labels of new examples.
 - Input for an example is a set of features. 
 - Output is a desired class label.
 
-#### Naive Method: Predict Mode
+### Naive Method: Predict Mode
 Always Predict the mode.
-#### Decision Trees
-##### Decision Stump
+### Decision Trees
+#### Decision Stump
 A simple decision tree with 1 spliting rules:
 
 If feature $x >x_0$ 
@@ -130,21 +132,21 @@ otherwise
 This will take $O(ndk)$ with an instance of $n$ examples, $d$ features and $k$ thresholds.
 $O(nd)$ if all features are binary.
 $O(n^2d)$ if all our features have unique values. 
-##### Measure of goodness: Accuracy score
+#### Measure of goodness: Accuracy score
 Score = $\frac{\text{Correct Inputs}}{\text{Total number of Examples}}$
 
-##### Greedy recursive splitting
+#### Greedy recursive splitting
  1. Find the decision stump with the best score (information gain).
  2. Find the decision stump with the best score on the two new datasets.
  3. Stop if all leaves have the  same label, or reaches the maximum depth.
  
- #### IID Assumptions.
+### IID Assumptions.
 Usually we would Assume that the training set and test set follows:
 
 - All examples come from the same distribution
 - The example are sampled independently
 
-#### Training vs Test Error
+### Training vs Test Error
 Test Error = Approximation Error + Training Error
 
 - **Simple model** might have a high training Error but have a low approximation error.
@@ -152,11 +154,11 @@ Test Error = Approximation Error + Training Error
 
 e.g. The deeper the decision tree is the more complex it is. If we have a decision tree with depth $\infty$, every thing in training set will be classified correctly. But it might perform poorly in Test Set.
 
-#### Validation Error
+### Validation Error
 We can use part of training data to approximate the test error, helping us pick the hyper parameter.
 But if we look use the validation set too much, we might introduce optimization bias.
 
-#### Optomization bias
+### Optomization bias
 We might tried too many models on the validation set too much and by chance one of them accidently have a low validation error. So we **overfit** the validation set.
 
 e.g. Consider a multiple choice test with 10 questions.
@@ -167,14 +169,14 @@ Fill 10000 exams randomly, expect max grade => 82%
 - **Optimization bias is small if you only compare a few models.**
 - **Optimization bias shrinks as you grow size of validation set.**
 
-#### Cross Validation
+### Cross Validation
 Split the trainging data to k parts. Train the model on k-1 parts, and compute the validation error on the other part.
 Take the average of the k errors to approxmate the test error.
 
 **As k get larger, the result gets more accurate but more expensive**
 
-#### Probabilistic Classifiers
-##### naive Bayes
+### Probabilistic Classifiers
+#### naive Bayes
 - ***Identify spam emails***
 Here, $X_i$ is features of the email (bag of words).
 <p style="text-align: center;">v1 = $p(y_i =\text{spam}|x_i) = \frac{p(x_i|y_i=\text{spam})p(p_i = \text{spam})}{p(x_i)}$</p>
@@ -183,5 +185,32 @@ We would compare the value of v1 and v2, if v1 > v2 we say it is spam. Otherwise
 But $p(x_i|y_i=\text{spam})$ is hard to compute, so we assume that each word is independent. That is 
 <p style="text-align: center;"> $p(x_i|y_i=\text{spam}) = \prod_{j=0}^d p(x_i^j|y)$</p>
 
+
+- Laplace Smoothing
+Fix the problem that if you have no training example with that feature value, will result in a 0 probablility.
+<p style="text-align: center;">$\frac{\text{\#Spam message with w}+1}{\#Spam messages +2}$</p>
+
+### KNN
+For a new example x, predict it with the same value as the training example that is nearest to it.
+
+- Model gets more complicated as ‘k’ decreases.
+- Model gets more complicated as ‘n’ increases.
+
+#### K on fundamental trade-off
+As ‘k’ grows, training error increase and approximation error decreases.
+
+#### Charasteristics
+- No training phase
+- Predictions are expensive: O(nd) for one example.
+- Storage is expensive: Store all training data.
+
+#### Problems
+- Features have very different scales
+- Need exponentially more points to ‘fill’ a high-dimensional volume.
+### Parametric vs. Non-Parametric Models
+- **Parametric**
+Have fixed number of parameters: trained “model” size is O(1) in terms ‘n’.
+- **Non-Parametric**
+Number of parameters grows with ‘n’: size of “model” depends on ‘n’
 
 
