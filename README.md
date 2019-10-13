@@ -177,11 +177,11 @@ Take the average of the k errors to approxmate the test error.
 ##### naive Bayes
 - ***Identify spam emails***
 Here, $X_i$ is features of the email (bag of words).
-v1 = $p(y_i =\text{spam}|x_i) = \frac{p(x_i|y_i=\text{spam})p(p_i = \text{spam})}{p(x_i)}$
-v2 = $p(y_i = \text{not spam}|x_i) = \frac{p(x_i|y_i=\text{not spam})p(p_i = \text{not spam})}{p(x_i)}$
+<p style="text-align: center;">v1 = $p(y_i =\text{spam}|x_i) = \frac{p(x_i|y_i=\text{spam})p(p_i = \text{spam})}{p(x_i)}$</p>
+<p style="text-align: center;">v2 = $p(y_i = \text{not spam}|x_i) = \frac{p(x_i|y_i=\text{not spam})p(p_i = \text{not spam})}{p(x_i)}$</p>
 We would compare the value of v1 and v2, if v1 > v2 we say it is spam. Otherwise, not spam.
 But $p(x_i|y_i=\text{spam})$ is hard to compute, so we assume that each word is independent. That is 
-$p(x_i|y_i=\text{spam}) = \prod_{j=0}^d p(x_i^j|y)$
+<p style="text-align: center;"> $p(x_i|y_i=\text{spam}) = \prod_{j=0}^d p(x_i^j|y)$</p>
 
 
 
