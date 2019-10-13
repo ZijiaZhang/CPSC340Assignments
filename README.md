@@ -19,15 +19,21 @@
   * [Visualization](#visualization)
     + [Basic Plots](#basic-plots)
   * [Supervised Learning](#supervised-learning)
-    + [Naive Method: Predict Mode](#naive-method--predict-mode)
+    + [Naive Method: Predict Mode](#naive-method-predict-mode)
     + [Decision Trees](#decision-trees)
       - [Decision Stump](#decision-stump)
-      - [Measure of goodness: Accuracy score](#measure-of-goodness--accuracy-score)
+      - [Measure of goodness: Accuracy score](#measure-of-goodness-accuracy-score)
       - [Greedy recursive splitting](#greedy-recursive-splitting)
     + [IID Assumptions.](#iid-assumptions)
     + [Training vs Test Error](#training-vs-test-error)
     + [Validation Error](#validation-error)
     + [Optomization bias](#optomization-bias)
+    + [Cross Validation](#cross-validation)
+    + [Probabilistic Classifiers](#probabilistic-classifiers)
+      - [naive Bayes](#naive-bayes)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 
 
 ## Basics
@@ -157,5 +163,25 @@ e.g. Consider a multiple choice test with 10 questions.
 Fill a exam randomly, expect grade => 25%
 Fill 2 exams randomly, expect max grade => 33%
 Fill 10000 exams randomly, expect max grade => 82%
+
+- **Optimization bias is small if you only compare a few models.**
+- **Optimization bias shrinks as you grow size of validation set.**
+
+#### Cross Validation
+Split the trainging data to k parts. Train the model on k-1 parts, and compute the validation error on the other part.
+Take the average of the k errors to approxmate the test error.
+
+**As k get larger, the result gets more accurate but more expensive**
+
+#### Probabilistic Classifiers
+##### naive Bayes
+- ***Identify spam emails***
+Here, $X_i$ is features of the email (bag of words).
+$v1 = p(y_i =\text{spam}|x_i) = \frac{p(x_i|y_i=\text{spam})p(p_i = \text{spam})}{p(x_i)}$
+$v2 = p(y_i = \text{not spam}|x_i) = \frac{p(x_i|y_i=\text{not spam})p(p_i = \text{not spam})}{p(x_i)}$
+We would compare the value of v1 and v2, if v1 > v2 we say it is spam. Otherwise, not spam.
+But $p(x_i|y_i=\text{spam})$ is hard to compute, so we assume that each word is independent. That is 
+$p(x_i|y_i=\text{spam}) = \prod_{j=0}^d p(x_i^j|y)$
+
 
 
