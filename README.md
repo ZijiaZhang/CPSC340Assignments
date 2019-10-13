@@ -20,6 +20,10 @@
     + [Basic Plots](#basic-plots)
   * [Supervised Learning](#supervised-learning)
     + [Naive Method: Predict Mode](#naive-method--predict-mode)
+    + [Decision Trees](#decision-trees)
+      - [Decision Stump](#decision-stump)
+      - [Measure of goodness: Accuracy score](#measure-of-goodness--accuracy-score)
+      - [Greedy recursive splitting](#greedy-recursive-splitting)
 
 ## Basics
 
@@ -102,3 +106,21 @@ And Find a model that can accurately predict the labels of new examples.
 
 #### Naive Method: Predict Mode
 Always Predict the mode.
+#### Decision Trees
+##### Decision Stump
+A simple decision tree with 1 spliting rules:
+
+	If feature $x >x_0$ 
+		predict $y_0$ 
+	otherwise 
+		predict $y_1$
+This will take $O(ndk)$ with an instance of $n$ examples, $d$ features and $k$ thresholds.
+$O(nd)$ if all features are binary.
+$O(n^2d)$ if all our features have unique values. 
+##### Measure of goodness: Accuracy score
+Score = $\frac{\text{Correct Inputs}}{\text{Total number of Examples}}$
+
+##### Greedy recursive splitting
+ 1. Find the decision stump with the best score (information gain).
+ 2. Find the decision stump with the best score on the two new datasets.
+ 3. Stop if all leaves have the  same label, or reaches the maximum depth.
