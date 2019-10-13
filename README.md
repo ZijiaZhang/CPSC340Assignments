@@ -24,6 +24,11 @@
       - [Decision Stump](#decision-stump)
       - [Measure of goodness: Accuracy score](#measure-of-goodness--accuracy-score)
       - [Greedy recursive splitting](#greedy-recursive-splitting)
+    + [IID Assumptions.](#iid-assumptions)
+    + [Training vs Test Error](#training-vs-test-error)
+    + [Validation Error](#validation-error)
+    + [Optomization bias](#optomization-bias)
+
 
 ## Basics
 
@@ -110,10 +115,12 @@ Always Predict the mode.
 ##### Decision Stump
 A simple decision tree with 1 spliting rules:
 
-	If feature $x >x_0$ 
-		predict $y_0$ 
-	otherwise 
-		predict $y_1$
+If feature $x >x_0$ 
+	predict $y_0$ 
+otherwise 
+	predict $y_1$
+	
+	
 This will take $O(ndk)$ with an instance of $n$ examples, $d$ features and $k$ thresholds.
 $O(nd)$ if all features are binary.
 $O(n^2d)$ if all our features have unique values. 
@@ -124,3 +131,31 @@ Score = $\frac{\text{Correct Inputs}}{\text{Total number of Examples}}$
  1. Find the decision stump with the best score (information gain).
  2. Find the decision stump with the best score on the two new datasets.
  3. Stop if all leaves have the  same label, or reaches the maximum depth.
+ 
+ #### IID Assumptions.
+Usually we would Assume that the training set and test set follows:
+
+- All examples come from the same distribution
+- The example are sampled independently
+
+#### Training vs Test Error
+Test Error = Approximation Error + Training Error
+
+- **Simple model** might have a high training Error but have a low approximation error.
+- **Complex model** might have a low trainging Error but have a high approximation error.
+
+e.g. The deeper the decision tree is the more complex it is. If we have a decision tree with depth $\infty$, every thing in training set will be classified correctly. But it might perform poorly in Test Set.
+
+#### Validation Error
+We can use part of training data to approximate the test error, helping us pick the hyper parameter.
+But if we look use the validation set too much, we might introduce optimization bias.
+
+#### Optomization bias
+We might tried too many models on the validation set too much and by chance one of them accidently have a low validation error. So we **overfit** the validation set.
+
+e.g. Consider a multiple choice test with 10 questions.
+Fill a exam randomly, expect grade => 25%
+Fill 2 exams randomly, expect max grade => 33%
+Fill 10000 exams randomly, expect max grade => 82%
+
+
