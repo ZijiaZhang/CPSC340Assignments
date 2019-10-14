@@ -49,6 +49,9 @@
       - [K-means](#k-means)
         - [Cost of K-Means](#cost-of-k-means)
         - [Application of K-means](#application-of-k-means)
+      - [Density Based Clustering](#density-based-clustering)
+      - [Hierarchical Clustering](#hierarchical-clustering)
+      - [Agglomerative (Bottom-Up) Clustering](#agglomerative-bottom-up-clustering)
 
 
 ## Basics
@@ -273,9 +276,11 @@ Average a set of deep decision trees.
 
 
 #### K-means
-- Input:
-  - The number of clusters ‘k’ (hyper-parameter).
-  - Initial guess of the center (the “mean”) of each cluster.
+**Input:**
+  
+  The number of clusters ‘k’ (hyper-parameter).
+  
+  Initial guess of the center (the “mean”) of each cluster.
 
 ```
 1. Assign each data point to closest mean.
@@ -295,6 +300,8 @@ Each example is assigned to one (and only one) cluster.
 
 It may converge to sub-optimal solution. 
 
+Clusters have to be convex.
+
 **Solusion:**
 
 Try several different random start points and choose the best.
@@ -304,3 +311,59 @@ $O(ndk)$
 
 ##### Application of K-means
 Represent the data with the cluster means.
+
+#### Density Based Clustering
+Clusters are defined by “dense” regions. Examples in non-dense regions don’t get clustered.
+
+**Inputs:**
+
+Epsilon($\epsilon$): Distance we use to decide if another point is a “neighbour”.
+
+MinNeighbours: number of neighbours needed to say a region is “dense”
+
+A core point is defined by: The number of neibours $\geq$ minNeighbours
+```
+For each example xi:
+  If xi is already assigned to a cluster:
+    do nothing.
+  else Test whether xi is a ‘core’ point
+    If xi is not core point, 
+      do nothing (this could be an outlier).
+    If xi is a core point
+      make a new cluster and call the “expand cluster” function.
+```
+
+```
+“Expand cluster” function:
+Assign to this cluster all xj within distance ‘ε’ of core point xi to this cluster.
+For each new “core” point found, call “expand cluster” (recursively).
+```
+**Issues:**
+
+Some points are not assigned to a cluster.
+
+Ambiguity of boundary points.
+
+Sensitive to the choice of ε and minNeighbours.
+
+With new Data Point, finding cluster is expensive.
+
+#### Hierarchical Clustering
+
+Produces a tree of clusterings.
+
+- Each node in the tree splits the data into 2 or more clusters.
+- Much more information than using a fixed clustering.
+- Often have individual data points as leaves.
+
+#### Agglomerative (Bottom-Up) Clustering
+
+```
+1. Starts with each point in its own cluster.
+2. Each step merges the two “closest” clusters.
+3. Stop with one big cluster that has all points.
+```
+
+- Needs a “distance” between two clusters.
+- Cost is $O(n^3d)$
+- Like Reversed Hierarchical Clustering
