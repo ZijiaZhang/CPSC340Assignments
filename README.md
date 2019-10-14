@@ -44,6 +44,11 @@
       - [Types of Ensemble Method](#types-of-ensemble-method)
       - [Averaging](#averaging)
         - [Random Forests](#random-forests)
+  - [Unsupervised Learning](#unsupervised-learning)
+    - [Clustering](#clustering)
+      - [K-means](#k-means)
+        - [Cost of K-Means](#cost-of-k-means)
+        - [Application of K-means](#application-of-k-means)
 
 
 ## Basics
@@ -187,16 +192,16 @@ Take the average of the k errors to approxmate the test error.
 #### naive Bayes
 - ***Identify spam emails***
 Here, $X_i$ is features of the email (bag of words).
-<p style="text-align: center;">v1 = $p(y_i =\text{spam}|x_i) = \frac{p(x_i|y_i=\text{spam})p(p_i = \text{spam})}{p(x_i)}$</p>
-<p style="text-align: center;">v2 = $p(y_i = \text{not spam}|x_i) = \frac{p(x_i|y_i=\text{not spam})p(p_i = \text{not spam})}{p(x_i)}$</p>
+<br>v1 = $p(y_i =\text{spam}|x_i) = \frac{p(x_i|y_i=\text{spam})p(p_i = \text{spam})}{p(x_i)}$
+<br> v2 = $p(y_i = \text{not spam}|x_i) = \frac{p(x_i|y_i=\text{not spam})p(p_i = \text{not spam})}{p(x_i)}$
 We would compare the value of v1 and v2, if v1 > v2 we say it is spam. Otherwise, not spam.
-But $p(x_i|y_i=\text{spam})$ is hard to compute, so we assume that each word is independent. That is 
-<p style="text-align: center;"> $p(x_i|y_i=\text{spam}) = \prod_{j=0}^d p(x_i^j|y)$</p>
+But $p(x_i|y_i=\text{spam})$ is hard to compute, so we assume that each word is independent. That is <br>
+$p(x_i|y_i=\text{spam}) = \prod_{j=0}^d p(x_i^j|y)$
 
 
 - Laplace Smoothing
 Fix the problem that if you have no training example with that feature value, will result in a 0 probablility.
-<p style="text-align: center;">$\frac{\text{\#Spam message with w}+1}{\#Spam messages +2}$</p>
+<br>$\frac{\text{\#Spam message with w}+1}{\#Spam messages +2}$
 
 ### KNN
 For a new example x, predict it with the same value as the training example that is nearest to it.
@@ -255,5 +260,47 @@ Average a set of deep decision trees.
 
 - Generate Trees with independent Errors
   - Bootstrap Sampling <br> Generate several bootstrap samples an d fit classifier to each boot strap sample. Average the prodictions.
+  - Random Trees <br> For each split in a random tree model, randomly sample a small number of possible features, and condider these random features for spliting.
 
 
+## Unsupervised Learning
+### Clustering
+- Input: set of examples described by features $x_i$
+- Output: an assignment of examples to ‘groups’.
+- Goal: 
+  - Examples in the same group should be ‘similar’.
+  - Examples in different groups should be ‘different’.
+
+
+#### K-means
+- Input:
+  - The number of clusters ‘k’ (hyper-parameter).
+  - Initial guess of the center (the “mean”) of each cluster.
+
+```
+1. Assign each data point to closest mean.
+2. Update the means bases on the assignment.
+3. Repead untill convergence.
+
+When get a new test example, assign it to the nearest mean.
+```
+
+**Note:**
+
+K-Means is Garenteed to converge.
+
+**Issues:**
+
+Each example is assigned to one (and only one) cluster.
+
+It may converge to sub-optimal solution. 
+
+**Solusion:**
+
+Try several different random start points and choose the best.
+
+##### Cost of K-Means
+$O(ndk)$
+
+##### Application of K-means
+Represent the data with the cluster means.
