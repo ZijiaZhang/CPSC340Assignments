@@ -1,41 +1,49 @@
 # CPSC340 Reviews
 ## Table of Contents
-- [Basics](#basics)
-  * [Steps for Data Mining](#steps-for-data-mining)
-  * [Features](#features)
-    + [Type of features](#type-of-features)
-      - [Categorical Features](#categorical-features)
-      - [Numerical Features](#numerical-features)
-    + [Convert Features](#convert-features)
-    + [Feature Aggregation](#feature-aggregation)
-    + [Feature Selection](#feature-selection)
-    + [Feature Transformation](#feature-transformation)
-  * [Analize Data](#analize-data)
-    + [Categorical Summary Statistics](#categorical-summary-statistics)
-    + [Outliers](#outliers)
-    + [Entropy as Measure of Randomness](#entropy-as-measure-of-randomness)
-    + [Distance and Similarity](#distance-and-similarity)
-    + [Limitations](#limitations)
-  * [Visualization](#visualization)
-    + [Basic Plots](#basic-plots)
-- [Supervised Learning](#supervised-learning)
-  * [Naive Method: Predict Mode](#naive-method-predict-mode)
-  * [Decision Trees](#decision-trees)
-    + [Decision Stump](#decision-stump)
-    + [Measure of goodness: Accuracy score](#measure-of-goodness-accuracy-score)
-    + [Greedy recursive splitting](#greedy-recursive-splitting)
-  * [IID Assumptions.](#iid-assumptions)
-  * [Training vs Test Error](#training-vs-test-error)
-  * [Validation Error](#validation-error)
-  * [Optomization bias](#optomization-bias)
-  * [Cross Validation](#cross-validation)
-  * [Probabilistic Classifiers](#probabilistic-classifiers)
-    + [naive Bayes](#naive-bayes)
-  * [KNN](#knn)
-    + [K on fundamental trade-off](#k-on-fundamental-trade-off)
-    + [Charasteristics](#charasteristics)
-    + [Problems](#problems)
-  * [Parametric vs. Non-Parametric Models](#parametric-vs-non-parametric-models)
+- [CPSC340 Reviews](#cpsc340-reviews)
+  - [Table of Contents](#table-of-contents)
+  - [Basics](#basics)
+    - [Steps for Data Mining](#steps-for-data-mining)
+    - [Features](#features)
+      - [Type of features](#type-of-features)
+        - [Categorical Features](#categorical-features)
+        - [Numerical Features](#numerical-features)
+      - [Convert Features](#convert-features)
+      - [Feature Aggregation](#feature-aggregation)
+      - [Feature Selection](#feature-selection)
+      - [Feature Transformation](#feature-transformation)
+    - [Analize Data](#analize-data)
+      - [Categorical Summary Statistics](#categorical-summary-statistics)
+      - [Outliers](#outliers)
+      - [Entropy as Measure of Randomness](#entropy-as-measure-of-randomness)
+      - [Distance and Similarity](#distance-and-similarity)
+      - [Limitations](#limitations)
+    - [Visualization](#visualization)
+      - [Basic Plots](#basic-plots)
+  - [Supervised Learning](#supervised-learning)
+    - [Naive Method: Predict Mode](#naive-method-predict-mode)
+    - [Decision Trees](#decision-trees)
+      - [Decision Stump](#decision-stump)
+      - [Measure of goodness: Accuracy score](#measure-of-goodness-accuracy-score)
+      - [Greedy recursive splitting](#greedy-recursive-splitting)
+    - [IID Assumptions.](#iid-assumptions)
+    - [Training vs Test Error](#training-vs-test-error)
+    - [Validation Error](#validation-error)
+    - [Optomization bias](#optomization-bias)
+    - [Cross Validation](#cross-validation)
+    - [Probabilistic Classifiers](#probabilistic-classifiers)
+      - [naive Bayes](#naive-bayes)
+    - [KNN](#knn)
+      - [K on fundamental trade-off](#k-on-fundamental-trade-off)
+      - [Charasteristics](#charasteristics)
+      - [Problems](#problems)
+      - [Parametric vs. Non-Parametric Models](#parametric-vs-non-parametric-models)
+    - [Norms](#norms)
+    - [Encouraging Invariance](#encouraging-invariance)
+    - [Ensemble Method](#ensemble-method)
+      - [Types of Ensemble Method](#types-of-ensemble-method)
+      - [Averaging](#averaging)
+        - [Random Forests](#random-forests)
 
 
 ## Basics
@@ -207,10 +215,45 @@ As ‘k’ grows, training error increase and approximation error decreases.
 #### Problems
 - Features have very different scales
 - Need exponentially more points to ‘fill’ a high-dimensional volume.
-### Parametric vs. Non-Parametric Models
+#### Parametric vs. Non-Parametric Models
 - **Parametric**
 Have fixed number of parameters: trained “model” size is O(1) in terms ‘n’.
+e.g. Decision Tree
 - **Non-Parametric**
 Number of parameters grows with ‘n’: size of “model” depends on ‘n’
+
+e.g. KNN
+
+### Norms
+- L1 Norm
+	$\| r\|_1 = \sum_{j=1}^d|r_j|$
+- L2 Norm
+$\| r\|_2 = \sqrt{\sum_{j=1}^d|r_j^2|}$
+- L$\infty$ Norm
+$\| r\|_\infty = \max\{|r_j|\}$
+
+### Encouraging Invariance
+Add transformed data during training to avoid small translation during tests.
+
+### Ensemble Method
+Classifiers that have classifiers as input.
+- Often have higher accuracy than input classifiers.
+#### Types of Ensemble Method
+- Boosting (improve trainging error)
+- Averaging (improves approximation error)
+
+#### Averaging
+- Input to averaging is the predictions of a set of models
+- If the models make independent errors. The chanses that the averaing is wrong is lower than other models.
+1. A simple model of averaging: Take mode of predictions.
+![alternative text](./images/EnsembleMethod.PNG)
+2. Stacking
+![alternative text](./images/Stacking.PNG)
+
+##### Random Forests
+Average a set of deep decision trees. 
+
+- Generate Trees with independent Errors
+  - Bootstrap Sampling <br> Generate several bootstrap samples an d fit classifier to each boot strap sample. Average the prodictions.
 
 
