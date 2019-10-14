@@ -7,8 +7,8 @@ data = load("outliersData.jld")
 (X,y,Xtest,ytest) = (data["X"],data["y"],data["Xtest"],data["ytest"])
 
 # Fit a least squares model
-include("robustRegression.jl")
-model = robustRegression(X,y)
+include("leastSquares.jl")
+model = leastSquares(X,y)
 
 # Evaluate training error
 yhat = model.predict(X)
