@@ -212,7 +212,7 @@ $p(x_i|y_i=\text{spam}) = \prod_{j=0}^d p(x_i^j|y)$
 
 - Laplace Smoothing
 Fix the problem that if you have no training example with that feature value, will result in a 0 probablility.
-<br>$\frac{\text{\#Spam message with w}+1}{\#Spam messages +2}$
+<br>$\frac{\text{Spam message with w} + 1}{\text{Spam messages} +2}$
 
 ### KNN
 For a new example x, predict it with the same value as the training example that is nearest to it.
