@@ -61,18 +61,19 @@
       - [Supervised-learning methods](#supervised-learning-methods)
 
 
+
 ## Basics
 
 ### Steps for Data Mining
     
 1) Identify data mining task. 
-3) Collect data.
-4) Clean and preprocess the data. 
-5) Transform data or select useful subsets. 
-6) Choose data mining algorithm. 
-7) Data mining! 
-8) Evaluate, visualize, and interpret results. 
-9) Use results for profit or other goals
+2) Collect data.
+3) Clean and preprocess the data. 
+4) Transform data or select useful subsets. 
+5) Choose data mining algorithm. 
+6) Data mining! 
+7) Evaluate, visualize, and interpret results. 
+8) Use results for profit or other goals
 
 ### Features
 #### Type of features
