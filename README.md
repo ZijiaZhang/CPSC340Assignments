@@ -52,6 +52,13 @@
       - [Density Based Clustering](#density-based-clustering)
       - [Hierarchical Clustering](#hierarchical-clustering)
       - [Agglomerative (Bottom-Up) Clustering](#agglomerative-bottom-up-clustering)
+      - [Biclustering](#biclustering)
+    - [Outliers Detection](#outliers-detection)
+      - [Model-based methods.](#model-based-methods)
+      - [Graphical approaches.](#graphical-approaches)
+      - [Cluster-based method](#cluster-based-method)
+      - [Distance-based methods](#distance-based-methods)
+      - [Supervised-learning methods](#supervised-learning-methods)
 
 
 ## Basics
@@ -367,3 +374,58 @@ Produces a tree of clusterings.
 - Needs a “distance” between two clusters.
 - Cost is $O(n^3d)$
 - Like Reversed Hierarchical Clustering
+
+#### Biclustering
+Cluster the training examples and features
+
+
+### Outliers Detection
+
+#### Model-based methods.
+Fit a probabilistic model.
+
+Outliers are examples with low probability.
+
+e.g. The data with |Z score| > 4 is an outlier.
+
+#### Graphical approaches.
+Look at a plot of the data.
+
+Human decides if data is an outlier.
+
+
+- Box plot
+  - Can only plot 1 variables at a time.
+- Scatterplot
+  - Only 2 variables at a time
+- Scatterplot array
+  - Look at all combinations of variables.
+  - Still only 2 variables at a time.
+
+#### Cluster-based method
+
+Cluster the data
+
+Find points that don’t belong to clusters.
+
+- K-means
+  - Find points that are far away from any mean
+  - Find clusters with a small number of points
+- Density-based clustering
+  - Outliers are points not assigned to cluster
+- Hierarchical clustering
+  - Outliers take longer to join other groups
+
+#### Distance-based methods
+
+- KNN outlier detection
+  - For each point, compute the average distance to its KNN
+  - Choose points with biggest values (or values above a threshold) as outliers
+- Local Distance-Based Outlier Detection
+  - $\frac{\text{average distance of 'i' to its KNNs}}{\text{average distance of neighbours of i to their KNNs}}$
+#### Supervised-learning methods
+
+- We can find very complicated outlier patterns.
+- We need to know what outliers look like.
+- We may not detect new “types” of outliers
+
