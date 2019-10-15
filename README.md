@@ -59,6 +59,12 @@
       - [Cluster-based method](#cluster-based-method)
       - [Distance-based methods](#distance-based-methods)
       - [Supervised-learning methods](#supervised-learning-methods)
+    - [Supervised Learning (Regressions)](#supervised-learning-regressions)
+      - [Linear regression based on squared error.](#linear-regression-based-on-squared-error)
+      - [Non-linear Regression](#non-linear-regression)
+      - [Gradiant Decent](#gradiant-decent)
+    - [Robust Regression](#robust-regression)
+    - [Complexity Penalties](#complexity-penalties)
 
 
 
@@ -203,8 +209,11 @@ Take the average of the k errors to approxmate the test error.
 #### naive Bayes
 - ***Identify spam emails***
 Here, $X_i$ is features of the email (bag of words).
-<br>v1 = $p(y_i =\text{spam}|x_i) = \frac{p(x_i|y_i=\text{spam})p(p_i = \text{spam})}{p(x_i)}$
-<br> v2 = $p(y_i = \text{not spam}|x_i) = \frac{p(x_i|y_i=\text{not spam})p(p_i = \text{not spam})}{p(x_i)}$
+
+  v1 = $p(y_i =\text{spam}|x_i) = \frac{p(x_i|y_i=\text{spam})p(p_i = \text{spam})}{p(x_i)}$
+  
+  v2 = $p(y_i = \text{not spam}|x_i) = \frac{p(x_i|y_i=\text{not spam})p(p_i = \text{not spam})}{p(x_i)}$
+
 We would compare the value of v1 and v2, if v1 > v2 we say it is spam. Otherwise, not spam.
 But $p(x_i|y_i=\text{spam})$ is hard to compute, so we assume that each word is independent. That is <br>
 $p(x_i|y_i=\text{spam}) = \prod_{j=0}^d p(x_i^j|y)$
@@ -212,7 +221,8 @@ $p(x_i|y_i=\text{spam}) = \prod_{j=0}^d p(x_i^j|y)$
 
 - Laplace Smoothing
 Fix the problem that if you have no training example with that feature value, will result in a 0 probablility.
-<br>$\frac{\text{Spam message with w} + 1}{\text{Spam messages} +2}$
+
+  $\frac{\text{Spam message with w} + 1}{\text{Spam messages} +2}$
 
 ### KNN
 For a new example x, predict it with the same value as the training example that is nearest to it.
@@ -430,3 +440,114 @@ Find points that don’t belong to clusters.
 - We need to know what outliers look like.
 - We may not detect new “types” of outliers
 
+### Supervised Learning (Regressions)
+
+#### Linear regression based on squared error.
+Linear regression makes predictions using linear function of $x_i$.
+
+$\hat{y_i} = w x_i$ Where w is the weight of $x_i$.
+
+We measure the sum of suqared errors. 
+
+$f(w) = \frac{1}{2}\sum_{i=1}^n(w^Tx_i-y_i)^2$
+
+And we want to minimize this Error. We calculate the diravitives. 
+
+$\nabla f(w) = [\sum_{i=1}^n(w^Tx_i-y_i)x_{i1}, \sum_{i=1}^n(w^Tx_i-y_i)x_{i2}, \sum_{i=1}^n(w^Tx_i-y_i)x_{i3}, \dots , \sum_{i=1}^n(w^Tx_i-y_i)x_{id}]^T$
+
+We can have $W =(X^TX) \setminus (X^Ty)$ to have $\nabla f(w) = 0$
+
+**Derive the diravitives**
+
+$f(w) = \frac{1}{2} \|Xw-y\|^2 = \frac{1}{2} \sum_{i=1}{n}(w^Tx_i-y_i)^2 \\ = \frac{1}{2} w^TX^TXw-w^TX^Ty+\frac{1}{2}y^Ty$
+
+$\nabla f(w) = X^TXw - X^Ty$
+
+So, when $W =(X^TX) \setminus (X^Ty)$ we have $\nabla f(w) = 0$
+
+**Note**
+
+The solusion might not be unique.
+
+e.g. 
+| x1 | x2 | y |
+| :---: |:---:|:--:|
+| 1 | 1 | 3 |
+| 2 | 2 | 6 |
+
+So one solusion is $w_1 = 3$, $w_2 = 0$. And the other one is $w_1 = 0$, $w_2=3$.
+
+#### Non-linear Regression
+Now, we can have $\hat{y_i} = w_0 + w_1x_i + w_2x_i^2$ by doing changing the features.
+
+$X = \begin{pmatrix} x_1 \cr x_2 \cr x_3 \end{pmatrix}$ 
+$Z = \begin{pmatrix} 1 & x_1 & x_1^2 \cr 1 & x_2 & x_2^2  \cr 1 & x_3 & x_3^2  \end{pmatrix}$
+
+The new vector is v, $\hat{y_i} = v^Tz_i$
+
+- As the polynomial degree increases, the training error goes down
+- But approximation error goes up: we start overfitting with large ‘p’.
+
+#### Gradiant Decent
+
+When d is large, solving the system will take $O(d^3)$, we can use the Gradiant Decent method.
+
+```
+– It starts with a “guess” w0
+– It uses the gradient ∇ f(w0) to generate a better guess w1
+– It uses the gradient ∇ f(w1) to generate a better guess w2
+– It uses the gradient ∇ f(w2) to generate a better guess w3
+…
+– The limit of wt as ‘t’ goes to ∞ has ∇ f(wt) = 0.
+```
+
+$w_1 = w_0 - \alpha_0\nabla f(w_0)$
+
+This decreases ‘f’ if the “step size” $\alpha_0$ is small enough.
+
+Usually, we decrease $α_0$if it increases ‘f’ (see “findMin”).
+
+The cost is $O(ndt)$ for t iterations.
+
+**Limitations**
+
+- If the function is not convex, we might converge to local min.
+
+**Convex function**
+- 1-variable, twice-differentiable function is convex iff f’’(w) ≥ 0 for all ‘w’.
+- A convex function multiplied by non-negative constant is convex.
+- Norms and squared norms are convex.
+- The sum of convex functions is a convex function.
+- The max of convex functions is a convex function.
+- Composition of a convex function and a linear function is convex.
+
+
+### Robust Regression
+If we have a outlier, the linear regression will be sensitive to those.
+
+Robust regression objectives focus less on large errors (outliers).
+- For example, use absolute error instead of squared error:
+$f(w) = \sum_{i=1}^n |w^Tx_i - y_1|$
+
+$f(w) = \|Xw - y\|_1$
+
+We have a smooth approximation to make it differentiable.
+
+$f(w) = \sum_{i=1}^n h(w^Tx_i - y_i)$
+
+$h(r_i) = \begin{cases} \frac{1}{2} r_i^2 &\text{for} |r_i|\leq \epsilon \\ \epsilon(|r_i| - \frac{1}{2} \epsilon) & \text{otherwise} \end{cases}$
+
+Non-convex errors can be very robust:
+- Not influenced by outlier groups.
+- But non-convex, so finding
+global minimum is hard.
+- Absolute value is “most robust”
+convex loss function
+
+### Complexity Penalties
+
+We might introduce Penalties to avoid overfitting.
+
+e.g. $score(p) = \frac{1}{2} \|Z_pv - y\|^2 + \lambda k$ where k is degree of freedom.
+
+The score will relative high if we are having a high k.
