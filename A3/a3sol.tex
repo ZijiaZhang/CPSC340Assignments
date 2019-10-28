@@ -43,10 +43,10 @@
 \begin{document}
 
 \title{CPSC 340 Assignment 3 (due Friday October 11 at 11:55pm)}
-\author{}
+\author{f4r1b 42252965}
 \date{}
 \maketitle
-\vspace{-4em}
+\vspace{-3em}
 
 On this assignment, we are only going to allow a \blu{maximum of 1 ``late class''} to be used. This is because the midterm is on October 17th, and we want to give you more than 1 day to look at the solutions before the actual exam.
 
@@ -58,13 +58,13 @@ On this assignment, we are only going to allow a \blu{maximum of 1 ``late class'
  
  \blu{\enum{
  \item Using the \emph{clustering2Dplot} function, output the clustering obtained by running k-means 50 times (with $k=4$) on \emph{clusterData2.mat} and taking the one with the lowest error. Are you satisfied with the result?  \ans{ \includegraphics[width=10cm]{q1Class.png}  No, the algorithm have detected 3 Classed in the middle, but in the previous assignments, it should ideally identify 4 classed in the middle. But in this condition, an outlier have taken away one of the class.}
- \item What values of $k$ might be chosen by the elbow method for this dataset? \ans{3}
+ \item What values of $k$ might be chosen by the elbow method for this dataset? \ans{8 \includegraphics[width=10cm]{Q1.png}}
  \item Implement the $k$-\emph{medians} algorithm, which assigns examples to the nearest $w_c$ in the L1-norm and then updates the $w_c$ by setting them to the ``median" of the points assigned to the cluster (we define the $d$-dimensional median as the concatenation of the medians along each dimension). For this algorithm it makes sense to use the L1-norm version of the error (where $y_i$ now represents the closest median in the L1-norm),
 \[
 f(w_1,w_2,\dots,w_k,y_1,y_2,\dots,y_n) = \sum_{i=1}^n \norm{x_i - w_{y_i}}_1 = \sum_{i=1}^n \sum_{j=1}^d |x_{ij} - w_{y_ij}|,
 \] 
  Hand in your code and plot obtained by taking the clustering with the lowest L1-norm after using  50 random initializations for $k = 4$.
-\ans{\\Code on next page. \\ \includegraphics[width = 10cm]{q13Code.png} \\ \includegraphics[width=10cm]{q1Class.png}}
+\ans{\\Code on next page. \\ \includegraphics[width = 10cm]{q13Code.png} \\ \includegraphics[width=10cm]{q13Graph.png}}
  \item What value of $k$ would be chosen by the elbow method if you k-medians and the L1-norm? Are you satisfied with this result?
 \ans{3, yes}
  }}
@@ -99,7 +99,7 @@ minPts = 2}
 Using our standard supervised learning notation ($X$, $y$, $w$)
 express the following functions in terms of vectors, matrices, and norms (there should be no summations or maximums).
 \blu{\enum{
-\item $\sum_{i=1}^n  |w^Tx_i - y_i| + \lambda \sum_{j=1}^{d} |w_j|$. \ans{$w^TX - y + \lambda \|w\|_1$}
+\item $\sum_{i=1}^n  |w^Tx_i - y_i| + \lambda \sum_{j=1}^{d} |w_j|$. \ans{$ \|w^TX - y\|_1 + \lambda \|w\|_1$}
 \item $\sum_{i=1}^n v_i (w^Tx_i - y_i)^2 + \sum_{j=1}^{d} \lambda_j w_j^2$. \ans{$ (w^TX-y)V \cdot (w^TX-y) + (\Lambda w) \cdot w$}
 \item $\left(\max_{i \in \{1,2,\dots,n\}} |w^Tx_i - y_i|\right)^2 +  \half\sum_{j=1}^{d} \lambda_j|w_j|$.  \ans{$(\|w^Tx-y\| _{\infty})^2 + \frac{1}{2} \|\Lambda w\|_1$}
 }}
@@ -115,7 +115,7 @@ Write finding a minimizer $w$ of the functions below as a system of linear equat
 \item $f(w)= \frac{1}{2}\sum_{i=1}^n v_i (w^Tx_i - y_i)^2 + \lambda w^Tu$ (weighted and tilted least squares). \ans{$ f(w) = \frac{1}{2}\sum_{i=1}^n v_i( (\sum_{j=i}^d x_i^d * w_d)-y_i )^2 + \lambda \sum_{j=1}^d {w_d}u_d 
 \\ f(w) = \frac{1}{2}\sum_{i=1}^n v_i( \hat{y_i}-y_i )^2 + \lambda \sum_{j=1}^d {w_d}u_d = \frac{1}{2}\sum_{i=1}^n v_i (\hat{y_i}^2 - 2\hat{y_i}{y_i} + y_i^2) + \lambda \sum_{j=1}^d {w_d}u_d 
 \\ f(w) = \frac{1}{2}\sum_{i=1}^n v_i ((\sum_{j=1}^d w_jx_i^j)^2 - 2(\sum_{j=1}^d w_jx_i^j){y_i} + y_i^2) + \lambda \sum_{j=1}^d {w_d}u_d 
-\\ f(w) = \frac{1}{2} (w^TX^TVXw) - W^TX^TVy + \frac{1}{2} y^TVy + \lambda w^t u
+\\ f(w) = \frac{1}{2} (w^TX^TVXw) - W^TX^TVy + \frac{1}{2} y^TVy + \lambda w^T u
 \\ \nabla f(w) = \frac{1}{2} w^TX^TVX + \frac{1}{2} w^T (X^TVX)^T - y^TVX + 0 + \lambda u
 \\ \nabla f(w) = w^TX^TVX - y^TVX + \lambda u$
 Therefore, the $ w = (X^TVX) \setminus (X^TVy- \lambda u) $
@@ -215,8 +215,8 @@ Z =
 and fit a least squares model based on it.
 \blu{Hand in the new function, and report the training and test error for $p = 0$ through $p= 10$. Explain the effect of $p$ on the training error and on the test error.}
 \ans{
-    \\ \includegraphics[width=10cm]{Q32new.PNG}
-    \\ \includegraphics[width = 10cm]{Q32Code.PNG}
+    \\ \includegraphics[width=10cm]{Q32NewNew.PNG}
+    \\ \includegraphics[width = 10cm]{Q32NewCode.PNG}
 }
 Note: for this question we'll assume $d=1$ (we'll discuss polynomial bases with more input features later in the course).
 
@@ -229,8 +229,8 @@ Hints: To keep the code simple and reduce the chance of having errors, you may w
 Polynomials are a flexible class of functions, but there is structure in this data that is not well-modelled by polynomials. Try to find a nonlinear basis that gives the best performance on this dataset in terms of test error. \blu{Report the basis that you use and the training/test score that you achieve}.
 
 Hint: the data seems to have periodic behaviour, and it's possible to obtain training and test errors below 60.
-\ans{The minimum Test Error i get is 222.76849615232675. \\
-The bases are $x, x^2, x^3, x^4, x^5, sin(x/0.3), cos(x/7)$ }
+\ans{The minimum Test Error i get is 51.061613323917456. \\
+The bases are $x, x^2, x^3, sin(x/0.2), sin(x^2/0.2), sin(x^3/0.2)$ }
 \section{Robust Regression and Gradient Descent}
 
 The script \emph{example\_outliers} loads a one-dimensional regression dataset that has a non-trivial number of `outlier' data points. These points do not fit the general trend of the rest of the data, and pull the least squares model away from the main downward trend that most data points exhibit:

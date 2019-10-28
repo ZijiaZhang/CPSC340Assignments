@@ -8,14 +8,14 @@ data = load("basisData.jld")
 
 # Fit a least squares model
 include("leastSquaresBiases.jl")
-n= 100
+n= 10
 Xa = zeros(n+1,1)
 ya = zeros(n+1,1)
 mint = Inf
 minr = Inf
 modelm = 0
 for j in 1:n
-for i in 1:n
+for i in 0:n
     global Xa
     global ya
     global mint, minr
@@ -25,14 +25,14 @@ for i in 1:n
     # Evaluate training error
     yhat = model.predict(X)
     trainError = mean((yhat - y).^2)
-    #@printf("Squared train Error with p = %d: %.3f\n",i,trainError)
+    @printf("Squared train Error with p = %d: %.3f\n",i,trainError)
 
     # Evaluate test error
     yhat = model.predict(Xtest)
     testError = mean((yhat - ytest).^2)
-    #@printf("Squared test Error with p = %d: %.3f\n",i,testError)
-    Xa[i] = i
-    ya[i] = testError
+    @printf("Squared test Error with p = %d: %.3f\n",i,testError)
+    Xa[i+1] = i
+    ya[i+1] = testError
     if testError < mint
         mint = testError
         minr = (i,j)
@@ -45,7 +45,7 @@ for i in 1:n
 #     Xhat = minimum(X):.1:maximum(X)
 #     yhat = model.predict(Xhat)
 #     plot(Xhat,yhat,"g")
-end
+    end
 end
 using PyPlot
 # figure()

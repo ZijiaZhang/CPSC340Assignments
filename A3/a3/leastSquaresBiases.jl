@@ -2,37 +2,28 @@ include("misc.jl")
 
 function leastSquares(X,y,d,s)
     n = size(X,1)
-    v = ones(n,1)
-    R = pow(X,5)
-    R2 = cos.(R/s*0.1)
-    R3 = sin.(R/d*0.1)
-#     R4 = cos.(R/s*2).^2
-#     R5 = sin.(R/d*2).^2
-    R = [v R R2 R3]
+    R = pow(X,d,s)
 	# Find regression weights minimizing squared error
 	w = (R'R)\(R'y)
 
 	# Make linear prediction function
 	function predict(Xhat)
         n1 = size(Xhat,1)
-        v = ones(n1,1)
-        R = pow(Xhat,5)
-        R2 = cos.(R/s*0.1)
-        R3 = sin.(R/d*0.1)
-#         R4 = cos.(R/s*2).^2
-#         R5 = sin.(R/d*2).^2
-        R = [v R R2 R3]
+        R = pow(Xhat,d,s)
         return R*w
     end
 	# Return model
 	return GenericModel(predict)
 end
 
-function pow(x,d)
+function pow(x,d,s)
     r = x[:,1]
-    for i in 2:d
+    ans = ones(size(x))
+    for i in 1:d
         g =r.^i
-        x = [x g]
+        p = sin.(g/(s/30))
+        #q = cos.(g)
+        ans = [ans g p]
     end
-    return x
+    return ans
 end
