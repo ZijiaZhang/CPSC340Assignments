@@ -2,7 +2,7 @@ using Printf
 include("misc.jl")
 include("findMin.jl")
 
-function logReg(X,y)
+function logReg_L2(X,y, lambda)
 
 	(n,d) = size(X)
 
@@ -10,7 +10,7 @@ function logReg(X,y)
 	w = zeros(d,1)
 
 	# Function we're going to minimize (and that computes gradient)
-	funObj(w) = logisticObj(w,X,y)
+	funObj(w) = logisticObj(w,X,y,lambda)
 
 	# Solve least squares problem
 	w = findMin(funObj,w,derivativeCheck=true)
@@ -22,10 +22,10 @@ function logReg(X,y)
 	return LinearModel(predict,w)
 end
 
-function logisticObj(w,X,y)
+function logisticObj(w,X,y, lambda)
 	yXw = y.*(X*w)
-	f = sum(log.(1 .+ exp.(-yXw)))
-	g = -X'*(y./(1 .+ exp.(yXw)))
+	f = sum(log.(1 .+ exp.(-yXw)))+ sum(lambda/2 * (w'* w))
+	g = -X'*(y./(1 .+ exp.(yXw))) + lambda * w
 	return (f,g)
 end
 
@@ -111,50 +111,3 @@ function logRegOnevsAll(X,y)
 	return LinearModel(predict,W)
 end
 
-
-#(assumes y_i in {1,2,...,k})
-function softMaxClassifier(X,y)
-	(n,d) = size(X)
-	k = maximum(y)
-	W = zeros(k*d，1)
-
-	yc = ones(n,1) # Treat class 'c' as +1
-	yc[y .!= c] .= -1 # Treat other classes as -1
-
-	# Each binary objective has the same features but different lables
-	funObj(w) = softMaxObjObj(w,X,y)
-
-	W[c,:] = findMin(funObj,W[c,:],verbose=false)
-
-	# Make linear prediction function
-	predict(Xhat) = mapslices(argmax,Xhat*W',dims=2)
-
-	return LinearModel(predict,W)
-end
-
-function softMaxObjObj(w,X,y)
-    (n,d) = size(x)
-    k = maximum(y)
-    t = reshape(w,k,d)
-    f = 0
-    for i in 1:n
-        f = f + t[y[i],:].*x[i,:]
-        r = 0
-        for c in 1:k
-            r = r + exp(t[c].*x[i])
-        end
-        f = f + log(r)
-    end
-    
-    g = zeros(k*d)
-    for c in 1:k
-        for j in 1:d:
-            for i in 1:n:
-                if y[i] == c:
-                    g[c,j] = g[c,j] - X[i,j]
-                end
-                
-        g = g + 
-	g = -X'*(y./(1 .+ exp.(yXw)))
-	return (f,g)
-end
