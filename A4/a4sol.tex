@@ -225,7 +225,7 @@ The loss function corresponding to the negative logarithm of the softmax probabi
 f(W) = \sum_{i=1}^n \left[-w_{y_i}^Tx_i + \log\left(\sum_{c' = 1}^k \exp(w_{c'}^Tx_i)\right)\right].
 \]
 \blu{Derive the partial derivative of this loss function with respect to a particular element $\red{W_{cj}}$}. Try to simplify the derivative as much as possible (but you can express the result in summation notation).
-\ans{The diravitive respect to $w_{cj}$ is $\sum _{i=1}^n [-X_{ij}*I(y_1=c) + (w_{cj}x_{ij})]$}
+\ans{The diravitive respect to $w_{cj}$ is $\sum _{i=1}^n [-X_{ij}*I(y_1=c) + \frac{1}{\sum_{c' = 1}^k \exp(w_{c'}^Tx_i)}* (exp(w_{c}^Tx_i))*x_{ij} ]$}
 
 Hint: for the gradient you can use $x_{ij}$ to refer to element $j$ of example $i$. For the first term you can use an `indicator' function, $I(y_i = c)$, which is $1$ when $y_i = c$ and is $0$ otherwise. Note that you can use the definition of the softmax probability to simplify the derivative.
 
@@ -236,7 +236,7 @@ Hint: for the gradient you can use $x_{ij}$ to refer to element $j$ of example $
 Make a new function, \emph{softmaxClassifier}, which fits $W$ using the softmax loss from the previous section  instead of fitting $k$ independent classifiers. \blu{Hand in the code and report the validation error}.
 
 Hint: you will want to use the \emph{derivativeCheck} option in \emph{findMin.jl} to check that your gradient code is correct. Also, note that \emph{findMin.jl} expects that the parameter vector and gradient are \emph{column vectors}. The easiest way to work around these issues is to use the \emph{reshape} command: call \emph{findMin.jl} with a $dk \times 1$ vector $w$ and at the start of your objective function reshape $w$ to be a $d \times k$ matrix $W$, then compute the $d \times k$ matrix of partial derivatives and finally reshape this to be the $dk \times 1$ gradient vector.
-
+\ans{\includegraphics[width=10cm]{Q33Code.png} \\ validError = 0.026}
 \subsection{Cost of Multinomial Logistic Regression}
 
 Assuming that we have
@@ -256,20 +256,20 @@ Assuming that we have
 \section{Very-Short Answer Questions}
 
 \enum{
-\item Consider performing feature selection by measuring the ``mutual information'' between each column of $X$ and the target label $y$, and selecting the features whose mutual information is above a certain threshold (meaning that the features provides a sufficient number of ``bits'' that help in predicting the label values). Without delving into any details about mutual information, what is a potential problem with this approach?
-\item Why do we use forward selection instead of exhaustively search all subsets in search and score methods?
-\item What is a setting where you would use the L1-loss, and what is a setting where you would use L1-regularization?
-\item Among L0-regularization, L1-regularization, and L2-regularization: which yield convex objectives? Which yield unique solutions? Which yield sparse solutions?
-\item What is the effect of $\lambda$ in L1-regularization on the sparsity level of the solution? What is the effect of $\lambda$ on the two parts of the fundamental trade-off?
+\item Consider performing feature selection by measuring the ``mutual information'' between each column of $X$ and the target label $y$, and selecting the features whose mutual information is above a certain threshold (meaning that the features provides a sufficient number of ``bits'' that help in predicting the label values). Without delving into any details about mutual information, what is a potential problem with this approach? \ans{This method might make errors to select features having a high correlation but not necessary relevent.}
+\item Why do we use forward selection instead of exhaustively search all subsets in search and score methods? \ans{Because the total number of subset are huge it is $2^d$ possibilities.}
+\item What is a setting where you would use the L1-loss, and what is a setting where you would use L1-regularization? \ans{We would use L1 loss when we have outliers. We would use L1 regularization if we want to select important feateure from the regression(sparse solusion).}
+\item Among L0-regularization, L1-regularization, and L2-regularization: which yield convex objectives? Which yield unique solutions? Which yield sparse solutions? \ans{L2 and L1 will have convex objectives. L2 will have unique solution. L0 and L1 will have sparse solution.}
+\item What is the effect of $\lambda$ in L1-regularization on the sparsity level of the solution? What is the effect of $\lambda$ on the two parts of the fundamental trade-off? \ans{The bigger the lambda is, the more sparse the value will be. The bigger the lambda is, the training Error will go up and approximation error will go down as the model will be less sensitive to training data and training error will be more accurate approximating the test error.}
 \item Suppose you have a feature selection method that tends not generate false positives but has many false negatives (it misses relevant variables). Describe an ensemble method for feature selection that could improve the performance of this method.
-\item How does the hyper-parameter $\sigma$ affect the shape of the Gaussian RBFs bumps? How does it affect the fundamental tradeoff?
-\item What is the main problem with using least squares to fit a linear model for binary classification?
-\item Suppose a binary classification dataset has 3 features. If this dataset is ``linearly separable'', what does this precisely mean in three-dimensional space?
-\item When searching for a good $w$ for a linear classifier, why do we use the logistic loss instead of just minimizing the number of classification errors?
-\item For a linearly-separable binary classification problem, how does an SVM classifier differ from a classifier found using the perceptron algorithm?
-\item Which of the following methods produce linear classifiers? (a) binary least squares as in Question 3, (b) the perceptron algorithm, (c) SVMs, (d) logistic regression, and (e) KNN with $k=1$ and $n=2$.
-\item Why do we use the polynomial kernel to implement the polynomial basis when $d$ and $p$ (degree of polynomial) are large?
-\item Suppose we want to fit a multi-class logistic regression model, but the class labels do not form convex regions. How could we modify multi-class logistic regression to fit non-convex regions?
+\item How does the hyper-parameter $\sigma$ affect the shape of the Gaussian RBFs bumps? How does it affect the fundamental tradeoff? \ans{The $\sigma$ affects the wideness of the normal distribution, the narrower the distribution, the training error will go down but the approximation error will go up, as it is more sensitive to trainging data.}
+\item What is the main problem with using least squares to fit a linear model for binary classification? \ans{We have to make sure that the two groups are be able to split by a hyper plane.}
+\item Suppose a binary classification dataset has 3 features. If this dataset is ``linearly separable'', what does this precisely mean in three-dimensional space? \ans{There is a four dimentional hyper plane that can seperate two class.}
+\item When searching for a good $w$ for a linear classifier, why do we use the logistic loss instead of just minimizing the number of classification errors? \ans{Because the function will be non-convex in w.}
+\item For a linearly-separable binary classification problem, how does an SVM classifier differ from a classifier found using the perceptron algorithm? \ans{The perceptron algorithm and SVM are gareenteed to find a perfect classifier if they exist, but SVM will make sure it also have a big margin.}
+\item Which of the following methods produce linear classifiers? (a) binary least squares as in Question 3, (b) the perceptron algorithm, (c) SVMs, (d) logistic regression, and (e) KNN with $k=1$ and $n=2$. \ans{a, b, c,d}
+\item Why do we use the polynomial kernel to implement the polynomial basis when $d$ and $p$ (degree of polynomial) are large? \ans{Because it is fast, we don't have to calculate Z for all the examples, we can get k directly from x.}
+\item Suppose we want to fit a multi-class logistic regression model, but the class labels do not form convex regions. How could we modify multi-class logistic regression to fit non-convex regions? \ans{We can make some basis transformation to make the regions convex.}
 }
 
 

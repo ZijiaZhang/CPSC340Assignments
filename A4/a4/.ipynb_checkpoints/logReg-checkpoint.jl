@@ -111,3 +111,61 @@ function logRegOnevsAll(X,y)
 	return LinearModel(predict,W)
 end
 
+
+#(assumes y_i in {1,2,...,k})
+function softMaxClassifier(X,y)
+	(n,d) = size(X)
+	k = maximum(y)
+	W = zeros(k*d,1)
+
+	# Each binary objective has the same features but different lables
+	funObj(w) = softMaxObjObj(w,X,y)
+
+	W = findMin(funObj,W,verbose=false, derivativeCheck=true)
+
+	# Make linear prediction function
+	function predict(Xhat) 
+        w2 = reshape(W,k,d)
+        return mapslices(argmax,Xhat*w2',dims=2)
+    end
+	return LinearModel(predict,W)
+end
+
+function softMaxObjObj(w,X,y)
+    (n,d) = size(X)
+    k = maximum(y)
+    t = reshape(w,k,d)
+    f = 0
+    for i in 1:n
+        f = f - sum(t[y[i],:].*X[i,:])
+        r = 0
+        for c in 1:k
+            r = r + exp(sum(t[c,:].*X[i,:]))
+        end
+        f = f + log(r)
+    end
+    
+    g = zeros(k,d)
+    for c in 1:k
+        for j in 1:d
+            for i in 1:n
+                if y[i] == c
+                    g[c,j] = g[c,j] - X[i,j]
+                end
+                t1 = 0
+                for c1 in 1:k
+                    t1 = t1 + exp(sum(t[c1,:].*X[i,:]))
+                end
+                t2 = 0
+                for c2 in 1:k
+                    if c2 == c
+                        t2 = t2 + exp(sum(t[c2,:].*X[i,:])) * X[i,j]
+                    end
+                end
+                g[c,j] = g[c,j] +1/t1 *t2
+            end
+        end
+    end
+    rg = reshape(g,k*d,1)
+	return (f,rg)
+end

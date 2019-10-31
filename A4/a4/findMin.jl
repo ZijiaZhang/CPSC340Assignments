@@ -21,7 +21,8 @@ function findMin(funObj,w;maxIter=100,epsilon=1e-2,derivativeCheck=false,verbose
         if derivativeCheck
             g2 = numGrad(funObj,w)
             if maximum(abs.(g-g2)) > 1e-4
-                @show(maximum(abs.(g-g2)))
+                @show(g)
+                @show(g2)
                 @printf("User and numerical derivatives differ\n")
                 sleep(1)
             else

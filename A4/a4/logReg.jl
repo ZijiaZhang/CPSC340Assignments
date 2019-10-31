@@ -116,45 +116,50 @@ end
 function softMaxClassifier(X,y)
 	(n,d) = size(X)
 	k = maximum(y)
-	W = zeros(k*d，1)
-
-	yc = ones(n,1) # Treat class 'c' as +1
-	yc[y .!= c] .= -1 # Treat other classes as -1
-
-	# Each binary objective has the same features but different lables
+	W = zeros(k*d,1)
 	funObj(w) = softMaxObjObj(w,X,y)
-
-	W[c,:] = findMin(funObj,W[c,:],verbose=false)
-
-	# Make linear prediction function
-	predict(Xhat) = mapslices(argmax,Xhat*W',dims=2)
-
+	W = findMin(funObj,W,verbose=false, derivativeCheck=true)I 
+	function predict(Xhat) 
+        w2 = reshape(W,k,d)
+        return mapslices(argmax,Xhat*w2',dims=2)
+    end
 	return LinearModel(predict,W)
 end
 
 function softMaxObjObj(w,X,y)
-    (n,d) = size(x)
+    (n,d) = size(X)
     k = maximum(y)
     t = reshape(w,k,d)
     f = 0
     for i in 1:n
-        f = f + t[y[i],:].*x[i,:]
+        f = f - sum(t[y[i],:].*X[i,:])
         r = 0
         for c in 1:k
-            r = r + exp(t[c].*x[i])
+            r = r + exp(sum(t[c,:].*X[i,:]))
         end
         f = f + log(r)
     end
-    
-    g = zeros(k*d)
+    g = zeros(k,d)
     for c in 1:k
-        for j in 1:d:
-            for i in 1:n:
-                if y[i] == c:
+        for j in 1:d
+            for i in 1:n
+                if y[i] == c
                     g[c,j] = g[c,j] - X[i,j]
                 end
-                
-        g = g + 
-	g = -X'*(y./(1 .+ exp.(yXw)))
-	return (f,g)
+                t1 = 0
+                for c1 in 1:k
+                    t1 = t1 + exp(sum(t[c1,:].*X[i,:]))
+                end
+                t2 = 0
+                for c2 in 1:k
+                    if c2 == c
+                        t2 = t2 + exp(sum(t[c2,:].*X[i,:])) * X[i,j]
+                    end
+                end
+                g[c,j] = g[c,j] +1/t1 *t2
+            end
+        end
+    end
+    rg = reshape(g,k*d,1)
+	return (f,rg)
 end
