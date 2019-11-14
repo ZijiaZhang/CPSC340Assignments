@@ -24,8 +24,8 @@ end
 
 function logisticObj(w,X,y, lambda)
 	yXw = y.*(X*w)
-	f = sum(log.(1 .+ exp.(-yXw)))+ sum(lambda * w)
-	g = -X'*(y./(1 .+ exp.(yXw))) + lambda * ones(size(w))
+	f = sum(log.(1 .+ exp.(-yXw)))
+	g = -X'*(y./(1 .+ exp.(yXw)))
 	return (f,g)
 end
 

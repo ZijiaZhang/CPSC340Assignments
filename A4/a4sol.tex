@@ -46,10 +46,10 @@
 \begin{document}
 
 \title{CPSC 340 Assignment 4  (due Friday November 1 at 11:55pm)}
-\author{}
+\author{Zijia Zhang 42252965}
 \date{}
 \maketitle
-\vspace{-4em}
+\vspace{-2em}
 
 
 
@@ -78,10 +78,10 @@ This variability would be reduced if we had a larger ``train" and ``validation" 
 When dealing with larger datasets, an important issue is the dependence of the computational cost on the number of training examples $n$ and the number of features $d$. 
 \blu{
 \enum{
-\item What is the cost in big-O notation of training a linear regression model with Gaussian RBFs on $n$ training examples with $d$ features (for fixed $\sigma$ and $\lambda$)?  \ans{$O(n^2d)$}
+\item What is the cost in big-O notation of training a linear regression model with Gaussian RBFs on $n$ training examples with $d$ features (for fixed $\sigma$ and $\lambda$)?  \ans{$O(n^2d+n^3)$}
 \item What is the cost of classifying $t$ new examples with this model? \ans{$O(ndt)$}
-\item When is it cheaper to train using Gaussian RBFs than using the original linear basis? \ans{When feature is nore than number of examples.}
-\item When is it cheaper to predict using Gaussian RBFs than using the original linear basis? \ans{Never}
+\item When is it cheaper to train using Gaussian RBFs than using the original linear basis? \ans{When feature is more than number of examples, the Gaussian RBF will be cheaper}
+\item When is it cheaper to predict using Gaussian RBFs than using the original linear basis? \ans{Never, the original linear bases takes O(td)}
 }}
 
 
@@ -141,10 +141,10 @@ f(w) = g(w) + \lambda \norm{w}_1.
 \]
  This function has a similar interface to \emph{findMin}, except that you (a) only provide the code to compute the function/gradient of the differentiable part $g$ and (b) need to provide the value $\lambda$. 
 
- \ans{ \includegraphics[width=10cm]{Q23.png}
-     numberOfNonZero = 72
- trainError = 0.0
- validError = 0.048
+ \ans{ \includegraphics[width=10cm]{Q23Code3.png} \\
+ numberOfNonZero = 71 \\
+ trainError = 0.0 \\
+ validError = 0.052 \\
  The number of feature used is smaller. The test error and validation error also goes down.
  }
 
@@ -225,7 +225,7 @@ The loss function corresponding to the negative logarithm of the softmax probabi
 f(W) = \sum_{i=1}^n \left[-w_{y_i}^Tx_i + \log\left(\sum_{c' = 1}^k \exp(w_{c'}^Tx_i)\right)\right].
 \]
 \blu{Derive the partial derivative of this loss function with respect to a particular element $\red{W_{cj}}$}. Try to simplify the derivative as much as possible (but you can express the result in summation notation).
-\ans{The diravitive respect to $w_{cj}$ is $\sum _{i=1}^n [-X_{ij}*I(y_1=c) + \frac{1}{\sum_{c' = 1}^k \exp(w_{c'}^Tx_i)}* (exp(w_{c}^Tx_i))*x_{ij} ]$}
+\ans{The diravitive respect to $w_{cj}$ is $\sum _{i=1}^n [-x_{ij}*I(y_1=c) + \frac{1}{\sum_{c' = 1}^k \exp(w_{c'}^Tx_i)}* (exp(w_{c}^Tx_i))*x_{ij} ]$}
 
 Hint: for the gradient you can use $x_{ij}$ to refer to element $j$ of example $i$. For the first term you can use an `indicator' function, $I(y_i = c)$, which is $1$ when $y_i = c$ and is $0$ otherwise. Note that you can use the definition of the softmax probability to simplify the derivative.
 
@@ -249,6 +249,9 @@ Assuming that we have
 }
 \blu{\enum{
 \item In $O()$ notation, what is the cost of training the softmax classifier?
+\ans{ To calculate f we need to use O(n*k*d). To calculate g we need n*d. So in total for T iterations we havea cost of O(n*d*k*T)}
+\item Cost of test Examples
+\ans{We need to calculate $Xw$ and find the max amoung the rows. It will take O(t*d*k)}
 }}
 
 
@@ -261,9 +264,9 @@ Assuming that we have
 \item What is a setting where you would use the L1-loss, and what is a setting where you would use L1-regularization? \ans{We would use L1 loss when we have outliers. We would use L1 regularization if we want to select important feateure from the regression(sparse solusion).}
 \item Among L0-regularization, L1-regularization, and L2-regularization: which yield convex objectives? Which yield unique solutions? Which yield sparse solutions? \ans{L2 and L1 will have convex objectives. L2 will have unique solution. L0 and L1 will have sparse solution.}
 \item What is the effect of $\lambda$ in L1-regularization on the sparsity level of the solution? What is the effect of $\lambda$ on the two parts of the fundamental trade-off? \ans{The bigger the lambda is, the more sparse the value will be. The bigger the lambda is, the training Error will go up and approximation error will go down as the model will be less sensitive to training data and training error will be more accurate approximating the test error.}
-\item Suppose you have a feature selection method that tends not generate false positives but has many false negatives (it misses relevant variables). Describe an ensemble method for feature selection that could improve the performance of this method.
+\item Suppose you have a feature selection method that tends not generate false positives but has many false negatives (it misses relevant variables). Describe an ensemble method for feature selection that could improve the performance of this method. \ans{We can try to apply the method to the subsets of teh examples. And select all features selected by the method.}
 \item How does the hyper-parameter $\sigma$ affect the shape of the Gaussian RBFs bumps? How does it affect the fundamental tradeoff? \ans{The $\sigma$ affects the wideness of the normal distribution, the narrower the distribution, the training error will go down but the approximation error will go up, as it is more sensitive to trainging data.}
-\item What is the main problem with using least squares to fit a linear model for binary classification? \ans{We have to make sure that the two groups are be able to split by a hyper plane.}
+\item What is the main problem with using least squares to fit a linear model for binary classification? \ans{The least square method will have a high error even if it classifies too right.}
 \item Suppose a binary classification dataset has 3 features. If this dataset is ``linearly separable'', what does this precisely mean in three-dimensional space? \ans{There is a four dimentional hyper plane that can seperate two class.}
 \item When searching for a good $w$ for a linear classifier, why do we use the logistic loss instead of just minimizing the number of classification errors? \ans{Because the function will be non-convex in w.}
 \item For a linearly-separable binary classification problem, how does an SVM classifier differ from a classifier found using the perceptron algorithm? \ans{The perceptron algorithm and SVM are gareenteed to find a perfect classifier if they exist, but SVM will make sure it also have a big margin.}
