@@ -16,8 +16,9 @@ clf()
 imshow(X)
 
 include("PCA.jl")
-model = PCA(X,13)
+model = PCA(X,2)
 compressed = model.compress(X);
+@show(1- norm(model.expand(compressed) - X)^2/norm(X)^2)
 # Show scatterplot of 2 random features
 # j1 = rand(1:d)
 # j2 = rand(1:d)

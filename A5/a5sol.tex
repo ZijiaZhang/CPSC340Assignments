@@ -107,11 +107,11 @@ p(y_i \cond x_i, w) = \frac 1 2 \exp(-|w^Tx_i - y_i|), \quad  p(w_j) = \frac{\la
 \]
 \ans{
     \begin{align*}
-    f(w) &= -\sum_{i=1}^n \log(p(y_i \cond x_i, w))\\
-    &=- \sum_{i=1}^n \log(\frac 1 2 \exp(-|w^Tx_i - y_i|))\\
-    &= - \sum_{i=1}^n \log(\frac 1 2) - \sum_{i=1}^n \log(\exp(-|w^Tx_i - y_i|)) \\
-    &= contant - \sum_{i=1}^n -|w^Tx_i - y_i|\\
-    & = constant + \|w^Tx - y\|_1
+    f(w) &= -\sum_{i=1}^n \log(p(y_i \cond x_i, w)) - \sum _{j=0} ^d \log(p(w_j))\\
+    &=- \sum_{i=1}^n \log(\frac 1 2 \exp(-|w^Tx_i - y_i|)) - \sum _{j=0} ^d \log(\frac{\lambda}{2}\exp(-\lambda|w_j|))\\
+    &= - \sum_{i=1}^n \log(\frac 1 2) - \sum_{i=1}^n \log(\exp(-|w^Tx_i - y_i|)) - \sum _{j=0} ^d \log(\frac{\lambda}{2}) - \sum _{j=0} ^d \log(\exp(-\lambda|w_j|)) \\
+    &= contant - \sum_{i=1}^n -|w^Tx_i - y_i| + \sum _{j=0} ^d \lambda|w_j|\\
+    & = constant + \|w^TX - y\|_1 + \lambda \|w_j\|_1
 \end{align*}
 }
 \item We use a normal  likelihood with a mean of $w^Tx_i$ but where each example $i$ has its own  positive variance $\sigma_i^2$, and a normal prior with a variance of $\lambda^{-1}$ and a mean that is some ``guess'' $w^0$ of the optimal parameter vector,
@@ -120,11 +120,11 @@ p(y_i \cond x_i,w) = \frac{1}{\sqrt{2\sigma_i^2\pi}}\exp\left(-\frac{(w^Tx_i - y
 \]
 \ans{
     \begin{align*}
-        f(w) &= -\sum_{i=1}^n \log(p(y_i \cond x_i, w))\\
-        & = -\sum_{i=1}^n \log(\frac{1}{\sqrt{2\sigma_i^2\pi}}\exp\left(-\frac{(w^Tx_i - y_i)^2}{2\sigma_i^2}\right)) \\
-        & = -\sum_{i=1}^n (\log(\frac{1}{\sqrt{2\sigma_i^2\pi}}) + \log(\exp\left(-\frac{(w^Tx_i - y_i)^2}{2\sigma_i^2}\right)))\\
-        & = -\sum_{i=1}^n (constant + \left(-\frac{(w^Tx_i - y_i)^2}{2\sigma_i^2}\right))) \\
-        & = constant + \|{\Sigma^{-1}(w^Tx - y)}\|_2^2
+        f(w) &= -\sum_{i=1}^n \log(p(y_i \cond x_i, w)) - \sum _{j=0} ^d \log(p(w_j))\\
+        & = -\sum_{i=1}^n \log(\frac{1}{\sqrt{2\sigma_i^2\pi}}\exp\left(-\frac{(w^Tx_i - y_i)^2}{2\sigma_i^2}\right)) - \sum _{j=0} ^d \log(\exp\left(-\frac{\lambda(w_j -  w^0_j)^2}{2}\right))\\
+        & = -\sum_{i=1}^n (\log(\frac{1}{\sqrt{2\sigma_i^2\pi}}) + \log(\exp\left(-\frac{(w^Tx_i - y_i)^2}{2\sigma_i^2}\right))) + \sum _{j=0} ^d \frac{\lambda(w_j -  w^0_j)^2}{2}\\
+        & = -\sum_{i=1}^n (constant + \left(-\frac{(w^Tx_i - y_i)^2}{2\sigma_i^2}\right))) + \lambda/2 \|w - w^0\|_2\\
+        & = constant + \|{\Sigma^{-1}(w^Tx - y)}\|_2^2 + \lambda \|w - w^0\|_2
     \end{align*}
 }
 The standard notation for this case is to use $\Sigma$ as a diagonal matrix with the $\sigma_i^2$ values along the diagonal.
@@ -134,9 +134,10 @@ p(y_i \cond x_i, w) = \frac{\exp(y_iw^Tx_i)\exp(-\exp(w^Tx_i))}{y_i!}, \quad p(w
 \]
 \ans{
 \begin{align*}
-    f(w) &= -\sum_{i=1}^n \log(p(y_i \cond x_i, w))\\
-    & = -\sum_{i=1}^n \log(\frac{\exp(y_iw^Tx_i)\exp(-\exp(w^Tx_i))}{y_i!})\\
-    & = -\sum_{i=1}^n y_iw^Tx_i + -\exp(w^Tx_i) - \log(y_i!)
+    f(w) &= -\sum_{i=1}^n \log(p(y_i \cond x_i, w)) - \sum _{j=0} ^d \log(p(w_j))\\
+    & = -\sum_{i=1}^n \log(\frac{\exp(y_iw^Tx_i)\exp(-\exp(w^Tx_i))}{y_i!}) - \sum _{j=0} ^d \log(\kappa)\\
+    & = -\sum_{i=1}^n y_iw^Tx_i + \exp(w^Tx_i) + \log(y_i!) + constant \\
+    & = -\sum_{i=1}^n y_iw^Tx_i + \exp(w^Tx_i) + \log(y_i!)
 \end{align*}
 }
 For this sub-question you don't need to put likelihood in matrix notation.
@@ -147,11 +148,11 @@ p(y_i \cond x_i, w) = \frac 1 2 \exp\left(-v_i|w^Tx_i - y_i|\right), \quad  p(w_
 where you use can $V$ as a diagonal matrix with the $v_i$ along the diagonal and $\Gamma$ is the ``gamma" function (which is always non-negative). You do not need to put the log-prior in matrix notation.
 \ans{
     \begin{align*}
-        f(w) &= -\sum_{i=1}^n \log(p(y_i \cond x_i, w))\\
-        & = -\sum_{i=1}^n \log(\frac 1 2 \exp\left(-v_i|w^Tx_i - y_i|\right))\\
-        & = -\sum_{i=1}^n \log(1/2) + \log(\exp\left(-v_i|w^Tx_i - y_i|\right)) \\
-        & = constant -\sum_{i=1}^n \left(-v_i|w^Tx_i - y_i|\right)\\
-        &= constant + \|(w^TX -y)V\|_1
+        f(w) &= -\sum_{i=1}^n \log(p(y_i \cond x_i, w)) - \sum _{j=0} ^d \log(p(w_j)) \\
+        & = -\sum_{i=1}^n \log(\frac 1 2 \exp\left(-v_i|w^Tx_i - y_i|\right)) - \sum _{j=0} ^d \log(\frac{\Gamma\left(\frac{\nu + 1}{2}\right)}{\sqrt{\nu\pi}\Gamma\left(\frac \nu 2\right)}\left(1 + \frac{w_j^2}{\nu}\right)^{-\frac{\nu+1}{2}})\\
+        & = -\sum_{i=1}^n \log(1/2) + \log(\exp\left(-v_i|w^Tx_i - y_i|\right)) - \sum _{j=0} ^d \log(\frac{\Gamma\left(\frac{\nu + 1}{2}\right)}{\sqrt{\nu\pi}\Gamma\left(\frac \nu 2\right)}) - \sum_{j=0}^d \log(\left(1 + \frac{w_j^2}{\nu}\right)^{-\frac{\nu+1}{2}})  \\
+        & = constant -\sum_{i=1}^n \left(-v_i|w^Tx_i - y_i|\right) - \sum_{j=0}^d \log(\left(1 + \frac{w_j^2}{\nu}\right)^{-\frac{\nu+1}{2}})\\
+        &= constant + \|(w^TX -y)V\|_1 + \frac{\nu+1}{2}\sum_{j=0}^d \log\left(1 + \frac{w_j^2}{\nu}\right)\\
     \end{align*}
 }
 }
@@ -190,30 +191,23 @@ Recall that with PCA we usually assume that the PCs are normalized ($\norm{w} = 
         2 & -1\\
         \end{tabular}
     Then we can see the line is $x_2 = -\frac {x_1} 2$. \\
-    We then can have $W = [-2, 1]^T$
+    We then can have $W = [ \frac {-2} {\sqrt{5}} , \frac{1}{\sqrt{5}}]$
 }
 \item What is the (L2-norm) reconstruction error of the point (-3, 2.5)? (Show your work.)
-\ans{We first do the "normalize". We get data: (-3,1.5) \\
-Thus We can see that reconstruction is $ 1.5 * [-2, 1]^T + [0, 1]$
+\ans{We first do the "center" that is $x_2-1$. We get data: (-3,1.5) \\
+   $Z = [-3, 1.5] * [ \frac {-2} {\sqrt{5}} , \frac{1}{\sqrt{5}}]'([ \frac {-2} {\sqrt{5}} , \frac{1}{\sqrt{5}}] * [ \frac {-2} {\sqrt{5}} , \frac{1}{\sqrt{5}}]')^{-1} = \frac{7.5}{\sqrt{5}}$ \\
+   $\hat{X} =[0,1] + \frac{7.5}{\sqrt{5}} * [ \frac {-2} {\sqrt{5}} , \frac{1}{\sqrt{5}}] = [-3, 2.5]$\\
+   So the reconstruction error is $ \|\frac{7.5}{\sqrt{5}} * [ \frac {-2} {\sqrt{5}} , \frac{1}{\sqrt{5}}] - [-3,1.5]\|_F^2 = 0$.
 }
 \item What is the (L2-norm) reconstruction error of the point (-3, 2)? (Show your work.)
 \ans{
-    We first do the "normalize". We get data: (-3,1) 
-The slope of line that is certical to $x_2 = -\frac{x_1} 2$ is $2 x_1 = x_2$. We plug (-3,1) in to the equation \\
-$2x_1 = x_2 + c$ we can resolve that c = -8. We then would get the intersection of the current line to w.\\
-    We have \[\begin{cases}
-        x_2 = -\frac{x_1} 2 \\
-        2x_1 = x_2 - 7
-    \end{cases}\]
-\[\begin{cases} 
-    x1 = - \frac {14} 5 \\
-    x2 = \frac{7} {5}
-\end{cases}\]
-Thus the reconstruction is $ \frac{7} {5} * [-2, 1]^T + [0, 1]= [-2.8, 2.4]$
+    We first do the "center". We get data: (-3,1) 
+    $Z = [-3, 1] * [ \frac {-2} {\sqrt{5}} , \frac{1}{\sqrt{5}}]'([ \frac {-2} {\sqrt{5}} , \frac{1}{\sqrt{5}}] * [ \frac {-2} {\sqrt{5}} , \frac{1}{\sqrt{5}}]')^{-1} = \frac{7}{\sqrt{5}}$ \\
+Thus the reconstruction is $\hat{X} =[0,1] + \frac{7}{\sqrt{5}} * [ \frac {-2} {\sqrt{5}} , \frac{1}{\sqrt{5}}] = [-2.8, 2.4]$\\
+So the reconstruction error is $ \|\frac{7}{\sqrt{5}} * [ \frac {-2} {\sqrt{5}} , \frac{1}{\sqrt{5}}] - [-3,1]\|_F^2 = \|[0.2, 0.4]\|_F^2 = 0.2$
 }
 }
 }
-
 
 
 
@@ -245,9 +239,9 @@ It is important to know how much of the information in our dataset is captured b
 In class we discussed the ``analysis" view that PCA maximizes the variance that is explained by the PCs, and the connection between the Frobenius norm and the variance of a centered data matrix $X$. Use this connection to answer the following:
 \blu{\enum{
 \item How much of the variance is explained by our two-dimensional representation from the previous question?
-\ans{$1 - \frac {\|ZW - X\|^2} {\|x\|^2} = 1 - 0.8355 = 0.1645$} 
+\ans{$1 - \frac {\|ZW - X\|^2} {\|x\|^2} =0.3019$} 
 \item How many\ PCs are required to explain 50\% of the variance in the data?
-\ans{14}
+\ans{5}
 }}
 Note: you can compute the Frobenius norm of a matrix using the function \emph{norm}. Also, note that the ``variance explained'' formula from class assumes that $X$ is already centered.
 
@@ -258,6 +252,7 @@ Note: you can compute the Frobenius norm of a matrix using the function \emph{no
 
 \enum{
 \item What is the difference between multi-label and multi-class classification?
+\ans{In a multi-label classification, one object can have many labels, but in multi-class classification, one object can only have one class.}
 \item We discussed ``global'' vs. ``local'' features for e-mail classification. What is an advantage of using global features, and what is advantage of using local features?
 \ans{"Global Features are useful when we have an important email for all users. And Local features are useful for identifying emails for specific users.}
 \item Assuming we want to use the original features (no change of basis) in a linear model, what is an advantage of the ``other'' normal equations over the original normal equations?
@@ -277,6 +272,8 @@ Note: you can compute the Frobenius norm of a matrix using the function \emph{no
 \item In the language of loss functions and regularization, what is the difference between MLE and MAP?
 \ans{MAP will give a score of the likelihood of w as perior, which is like the regularization, what gives a very samll value for the w that is likely to be overfitting. }
 \item What is the difference between a generative model and a discriminative model?
+\ans{generative model : Often need strong assumption as it model "X", and discriminative model: can use complicated features as it don't model "X".
+}
 \item In the MLE framework, what is the connection between the logistic loss and the sigmoid function in linear models.
 \ans{If we use sigmoid function, we will get logistic loss after applying the MLE.}
 \item What is the significance of choosing $k=2$ for visualizing with PCA.
@@ -284,11 +281,11 @@ Note: you can compute the Frobenius norm of a matrix using the function \emph{no
 \item With PCA, is it possible for the loss to increase if $k$ is increased? Briefly justify your answer.
 \ans{No. Because you can always set Z value to 0 to the k that is more than the previous one and get the same loss.}
 \item Why doesn't it make sense to do PCA with $k > d$?
-\ans{Because you will always get a perfect result.}
+\ans{Because you will always get a perfect result because the dimention of the hyper plane is more than the dimention of the original data. Doesn't make sence. And if k > d the "compression" effect does not occur. }
 \item In terms of the matrices associated with PCA ($X$, $W$, $Z$, $\hat{X}$), where would an ``eigenface'' be stored?
 \ans{W}
 }
-
+ 
 
 \section*{Project Update (OPTIONAL for 340 STUDENTS)}
 

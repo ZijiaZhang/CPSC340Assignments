@@ -16,7 +16,7 @@ function PCA(X,k)
     expand(Z) = expandFunc(Z,W,mu)
     @show(argmax(W[1,:]))
     @show(argmax(W[2,:]))
-    @show(1- norm(compress(X)*W - X)/norm(X))
+    @show(1- (norm(expand(compress(X)) - X)^2)/(norm(X)^2))
     return CompressModel(compress,expand,W)
 end
 
