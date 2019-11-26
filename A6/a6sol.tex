@@ -86,7 +86,9 @@ Although this visualization isn't perfect (with ``gorilla'' being placed close t
 \subsection{ISOMAP}
 
 Euclidean distances between very different animals are unlikely to be particularly meaningful. However, since related animals tend to share similar traits we might expect the animals to live on a low-dimensional manifold. This suggests that ISOMAP may give a better visualization. Make a new function \emph{ISOMAP} that computes the approximate geodesic distance (shortest path through a graph where the edges are only between nodes that are $k$-nearest neighbour) between each pair of points, and then fits a standard MDS model~\eqref{eq:MDS} using gradient descent. \blu{Hand in your code and the plot of the result when using the $3$-nearest neighbours}.
-
+\ans{\\
+\includegraphics[width=5cm]{Q21.png} \\
+\includegraphics[width=10cm]{Q21img.png}} \\
 Hint: the function \emph{dijskstra} (in \emph{misc.jl}) can be used to compute the shortest (weighted) distance between two points in a weighted graph. This function requires an $n$ by $n$ matrix giving the weights on each edge (use $\infty$ as the weight for absent edges). Note that ISOMAP uses an undirected graph, while the $k$-nearest neighbour graph might be asymmetric. You can use the usual heuristics to turn this into an undirected graph of including an edge $i$ to $j$ if $i$ is a KNN of $j$ or if $j$ is a KNN of $i$. (Also, be careful not to include the point itself in the KNN list).
 
 
@@ -95,7 +97,10 @@ Hint: the function \emph{dijskstra} (in \emph{misc.jl}) can be used to compute t
 \subsection{ISOMAP with Disconnected Graph}
 
 An issue with measuring distances on graphs is that the graph may not be connected. For example, if you run your ISOMAP code with $2$-nearest neighbours then some of the distances are infinite. One heuristic to address this is to set these infinite distances to the maximum distance in the graph (i.e., the maximum geodesic distance between any two points that are connected), which will encourage non-connected points to be far apart. Modify your ISOMAP function to implement this heuristic. \blu{Hand in your code and the plot of the result when using the $2$-nearest neighbours}.
-
+\ans{
+    \\
+    \includegraphics[width = 5cm]{Q22Code.png}
+    \includegraphics[width = 10cm]{Q22Graph.png}}
 
 
 
@@ -109,10 +114,18 @@ Suppose that we train a neural network with sigmoid activations and one hidden l
 W = \mat{-2 & 2 & -1\\1 & -2 & 0}, v = \mat{3 \\1}.
 \]
 Assuming that we are doing regression, \blu{for a training example with features $x_i^T = \mat{-3 &-2 & 2}$ what are the values in this network of $z_i$, $h(z_i)$, and $\hat{y}_i$?}
-
+\ans{
+    $z_i = Wx_i = [0 1]'$
+    $h(z_i) = [0.5, e/(e+1)]$
+    $y = 1.5 + e/(e+1)$
+}
 \subsection{Neural Network Tuning - Regression}
 
 The file \texttt{example\_nnet.jl} runs a stochastic gradient method to train a neural network on the \emph{basisData} dataset from a previous assignment. However, in its current form it doesn't fit the data very well. Modify the training procedure to improve the performance of the neural network. \blu{Hand in your plot after changing the code to have better performance, and list the changes you made}.
+\ans{
+    Change the number of layers to 10000. Change to 15000 steps and stepsize to 1e-5.
+    \\\includegraphics[width=10cm]{Q32.png}
+    }
 
 Hint: there are many possible strategies you could take to improve performance. Below are some suggestions, but note that the some will be more effective than others:
 \items{
