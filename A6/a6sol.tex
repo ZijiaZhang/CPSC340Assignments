@@ -141,28 +141,35 @@ Hint: there are many possible strategies you could take to improve performance. 
 \subsection{Neural Network Tuning - Classification}
 
 The file \texttt{example\_usps.jl} runs a stochastic gradient method to train a neural network on a set of images of digits. Modify the training procedure to improve the performance of the neural network. \blu{List the changes you made and the best test performance that you were able to obtain}.
-
+\ans{Tried 2 ways to improve the performance: 
+\\Change the number of hidden unit to 1000. Achived a testing error of 0.131 with maxIter = 48000.
+\\2. Perform PCA first with k = 100 and change the number of unit in the layer to 200. Changed step size to 1e-4 when reaches 30000 iterations and 1e-5 when reaches 50000 iterations. At max iterations of 150000, achived test error of 0.128.}
 
 \section{Very-Short Answer Questions}
 
 
 \blu{
 \enum{
-\item Is the NMF loss function convex? What is an optimization method you could use to try to minimize it?
+\item Is the NMF loss function convex? What is an optimization method you could use to try to minimize it? \ans{Yes, we can use Projected-Gradient to solve this kind of problem.}
 \item Consider fitting a linear latent-factor model, using L1-regularization of the $w_c$ values and L2-regularization of the $z_i$ values,
 \[
 f(Z,W) = \frac{1}{2}\norm{ZW - X}_F^2 + \lambda_W \sum_{c=1}^k \left[\norm{w_c}_1\right] + \frac{\lambda_Z}{2} \sum_{i=1}^n \left[\norm{z_i}^2\right],
 \]
 \enum{
-\item What is the effect of $\lambda_Z$ on the two parts of the fundamental trade-off in machine learning? 
-\item What is the effect of $k$ on the two parts?
-\item Would either of answers to the \emph{previous two questions} change if $\lambda_W = 0$?
+\item What is the effect of $\lambda_Z$ on the two parts of the fundamental trade-off in machine learning? \ans{When $\lambda _Z$ is big, the training error will increase and approximation error will decrease.}
+\item What is the effect of $k$ on the two parts? \ans{When k increases, the training error will increase, and approximation error will decrease.}
+\item Would either of answers to the \emph{previous two questions} change if $\lambda_W = 0$? \ans{(1) The $\lambda_Z$ will not affect. (2) k will have the same effect.}
 }
 \item Which is better for recommending movies to a new user, collaborative filtering or content-based filtering? Briefly justify your answer.
+\ans{content-based filtering, because colaborative filtering need to depend on finding similarities in teh ratings, but new users don't have any.}
 \item Is ISOMAP mainly used for supervised or unsupervised learning? Is it parametric or non-parametric?
+\ans{Unsupervised, is non-parametric model.}
 \item What is the difference between Euclidean distance and geodesic distance?
+\ans{Geodesic distance requires the distance to go through neighbouring points, whereas the Euclidean distance does not enforce that.}
 \item Are neural networks mainly used for supervised or unsupervised learning? Are they parametric or nonparametric?
+\ans{Supervised, parametric}
 \item The loss for a neural network is typically non-convex. Give one set of hyperparameters for which the loss is actually convex.
+\ans{nLayers = [1] h(x) = x}
 \item Assuming we have some procedure that returns a random global minimum of a neural network objective, how does the depth of a neural network affect the fundamental trade-off? For a convolutional network, how would the width of the convolutions affect the fundamental trade-off?
 \item What is the ``vanishing gradient'' problem with neural networks based on sigmoid non-linearities?
 \item List 3 forms of regularization we use to prevent overfitting in neural networks.

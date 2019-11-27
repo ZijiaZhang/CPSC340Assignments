@@ -35,8 +35,9 @@ function NeuralNet_backprop(bigW,x,y,nHidden)
 	v = bigW[ind+1:end]
 
 	#### Define activation function and its derivative
-	h(z) = tanh.(z)
-	dh(z) = (sech.(z)).^2
+	h(z) = 1.0 ./ (1.0 .+ exp.(-z))
+	dh(z) = h(z) .* (1 .-h(z))
+
 
 
 	#### Forward propagation
@@ -106,8 +107,8 @@ function NeuralNet_predict(bigW,Xhat,nHidden)
 	v = bigW[ind+1:end]
 
 	#### Define activation function and its derivative
-	h(z) = tanh.(z)
-	dh(z) = (sech.(z)).^2
+    h(z) = 1.0 ./ (1.0 .+ exp.(-z))
+	dh(z) = h(z) .* (1 .-h(z))
 
 	#### Forward propagation on each example to make predictions
 	yhat = zeros(t,1)
@@ -163,7 +164,7 @@ function NeuralNetMulti_backprop(bigW,x,y,k,nHidden)
 	v = reshape(v,nHidden[end],k)
 
 	#### Define activation function and its derivative
-	h(z) = tanh.(z)
+h(z) = tanh.(z)
 	dh(z) = (sech.(z)).^2
 
 	#### Forward propagation

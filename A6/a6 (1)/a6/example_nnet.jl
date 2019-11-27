@@ -11,7 +11,7 @@ d = 2
 
 # Choose network structure and randomly initialize weights
 include("NeuralNet.jl")
-nHidden = [10000]
+nHidden = [100]
 nParams = NeuralNet_nParams(d,nHidden)
 w = randn(nParams,1)
 
