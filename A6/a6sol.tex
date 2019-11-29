@@ -171,9 +171,13 @@ f(Z,W) = \frac{1}{2}\norm{ZW - X}_F^2 + \lambda_W \sum_{c=1}^k \left[\norm{w_c}_
 \item The loss for a neural network is typically non-convex. Give one set of hyperparameters for which the loss is actually convex.
 \ans{nLayers = [1] h(x) = x}
 \item Assuming we have some procedure that returns a random global minimum of a neural network objective, how does the depth of a neural network affect the fundamental trade-off? For a convolutional network, how would the width of the convolutions affect the fundamental trade-off?
+\ans{The deeper the Network is, the lower training error it gets, but the approximation error goes higher, For convolutional network, the wider the convolutions are, the bigger training error it gets and the lower the approximation it gets.}
 \item What is the ``vanishing gradient'' problem with neural networks based on sigmoid non-linearities?
+\ans{When the sigmoid function is far away from 0, the gradiant will be approach 0, which might cause underflow, so the gradiant becomes 0.}
 \item List 3 forms of regularization we use to prevent overfitting in neural networks.
+\ans{L2 regularization, Early Stopping, SGD}
 \item Convolutional networks seem like a pain... why not just use regular (``fully connected'') neural networks for image classification?
+\ans{Because it can represents the relationship between features, so they are not independent to each other.}
 }
 }
 
