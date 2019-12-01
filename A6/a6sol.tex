@@ -44,10 +44,10 @@
 \begin{document}
 
 \title{CPSC 340 Assignment 6 (due Friday November 29 at 11:55pm)}
-\author{}
+\author{Zijia Zhang 42252965}
 \date{}
 \maketitle
-\vspace{-4em}
+\vspace{-2em}
 
 
 \section{Robust PCA}
@@ -68,7 +68,7 @@ f(Z,W) = \sum_{i=1}^n\sum_{j=1}^d |w_j^Tz_i - x_{ij}|,
 and it has recently been proposed as a more effective model for background subtraction. \blu{Write a new function, \emph{robustPCA}, that uses the Huber loss to approximate the absolute value to implement robust PCA. Hand in your code.}
 
 Hint: most of the work has been done for you in the function \emph{PCA\_gradient}. This function  implements an alternating minimization approach to minimizing the PCA objective (without enforcing orthogonality). This gradient-based approach to PCA can be modified to use the Huber loss. A reasonable value of the hyper-parameter $\epsilon$ in the Huber loss might be $0.01$ for this problem. You may want to use a smaller version of the dataset when debugging your objective/gradient code.
-\ans{\includegraphics[width=10cm]{Q11.png}}
+\ans{\\\includegraphics[width=10cm]{Q11Code2.png} \\ \includegraphics[width=10cm]{Q11Result.png}}
 
 
 
@@ -115,8 +115,8 @@ W = \mat{-2 & 2 & -1\\1 & -2 & 0}, v = \mat{3 \\1}.
 \]
 Assuming that we are doing regression, \blu{for a training example with features $x_i^T = \mat{-3 &-2 & 2}$ what are the values in this network of $z_i$, $h(z_i)$, and $\hat{y}_i$?}
 \ans{
-    $z_i = Wx_i = [0 1]'$
-    $h(z_i) = [0.5, e/(e+1)]$
+    $z_i = Wx_i = [0, 1]$ \\
+    $h(z_i) = [0.5, e/(e+1)]$ \\
     $y = 1.5 + e/(e+1)$
 }
 \subsection{Neural Network Tuning - Regression}
@@ -142,7 +142,7 @@ Hint: there are many possible strategies you could take to improve performance. 
 
 The file \texttt{example\_usps.jl} runs a stochastic gradient method to train a neural network on a set of images of digits. Modify the training procedure to improve the performance of the neural network. \blu{List the changes you made and the best test performance that you were able to obtain}.
 \ans{Tried 2 ways to improve the performance: 
-\\Change the number of hidden unit to 1000. Achived a testing error of 0.131 with maxIter = 48000.
+\\1. Change the number of hidden unit to 1000. Achived a testing error of 0.131 with maxIter = 48000.
 \\2. Perform PCA first with k = 100 and change the number of unit in the layer to 200. Changed step size to 1e-4 when reaches 30000 iterations and 1e-5 when reaches 50000 iterations. At max iterations of 150000, achived test error of 0.128.}
 
 \section{Very-Short Answer Questions}
@@ -150,14 +150,14 @@ The file \texttt{example\_usps.jl} runs a stochastic gradient method to train a 
 
 \blu{
 \enum{
-\item Is the NMF loss function convex? What is an optimization method you could use to try to minimize it? \ans{Yes, we can use Projected-Gradient to solve this kind of problem.}
+\item Is the NMF loss function convex? What is an optimization method you could use to try to minimize it? \ans{No, we can use Projected-Gradient to solve this kind of problem.}
 \item Consider fitting a linear latent-factor model, using L1-regularization of the $w_c$ values and L2-regularization of the $z_i$ values,
 \[
 f(Z,W) = \frac{1}{2}\norm{ZW - X}_F^2 + \lambda_W \sum_{c=1}^k \left[\norm{w_c}_1\right] + \frac{\lambda_Z}{2} \sum_{i=1}^n \left[\norm{z_i}^2\right],
 \]
 \enum{
 \item What is the effect of $\lambda_Z$ on the two parts of the fundamental trade-off in machine learning? \ans{When $\lambda _Z$ is big, the training error will increase and approximation error will decrease.}
-\item What is the effect of $k$ on the two parts? \ans{When k increases, the training error will increase, and approximation error will decrease.}
+\item What is the effect of $k$ on the two parts? \ans{When k increases, the training error will decrease, and approximation error will increase.}
 \item Would either of answers to the \emph{previous two questions} change if $\lambda_W = 0$? \ans{(1) The $\lambda_Z$ will not affect. (2) k will have the same effect.}
 }
 \item Which is better for recommending movies to a new user, collaborative filtering or content-based filtering? Briefly justify your answer.
@@ -177,7 +177,7 @@ f(Z,W) = \frac{1}{2}\norm{ZW - X}_F^2 + \lambda_W \sum_{c=1}^k \left[\norm{w_c}_
 \item List 3 forms of regularization we use to prevent overfitting in neural networks.
 \ans{L2 regularization, Early Stopping, SGD}
 \item Convolutional networks seem like a pain... why not just use regular (``fully connected'') neural networks for image classification?
-\ans{Because it can represents the relationship between features, so they are not independent to each other.}
+\ans{Because it can represents the relationship between features, so they are not independent to each other. So it can reduce the time of training and overfitting.}
 }
 }
 

@@ -33,15 +33,12 @@ end
 
 function robustPCA(X,k)
     (n,d) = size(X)
-
     # Subtract mean
     mu = mean(X,dims=1)
     X -= repeat(mu,n,1)
-
     # Initialize W and Z
     W = randn(k,d)
     Z = randn(n,k)
-
 #     R = Z*W - X
 #     f = sum(R.^2)
     @show k,d,n
@@ -51,7 +48,7 @@ function robustPCA(X,k)
         for i in 1:n
     #         @show size(W[:,i])
     #         @show size(Z[i,:])
-            r = dot(Z[i,:],W[:,j]) - X[i]
+            r = dot(Z[i,:],W[:,j]) - X[i,j]
             if abs(r) > 0.01
                 f = f + 0.01 * (abs(r) - 0.5 * 0.01)
             else
@@ -60,7 +57,6 @@ function robustPCA(X,k)
             #g = g + sign(r) *min(abs(r),1)* transpose(Z[i,:])
         end
     end
-    
     
     funObjZ(z) = pcaObjZ(z,X,W)
     funObjW(w) = pcaObjW(w,X,Z)
@@ -82,7 +78,7 @@ function robustPCA(X,k)
         for i in 1:n
     #         @show size(W[:,i])
     #         @show size(Z[i,:])
-            r = dot(Z[i,:],W[:,j]) - X[i]
+            r = dot(Z[i,:],W[:,j]) - X[i,j]
             if abs(r) > 0.01
                 f = f + 0.01 * (abs(r) - 0.01 * 0.5)
             else
@@ -97,8 +93,6 @@ function robustPCA(X,k)
             break
         end
     end
-
-
     # We didn't enforce that W was orthogonal so we need to optimize to find Z
     compress(Xhat) = compress_gradientDescent(Xhat,W,mu)
     expand(Z) = expandFunc(Z,W,mu)
@@ -129,7 +123,7 @@ function pcaObjZ(z,X,W)
     g = zeros(size(Z))
     for j in 1:d
         for i in 1:n
-            r = dot(W[:,j],Z[i,:]) - X[i]
+            r = dot(W[:,j],Z[i,:]) - X[i,j]
             if abs(r) > 0.01
                 f = f + 0.01 * (abs(r) - 0.01 * 0.5)
             else
@@ -163,7 +157,7 @@ function pcaObjW(w,X,Z)
     g = zeros(size(W))
     for j in 1:d
         for i in 1:n
-            r = dot(Z[i,:],W[:,j]) - X[i]
+            r = dot(Z[i,:],W[:,j]) - X[i,j]
             if abs(r) > 0.01
                 f = f + 0.01 * (abs(r) - 0.01 * 0.5)
             else
