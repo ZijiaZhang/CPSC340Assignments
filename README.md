@@ -551,3 +551,250 @@ We might introduce Penalties to avoid overfitting.
 e.g. $score(p) = \frac{1}{2} \|Z_pv - y\|^2 + \lambda k$ where k is degree of freedom.
 
 The score will relative high if we are having a high k.
+
+## Feature Selection
+Select the feature that is most "important".
+### Association
+Compute correlation between feature values $x_j$ and ‘y’.
+- Say that ‘j’ is relevant if correlation is above 0.9 or below -0.9.
+
+Usually gives unsatisfactory results as it ignores variable interactions:
+### Regression Weight
+Fit regression weight 'w' based on all features. Take all features 'j' where $|w_j|$ is greater than a threshold.
+**Issue:** 
+1. If two variable are equal, any one might be relevent and the other is not.
+$\hat{y_i} = w_1*d_1 + w_2*d_2 = 0*d_1 + (w_1+w_2)*d_2$
+2. If there are 2 irrelevent feature, we might think they are both relevent:
+	$\hat{y+i} = 0*d_1 + 0*d_2 = 10000*d_1 + -10000*d_2$
+
+### Search and Score
+1. Define score function f(S) that measures quality of a set of features ‘S’.
+2. Now search for the variables ‘S’ with the best score.
+
+
+Compute score with feature {{1},{2},{3}, {1,2}, {1,3}, {2,3}, {1,2,3}}
+
+**Issue:** If we use validation error for the score, we might have an issue with optimization bias due to large number of sets ($2^d$).
+
+To solve this issue, we will apply "Number of Features" penalties. 
+$Score(S) = \frac 1 2 \sum_{i=1}^n(W_s^Tx_{is} - y_i)^2 + size(S)$ This makes that if the S have similar error, we would prefer the smaller set. Usually we would use L0-norm instead of function size.
+
+## Forward Selection 
+• In search and score, it’s also just hard to search for the best ‘S’. ($2^d$ possibilities)
+(Like in CPSC304).
+
+1. Start with an empty set of features, S = [ ]. 
+2. For each possible feature ‘j’: 
+- Compute scores of features in ‘S’ combined with feature ‘j’.
+4. Find the ‘j’ that has the highest score when added to ‘S’. 
+5. Check if {S ∪ j} improves on the best score found so far. 
+6. Add ‘j’ to ‘S’ and go back to Step 2. 
+	- A variation is to stop if no ‘j’ improves the score over just using ‘S’
+
+## Regularization
+### L2-Regularization
+$f(w) = \frac 1 2 \|Xw - y\|^2 + \frac \lambda 2 \|w\|^2$
+Objective balances getting low error vs. having small slopes $w_j$
+
+- Regularization increases training error.
+- Regularization decreases approximation error.
+
+It should be in the same unit in regularization so they will have same effect.
+
+### Standardizing Features
+– For each feature: 
+1. Compute mean and standard deviation: 
+2. Subtract mean and divide by standard deviation (“z-score”)
+
+In predication: use mean and standard deviation of training data.
+
+## Non-paramatric bases
+
+### Gaussian RBF
+For each data point, we have a corresponding normal destribuation. 
+1. We use ‘n’ bumps (non-parametric basis). 
+2. Each bump is centered on one training example x_i 
+ 3. Fitting regression weights ‘w’ gives us the heights (and signs). 
+ 4.  The width is a hyper-parameter (narrow bumps == complicated model).
+
+**Regularization**
+We calculate Z, so we can use L2-regularization on W. and we can use cross validation to choose $\sigma$ (width of noramal distribution) and $\lambda$ (regularizer)
+
+Hyper-Parameter Optimization 
+- In this setting we have 2 hyper-parameters (𝜎 and λ). 
+- More complicated models have even more hyper-parameters. 
+	- This makes searching all values expensive (increases over-fitting risk). 
+- Leads to the problem of hyper-parameter optimization. 
+	-  Try to efficiently find “best” hyper-parameters. 
+-  Simplest approaches: 
+	- Exhaustive search: try all combinations among a fixed set of σ and λ values. 
+	-  Random search: try random values
+
+
+### L1-Regularization
+Like L2-norm, it’s convex and improves our test error. 
+ Like L0-norm, it encourages elements of ‘w’ to be exactly zero.
+ L1-Regularization sets values to exactly 0
+
+L2-Regularization: 
+- Insensitive to changes in data. 
+- Decreased variance: 
+	-  Lower test error. 
+- Closed-form solution. 
+-  Solution is unique. 
+-  All ‘wj ’ tend to be non-zero. 
+-  Can learn with linear number of irrelevant features. 
+	-  E.g., only O(d) relevant features. 
+L1-Regularization: 
+- Insensitive to changes in data.
+-  Decreased variance: 
+	-  Lower test error. 
+- Requires iterative solver. 
+-  Solution is not unique. 
+-  Many ‘wj ’ tend to be zero. 
+-  Can learn with exponential number of irrelevant features. 
+	-  E.g., only O(log(d)) relevant features. Paper on this result by Andrew Ng
+
+### Ensemble Feature Selection
+We can use esemble method for feature selection. It is usually used to reduce false positives or false negatives.
+
+## Linear Classifier
+We can design a classifier that is $y_i = w1x_{i1} + w2x_{i2} + \dots + w_dx_{id}$. So that $y_i = 1$ for one class and $y_i = -1$ for the other class.
+
+**Issue**: the issue is that the least square might peanalize the classifier being too right. One way to solve this is using ***0,1 loss*** which is how many samples is classified correctly.
+### Perceptron Algorithm
+
+- Start with $w_0 = 0.$ 
+- Go through examples in any order until you make a mistake predicting yi . 
+	-  Set $w_{t+1} = w_t + y_i x_i$. 
+-  Keep going through examples until you make no errors on training data.
+
+--If a perfect classifier exists, this algorithm finds one in finite number of steps
+
+### 0-1 Loss
+- Even if the 0-1 Loss can solve the issue, it is not a convex function.
+	- It’s easy to minimize if a perfect classifier exists (perceptron). 
+	- Otherwise, finding the ‘w’ minimizing 0-1 loss is a hard problem
+- Gradient is zero every where: so no "direction".
+
+### Convex approximation 0-1 Loss
+With 0-1 Loss, 
+1. w = 0 always gives you minimum possible f.
+2. non-convex.
+#### Hinge Loss
+- $max\{0, 1- y_iw^Tx_i\}$
+- ** Support vector machine** (SVM) is hinge loss with L2-regularization
+
+#### Logistic Loss
+- Approximate $max\{0, -y_iw^tx_i\}$ with $\log(exp(0) + exp (-y_iw^Tx_i)) = \log(1 + exp(-y_iw^Tx_i))$
+- With w = 0, gives an error of log(2) instead of 0.
+- Convex and differentiable: minimize this with gradient descent.
+
+These two methods has:
+1. Fast training and testing.
+2. $w_j$ are easy to understand
+3. Often get a good test error.
+4. Smoother predictions than random forests.
+
+
+### Predictions vs. Probabilities
+We used sign function to make predictions. So it maps $w^Tx_i$ to +1 and -1. 
+
+But for probabilities, we want to map to range [0,1].
+
+We use sigmoid function:
+
+$h(z_i) = \frac 1 {1+exp(-z_i)}$
+We can use this as the probability that the sample belongs to one class. (“probability that e-mail is important”)
+
+### Multi-Class Linear Classification
+#### One vs all
+– “One vs all” is a way to turn a binary classifier into a multi-class method
+
+We have one classifier for each kind of class. And we can take the one with the highest score for the result of the prediction.
+
+X = [n*d] Matrix 
+W = [k * d] Matrix
+- In W, for each row, is a linear classifier for one class. 
+- Would pick maximum 'c' for $w_c^Tx_i$. 
+
+**Issues**
+Only works in convex reginons, 
+Scores are not conpareable as the classifier are not realted to each other. 
+
+### Multi-Class SVM
+To solve the above problem, we want for each training sample:
+- $w_{y_i}^Tx_i > w_c^Tx_i$ for all c that is not the correct label $y_i$
+
+To enforce this, we use the methos similar to SVM that is $w_{y_i}^Tx_i\geq w_c^Tx_i + 1$ for all $c\neq y_i$.
+
+So there are 2 pisible losses:
+1. $\sum_{c\neq y_i} max\{0,1-w_{y_i}x_i+w_c^Tx_i\}$
+2. $\max_{c\neq y_i} \{max\{0,1-w_{y_i}x_i+w_c^Tx_i\}\}$
+
+- The "Sum: rule penalizes for each ‘c’ that violates the constraint.
+- “Max” rule penalizes for one ‘c’ that violates the constraint the most
+
+If we add L2-regularization, both are called multi-class SVMs
+
+### Multi-Class Logistic Regression
+
+$w_{y_i}^Tx_i \geq \max_c\{w_c^Tx_i\}$ 
+which is equivalent to : $0 \geq -w_{y_i}^T x_i + \max_c\{w_c^Tx_i\}$
+
+- We want the right side to be as small as possible.
+
+Use log-sum-exp  on $\max_c$, we have:
+
+$-w_{y_i}^Tx_i + \log(\sum_{c=1}^k \exp(w_c^Tx_i))$
+
+We have the **softmax loss**.
+
+$f(W) = \sum_{i=1}^n[-w_{y_i}^Tx_i + \log(\sum_{c=1}^k \exp(w_c^Tx_i))] + \frac \lambda 2 \sum_{c=1}^k \sum_{j=1}^d w_{c_j}^2$
+
+- When k=2, equivalent to using binary logistic loss.
+
+### Prediction
+We have W = [k*d] and X = [n*d]
+
+So predictions are maximum column indices of $XW^T$ (which is ‘n’ by ‘k’).
+
+
+## Feature Engineering
+The best features may be dependent on the model you use.
+
+- Counting-based methods
+	- Discretization
+- Distance-based methods
+	- Standardization
+- Regression-based methods
+	- Non-Linear Transformations
+
+### Features for a santence.
+1. String of chars
+	Lose no information
+2. Bag of words
+	Count how many times each word appears.
+3. n-grams (bigram, trigram)
+	Ordered set of two words, gives more context.
+### Global and local Features
+
+**“Personalized” Important E-mails**
+The global feature will change the predication for every user, but the local features will only change the prediction to specific users.
+
+|340(Any User)|340(user?)|
+| :---:|:---: |
+|1| User1|
+|1|User1|
+|1|User2|
+|0|--|
+|1|User3|
+
+We can apply feature transformation to it: 
+|340(Any User)|340(user1)|340(user2)|
+| :---:|:---: |:--:|
+|1| 1|0|
+|1|1|0|
+|1|0|1|
+|0|0|0|
+|1|0|0|
