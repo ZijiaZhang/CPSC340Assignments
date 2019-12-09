@@ -798,3 +798,209 @@ We can apply feature transformation to it:
 |1|0|1|
 |0|0|0|
 |1|0|0|
+
+When we have a new users, first initialize all local features to 0, then when we have more data, update global features and user's local features. 
+- make prediction personalized.
+
+## Convolutions
+
+Convolution is used to represent information about neighbourhood.
+
+### Boundary Issue
+After convolution, we might have unknown values near the boundary.
+- “Zero”:
+Assume the out-of-bound values are 0.
+- “Replicate”:
+Assume the out-of-bound values are the same to the nearest knwon value.
+- Mirror:
+2,1 [0,1,2,3], 2, 1
+
+Or we can ignore all the unknowns and get a shorter vector.
+
+### Big Picture
+We want to characterize “what happens in a neighbourhood”, with just a few numbers
+
+### Laplacian of Gaussian Filter
+Laplacian of Gaussian is a smoothed 2nd -derivative approximation:
+
+### 2D convolution:
+$Z[i_1,i_2] = \sum_{j_1=-m}^m \sum_{j_2=-m}^m w[j_1,j_2] \times [i_1+j_1, i_2 + j_2]$
+
+### Notable convolutions:
+
+- Gaussian (blurring/averaging). 
+- Laplace of Gaussian (second-derivative). 
+- Gabor filters (directional first- or higher-derivative).
+### Filter banks: 
+- Make features for a vision problem by takin a bunch of convolutions.
+
+
+## Kernal trick
+
+When doing polynomial bases on d>1, we might habe too many features. We can simplyfy these steps:
+
+$f(v) =\frac 1 2 \|Zv-y^2\| +\frac \lambda 2 \|v\|^2$
+
+$v = (Z^TZ + \lambda I)^{-1}Z^Ty$
+
+which is equivalent to:
+
+$v = Z^T(ZZ^T+\lambda I)^{-1}y$
+
+- Cost is $O(n^2k + n^3 )$
+- But for the polynomial basis, this is still too slow since $k = O(d^p )$
+
+$\hat{y} = \tilde{Z}v = \tilde{Z}Z^T(ZZ^T + \lambda I)^{-1}y = \tilde{K}(K+\lambda I)^{-1}y$
+
+We want to get $\tilde{K}$ and K without get Z.
+
+### Polynomial Kernal
+We can have $K_{i,j} = (1+x_i^Tx_j)^p$, $\tilde{K_{i,j}} = (1+\tilde{x_i}^Tx_j)^p$
+
+### Gaussian-RBF Kernel
+$K_{i,j} = \exp(-\frac{\|x_i-x_j\|^2} {2\sigma})$
+$\tilde{K_{i,j}} = \exp(-\frac{\|\tilde{x_i}-x_j\|^2} {2\sigma})$
+
+
+## Stochastic Gradient
+- Gradient methods are effective when ‘d’ is very large.
+$O(nd)$ per iteration instead of $O(nd^2 + d^3 )$ to solve as linear system.
+
+But if n is large, it will take more time.
+
+The cost of calculating the gradiant is **linear to n**
+
+But for Stochastic Gradient, we would pick a random training example, and calculate the gradiant.
+
+## Boosting
+### XGBoost
+This method uses Regression Trees.
+#### Regression Trees
+Likes the decision tree.
+- Each split is based on 1 feature. 
+-  Each leaf gives a real-valued prediction.
+
+#### Ensemble of regression trees
+For an example ‘i’, they each make a continuous prediction:
+- The latter trees correct the error in the previous trees.
+
+$\hat{y_i} = \hat{y_{i1}} + \hat{y_{i2}} + \hat{y_{i3}} + ... + \hat{y_{in}}$
+
+**Training Procidure**
+- Tree[1] = fit(X,y). 
+- $\hat{y}$ = Tree[1].predict(X). 
+-  Tree[2] = fit(X,y - $\hat{y}$). 
+-  $\hat{y}$ = $\hat{y}$ + Tree[2].predict(X). 
+-  Tree[3] = fit(X,y - $\hat{y}$). 
+-  $\hat{y}$ = $hat{y}$ + Tree[3].predict(X). 
+-  Tree[4] = fit(X,y - $hat{y}). 
+-  $\hat{y}$ = $\hat{y}$+ Tree[4].predict(X). 
+-  …
+
+#### Add regularization
+$f(w_1,w_2, \dots) = \sum_{i=1}^n(w_{L_1} - r_i)^2 + \lambda_0 \|w\|_0 + \lambda_2\|w\|^2$
+
+## MLE and MAP
+
+maximum likelihood estimation (MLE) and MAP estimation.
+
+### MLE
+- We have a dataset D. 
+- We want to pick parameters ‘w’. 
+- We define the likelihood as a probability mass/density function p(D | w). 
+- We choose the model $\hat{w}$ that maximizes the likelihood:
+	- $\hat{w} \in \argmax_w\{p(D|W)\} === \argmin_w\{-\log(p(D|W)\}$
+
+We use log-likelihood because it turns multiplication into addition:
+$\log(ab) = \log(a) + \log(b)$
+
+#### For Gaussian likelihood
+$p(y_i|x_i,w) = \frac 1 {\sqrt{2 \pi}} \exp(-\frac {(w^Tx_i - y_i)^2} 2)$
+
+After doinng the log-likelihood:
+
+$f(w) = -\sum_{i=1}^n \log(p(y_i|w,x_i))\\ = -\sum_{i=1}^n \log(\frac 1 {\sqrt{2 \pi}} \exp(-\frac {(w^Tx_i - y_i)^2} 2)) \\= -\sum_{i=1}^n [\log(\frac 1 {\sqrt{2 \pi}})+\log( \exp(-\frac {(w^Tx_i - y_i)^2} 2))]$
+
+We can see that the first term is contant, so we can just focus on the second term.
+
+$f(w) = constant + -\sum_{i=1}^n -\frac {(w^Tx_i - y_i)^2} 2 \\ =constant + \frac 1 2 \|Xw-y\|^2$ 
+
+
+#### “Generative” vs. “Discriminative”
+“discriminative” model: p(y | X, w)
+- Least squares, robust regression, logistic regression. 
+- Can use complicated features because you don’t model ‘X’.
+
+“generative” model : p(y, X | w).
+- Naïve Bayes, linear discriminant analysis (makes Gaussian assumption). 
+- Often need strong assumption because they model ‘X’
+
+#### Overfitting
+MLE often leads to overfitting:
+- Data could be very likely for some very unlikely ‘w’. 
+-  For example, a complex model that overfits by memorizing the data.
+### Maximum a Posteriori (MAP) Estimation
+
+Maximum a posteriori (MAP) estimate maximizes the reverse probability:
+
+$\hat{w} \in \argmax_w\{p(W|D)\}$
+ 
+ We can use bayes rule:
+$p(w|D) = \frac{p(D|w)p(w)} {p(D)}===p(D|w)p(w)$
+
+So MAP maximizes the likelihood p(D|w) times the prior p(w):
+- p(w) acts like a regularizer to prevent overfit.
+
+$p(w) = \prod_{j=1}^d p(w_j) === \prod_{j=1}^d\exp(\frac \lambda 2 w_j^2) = exp(-\frac \lambda 2 \sum_{j=1} ^d w_j^2)$
+
+- As ‘n’ goes to infinity, effect of prior/regularizer goes to zero. 
+- Unlike with MLE, the choice of σ changes the MAP solution for these models.
+
+## PCA
+
+
+### Latent-Factor Models
+
+We want to trainsform the data X to Z. (Feature traansformation).
+
+$x_i = Z_1w_1 + Z_2w_2 + \dots + Z_nw_n$
+
+### Notations
+
+Z = [n*k]
+W = [d *k]
+
+approximate x_i as $\hat{x_i} = W^Tz_i$
+
+- PCA approximates each xij by the inner product < wj , zi >. 
+- PCA approximates each xi by the matrix-vector product WT zi . 
+-  PCA approximates matrix ‘X’ by the matrix-matrix product ZW.
+### Applications
+- Dimensionality reduction: replace ‘X’ with lower-dimensional ‘Z’. 
+	- If k << d, then compresses data
+
+### Objective Function
+The objective Function of PCA is 
+$f(w) = \|ZW=X\|_F^2$
+
+### Steps 
+1. Center the Data
+2. Calculate W and Z
+3. (USV) = svd(X), W = V[:,1:k]
+4. Prediction
+	- 1. Center $\hat{X}$
+	-  2. $\tilde{Z} = \tilde{X}w^T(ww^T)^{-1}$
+
+### Variance Explained
+
+For a given k, we have a ratio: $\frac {\|ZW - X\|_F^2}{\|X\|_F^2}$
+
+The **varians explained** is 1-ratio.
+
+### Making PCA Unique
+- Normalization: we enforce that ||wc || = 1. 
+-  Orthogonality: we enforce that wc Twc’ = 0 for all c ≠ c’. 
+-  Sequential fitting: 
+	- We first fit $w_1$ (“first principal component”) giving a line.
+	-  Then fit $w_2$ given $w_1$ (“second principal component”) giving a plane. 
+	-  Then we fit $w_3$ given $w_1$ and $w_2$ (“third principal component”) giving a space.
